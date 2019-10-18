@@ -396,7 +396,11 @@
       <filename>tdm_mantic.png</filename>
     </datafile>
   </datafiles>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\Faucet Forwarding</extension>
+    <extension index="1">extensions\Faucet Networking</extension>
+    <extension index="2">extensions\GG2DLL</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\ChaingunSnd</sound>
     <sound>sound\DeathSnd1</sound>
