@@ -37,7 +37,7 @@
 // Should work correctly for IPv6 host values, but bare in mind parse_url won't
 
 var parts;
-parts = argument0;
+parts = argument[0];
 
 var url;
 url = '';

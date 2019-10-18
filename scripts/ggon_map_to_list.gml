@@ -5,7 +5,7 @@
 // This works with what decoding GGON lists, or ggon_list_to_map, produce
 
 var map;
-map = argument0;
+map = argument[0];
 
 var list, length;
 list = ds_list_create();

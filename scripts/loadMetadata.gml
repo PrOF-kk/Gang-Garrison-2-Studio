@@ -1,7 +1,7 @@
 /**
  * Script that checks the extra added data, plugins can load their own metadata using global.metadataFunction
- * Argument0: The metadata
- * [Argument1]: true if the script is executed in the builderroom.
+ * argument[0]: The metadata
+ * [argument[1]]: true if the script is executed in the builderroom.
 */
 
 var background, voidColor, i, controller, scale;
@@ -10,10 +10,10 @@ with(ParallaxController)
     controller = id;    // Use an existing parallax controller if possible.
 
 // The map background color
-background = readProperty(argument0, "background", HEX, $000000);
+background = readProperty(argument[0], "background", HEX, $000000);
 background_color = make_color_rgb((background&$ff0000)>>16, (background&$00ff00)>>8, background&$0000ff);
 
-voidColor = readProperty(argument0, "void", HEX, $000000);
+voidColor = readProperty(argument[0], "void", HEX, $000000);
 voidColor = make_color_rgb((voidColor&$ff0000)>>16, (voidColor&$00ff00)>>8, voidColor&$0000ff);
 
 if (voidColor != background)
@@ -25,14 +25,14 @@ if (voidColor != background)
 }
 
 // Set the map scale (for hd maps)
-scale = readProperty(argument0, "scale", REAL, 6);
+scale = readProperty(argument[0], "scale", REAL, 6);
 background_xscale[7] = scale;
 background_yscale[7] = scale;
 
 // Load parallax backgrounds
 for(i=0;i<7;i += 1)
 {
-    background = readProperty(argument0, "bg_layer" + string(i), STRING, "");
+    background = readProperty(argument[0], "bg_layer" + string(i), STRING, "");
     if (background != "")
     {
         if (controller == noone)
@@ -41,8 +41,8 @@ for(i=0;i<7;i += 1)
         controller.num_bgs = i+1;
         
         // Layer depth (controls the amount of parallax.
-        controller.background_xfactor[i] = readProperty(argument0, "layer" + string(i) + "xfactor", REAL, controller.background_xfactor[i]);
-        controller.background_yfactor[i] = readProperty(argument0, "layer" + string(i) + "yfactor", REAL, controller.background_xfactor[i]);
+        controller.background_xfactor[i] = readProperty(argument[0], "layer" + string(i) + "xfactor", REAL, controller.background_xfactor[i]);
+        controller.background_yfactor[i] = readProperty(argument[0], "layer" + string(i) + "yfactor", REAL, controller.background_xfactor[i]);
         
         // Unload the previous backgrounds
         if (ds_map_find_value(global.resources, "bg_layer" + string(i)) > 0)
@@ -65,7 +65,7 @@ for(i=0;i<7;i += 1)
 }
 
 // Load a foreground
-background = readProperty(argument0, "bg_foreground", STRING, "");
+background = readProperty(argument[0], "bg_foreground", STRING, "");
 if (background != "")
 {
     if (controller == noone)
@@ -81,4 +81,4 @@ else if (controller != noone) {
     controller.foreground = -1;
 }
 
-execute_string(global.metadataFunction, argument0, argument1);
+execute_string(global.metadataFunction, argument[0], argument[1]);

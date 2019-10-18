@@ -4,7 +4,7 @@
 // Returns the encoded text
 
 var value;
-value = argument0;
+value = argument[0];
 
 var out;
 

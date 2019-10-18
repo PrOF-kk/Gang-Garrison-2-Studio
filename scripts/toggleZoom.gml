@@ -1,4 +1,4 @@
-with(argument0) {
+with(argument[0]) {
     zoomed = !zoomed;
     if(zoomed) {
         runPower = 0.6;

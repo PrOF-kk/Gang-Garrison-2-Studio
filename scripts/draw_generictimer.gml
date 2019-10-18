@@ -1,11 +1,11 @@
 var xoffset, yoffset, xsize, ysize, countdown, teamoffset, mode;
-xoffset = argument0;
-yoffset = argument1;
-xsize = argument2;
-ysize = argument3;
-countdown = argument4;
-teamoffset = argument5;
-mode = argument6; // 0: normal, large; 1: normal, small; 2: outlined, small
+xoffset = argument[0];
+yoffset = argument[1];
+xsize = argument[2];
+ysize = argument[3];
+countdown = argument[4];
+teamoffset = argument[5];
+mode = argument[6]; // 0: normal, large; 1: normal, small; 2: outlined, small
 
 // note about "magic number" 1800, used below:
 // 1800=60*30, where 60 is the number of seconds in a minute, and 30 is tickrate

@@ -1,11 +1,11 @@
 // Removes the earliest received packet for a server-sent plugin
 // This will destroy the buffer.
 // If there is packet to remove, returns false, otherwise true
-// argument1 - plugin packet ID, passed as argument0 to server-sent plugin upon execution
+// argument[1] - plugin packet ID, passed as argument[0] to server-sent plugin upon execution
 
 var packetID, packetBufferQueue, packetPlayerQueue;
 
-packetID = argument0;
+packetID = argument[0];
 
 // check to make sure the packet ID is valid
 if (!ds_map_exists(global.pluginPacketBuffers, packetID))

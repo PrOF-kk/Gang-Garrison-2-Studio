@@ -37,7 +37,7 @@
 // See also: http_status_code, gets the Status-Code
 
 var client;
-client = argument0;
+client = argument[0];
 
 if (client.errored)
     return client.error;

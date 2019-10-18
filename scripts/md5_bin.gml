@@ -18,7 +18,7 @@
 */
 {
     var str,uint,grp,rol,i,j,h,len,pos,w,a,b,c,d,e,f,temp,digest;
-    str = argument0;
+    str = argument[0];
     if (!variable_global_exists("MD5k")) {
         globalvar MD5k,MD5g,MD5r,MD5s;
         grp  = "00010203040506070809101112131415";

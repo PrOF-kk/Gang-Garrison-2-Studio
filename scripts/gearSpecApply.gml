@@ -2,8 +2,8 @@
 
 var gearSpec, gearName;
 
-gearSpec = argument0;
-gearName = argument1;
+gearSpec = argument[0];
+gearName = argument[1];
 
 var basicAnimations;
 basicAnimations = "Run,Stand,LeanL,LeanR,Jump,Taunt";

@@ -39,8 +39,8 @@
 // Algorithm based on that of section 5.2.2 of RFC 3986
 
 var baseUrl, refUrl;
-baseUrl = argument0;
-refUrl = argument1;
+baseUrl = argument[0];
+refUrl = argument[1];
 
 // Parse base URL
 var urlParts;

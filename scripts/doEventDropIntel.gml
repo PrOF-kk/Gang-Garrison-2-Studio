@@ -1,11 +1,11 @@
 /**
- * Make the player <argument0> drop the intel, playing a notification sound and showing a notification
+ * Make the player <argument[0]> drop the intel, playing a notification sound and showing a notification
  *
- * argument0: The player who is dropping the intel. Must currently have a valid Character object with intel==true.
+ * argument[0]: The player who is dropping the intel. Must currently have a valid Character object with intel==true.
  */
 
 var player, preconditionsError;
-player = argument0;
+player = argument[0];
 
 sound_play(IntelDropSnd);
 

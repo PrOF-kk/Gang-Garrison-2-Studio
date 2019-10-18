@@ -3,17 +3,17 @@
 
 var sprite, subimage, gear, overlaySprite, overlaySubimage, dx, dy, angle, xscale;
 
-sprite = argument0;
-subimage = argument1;
-gear = argument2;
-overlaySprite = argument3;
-overlaySubimage = argument4;
-dx = argument5;
-dy = argument6;
-angle = argument7;
-xscale = argument8;
-subimageSelectionScript = argument9;
-zindex = argument10;
+sprite = argument[0];
+subimage = argument[1];
+gear = argument[2];
+overlaySprite = argument[3];
+overlaySubimage = argument[4];
+dx = argument[5];
+dy = argument[6];
+angle = argument[7];
+xscale = argument[8];
+subimageSelectionScript = argument[9];
+zindex = argument[1]0;
 
 if(!variable_global_exists("gearOverlayInfo"))
     global.gearOverlayInfo = ds_map_create();

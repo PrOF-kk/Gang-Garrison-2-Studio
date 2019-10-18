@@ -1,10 +1,10 @@
 // setHeadPosesFromString(spriteId, dxBase, dyBase, poseString);
 
 var spriteId, dxBase, dyBase, poseString;
-spriteId = argument0;
-dxBase = argument1;
-dyBase = argument2;
-poseString = argument3;
+spriteId = argument[0];
+dxBase = argument[1];
+dyBase = argument[2];
+poseString = argument[3];
 
 var frames, i;
 frames = split(poseString, "|");

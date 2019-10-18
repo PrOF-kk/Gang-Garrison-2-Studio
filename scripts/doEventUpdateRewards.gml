@@ -1,11 +1,11 @@
 /**
- * argument0: The player whose rewards were updated
- * argument1: The new rewards value
+ * argument[0]: The player whose rewards were updated
+ * argument[1]: The new rewards value
  */
 
 var player, rewardString;
-player = argument0;
-rewardString = argument1;
+player = argument[0];
+rewardString = argument[1];
 
 parseRewards(rewardString, player.rewards);
 parseBadges(player.rewards, player.badges);

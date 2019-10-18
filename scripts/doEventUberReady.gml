@@ -1,11 +1,11 @@
 /**
  * Set a player's ubercharge to ready
  *
- * argument0: The player who filled his ubercharge meter
+ * argument[0]: The player who filled his ubercharge meter
  */
 
 var uberer;
-uberer = argument0;
+uberer = argument[0];
  
 if(uberer.object != -1) {
     playsound(uberer.object.x,uberer.object.y,UberChargedSnd);

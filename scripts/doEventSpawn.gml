@@ -2,15 +2,15 @@
  * Spawn a player. If he already has a character object, destroy it
  * and respawn.
  *
- * argument0: The player who spawned
- * argument1: The spawnpoint ID
- * argument2: The spawn group
+ * argument[0]: The player who spawned
+ * argument[1]: The spawnpoint ID
+ * argument[2]: The spawn group
  */
 
 var spawner, spawnpointId, spawnGroup;
-spawner = argument0;
-spawnpointId = argument1;
-spawnGroup = argument2;
+spawner = argument[0];
+spawnpointId = argument[1];
+spawnGroup = argument[2];
 
 var spawnX, spawnY, character;
 if(spawner.team == TEAM_RED) {

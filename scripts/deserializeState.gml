@@ -1,9 +1,9 @@
 // Read state data from the global.serverSocket and deserialize it
-// argument0: Type of the state update
+// argument[0]: Type of the state update
 
-global.updateType = argument0;
+global.updateType = argument[0];
 
-if(argument0 == FULL_UPDATE) {
+if(argument[0] == FULL_UPDATE) {
     receiveCompleteMessage(global.serverSocket,2,global.tempBuffer);
     global.tdmInvulnerabilityTicks = read_ushort(global.tempBuffer);
 }
@@ -12,7 +12,7 @@ receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
 if(read_ubyte(global.tempBuffer) != ds_list_size(global.players))
     show_message("Wrong number of players while deserializing state");
 
-if(argument0 != CAPS_UPDATE) {
+if(argument[0] != CAPS_UPDATE) {
     for(i=0; i<ds_list_size(global.players); i+=1) {
         player = ds_list_find_value(global.players, i);
         with(player) {
@@ -24,7 +24,7 @@ if(argument0 != CAPS_UPDATE) {
         event_user(11);
 }
 
-if(argument0 == FULL_UPDATE) {
+if(argument[0] == FULL_UPDATE) {
     deserialize(IntelligenceRed);
     deserialize(IntelligenceBlue);
     
@@ -44,7 +44,7 @@ if(argument0 == FULL_UPDATE) {
         global.classlimits[a] = read_ubyte(global.tempBuffer);
 }
 
-if(argument0 == CAPS_UPDATE) {
+if(argument[0] == CAPS_UPDATE) {
     receiveCompleteMessage(global.serverSocket,3,global.tempBuffer);          
     global.redCaps = read_ubyte(global.tempBuffer);
     global.blueCaps = read_ubyte(global.tempBuffer);

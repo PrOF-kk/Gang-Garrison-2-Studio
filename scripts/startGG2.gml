@@ -17,10 +17,10 @@ for(a = 1; a <= parameter_count(); a += 1)
   }
 }
 
-if (is_string(argument0))
-    argument0 = " " + argument0;
+if (is_string(argument[0]))
+    argument[0] = " " + argument[0];
 else
-    argument0 = "";
+    argument[0] = "";
 
 //Restart
-execute_program(parameter_string(0), params + argument0, false);
+execute_program(parameter_string(0), params + argument[0], false);

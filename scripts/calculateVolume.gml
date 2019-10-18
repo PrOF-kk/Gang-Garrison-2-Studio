@@ -3,7 +3,7 @@
     xmid = view_xview[0] + view_wview[0]/2;
     ymid = view_yview[0] + view_hview[0]/2;
     
-    dist = sqrt(sqr(xmid-argument0) + sqr(ymid-argument1));
+    dist = sqrt(sqr(xmid-argument[0]) + sqr(ymid-argument[1]));
     
     if(dist<300) {
         return 1;

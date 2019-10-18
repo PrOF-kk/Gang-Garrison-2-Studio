@@ -1,1 +1,1 @@
-ds_map_destroy(argument0);
+ds_map_destroy(argument[0]);

@@ -1,21 +1,21 @@
-// argument0 - x position
-// argument1 - y position
-// argument2 - width
-// argument3 - valueoffset
-// argument4 - spacing
-// argument5 - tab offset (upwards) [thanks GM for making unset args default to 0!!!11]
-// argument6 - tab spacing
-// argument7 - tab margin
+// argument[0] - x position
+// argument[1] - y position
+// argument[2] - width
+// argument[3] - valueoffset
+// argument[4] - spacing
+// argument[5] - tab offset (upwards) [thanks GM for making unset args default to 0!!!11]
+// argument[6] - tab spacing
+// argument[7] - tab margin
 
 virtualitem = -1;
-xbegin = argument0;
-ybegin = argument1;
-width = argument2;
-valueoffset = argument3;
-spacing = argument4;
-taboffset = argument5;
-tabspacing = argument6;
-tabmargin = argument7;
+xbegin = argument[0];
+ybegin = argument[1];
+width = argument[2];
+valueoffset = argument[3];
+spacing = argument[4];
+taboffset = argument[5];
+tabspacing = argument[6];
+tabmargin = argument[7];
 items = 0;
 tabs = 0;
 editing = -1;

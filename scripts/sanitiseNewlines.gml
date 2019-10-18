@@ -4,7 +4,7 @@
 // This should be used when DRAWING text, don't use it to "fix" people's names
 
 var text;
-text = argument0;
+text = argument[0];
 
 // Game Maker displays "#" as a newline, but "\#" as "#"
 text = string_replace_all(text, "#", "\#");

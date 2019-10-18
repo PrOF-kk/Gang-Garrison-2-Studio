@@ -1,8 +1,8 @@
 {
-    //argument0: The team which spawn group is seeked
+    //argument[0]: The team which spawn group is seeked
 
     var team, group;
-    team = argument0;
+    team = argument[0];
     
     if (instance_exists(ControlPointHUD)) // Gamemode is CP
     {

@@ -3,8 +3,8 @@
 // The previous content of rewardSet will be replaced.
 
 var rewardString, rewardSet;
-rewardString = argument0;
-rewardSet = argument1;
+rewardString = argument[0];
+rewardSet = argument[1];
 
 ds_map_clear(rewardSet);
 

@@ -1,8 +1,8 @@
 var class, team, animation;
 
-class = argument0;
-team = argument1;
-animation = argument2;
+class = argument[0];
+team = argument[1];
+animation = argument[2];
 
 if(!is_string(class))
 {

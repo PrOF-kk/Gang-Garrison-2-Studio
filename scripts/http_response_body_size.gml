@@ -30,6 +30,6 @@
 // Check that the value is > 0 if to avoid division by zero with a progress bar
 
 var client;
-client = argument0;
+client = argument[0];
 
 return client.responseBodySize;

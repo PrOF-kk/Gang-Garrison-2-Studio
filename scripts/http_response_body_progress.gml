@@ -25,6 +25,6 @@
 // Return value is the size in bytes, or -1 if we haven't started yet or client has errored
 
 var client;
-client = argument0;
+client = argument[0];
 
 return client.responseBodyProgress;

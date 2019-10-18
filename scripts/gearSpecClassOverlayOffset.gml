@@ -3,10 +3,10 @@
 // The offset is the center of the overlay relative to the rigging point.
 var gearSpec, classConstant, xoff, yoff;
 
-gearSpec = argument0;
-classConstant = argument1;
-xoff = argument2;
-yoff = argument3;
+gearSpec = argument[0];
+classConstant = argument[1];
+xoff = argument[2];
+yoff = argument[3];
 
 _gearSpecSet(gearSpec, _gearSpecClassTeamContext(classConstant, TEAM_RED), "xoff", xoff);
 _gearSpecSet(gearSpec, _gearSpecClassTeamContext(classConstant, TEAM_RED), "yoff", yoff);

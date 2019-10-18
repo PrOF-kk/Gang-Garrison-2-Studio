@@ -1,14 +1,14 @@
 // Sends a packet for a server-sent plugin to a specific client
 // Returns true if successful, false if not
-// argument0 - plugin packet ID, passed as argument1 to server-sent plugin upon execution
-// argument1 - data buffer to send (maximum size 65535 bytes)
-// argument2 - Player object for client to send to
+// argument[0] - plugin packet ID, passed as argument[1] to server-sent plugin upon execution
+// argument[1] - data buffer to send (maximum size 65535 bytes)
+// argument[2] - Player object for client to send to
 
 var packetID, databuffer, player, packetBuffer;
 
-packetID = argument0;
-dataBuffer = argument1;
-player = argument2;
+packetID = argument[0];
+dataBuffer = argument[1];
+player = argument[2];
 
 // error out if we're not the host
 // (this function can't be used by clients, obviously)

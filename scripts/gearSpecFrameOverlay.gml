@@ -1,13 +1,13 @@
 // gearSpecFrameOverlay(gearSpec, classConstant, animationName, animationSubimage, redOverlay, blueOverlay, subimage)
 var gearSpec, classConstant, animationName, animationSubimage, redOverlay, blueOverlay, subimage;
 
-gearSpec = argument0;
-classConstant = argument1;
-animationName = argument2;
-animationSubimage = argument3;
-redOverlay = argument4;
-blueOverlay = argument5;
-subimage = argument6;
+gearSpec = argument[0];
+classConstant = argument[1];
+animationName = argument[2];
+animationSubimage = argument[3];
+redOverlay = argument[4];
+blueOverlay = argument[5];
+subimage = argument[6];
 
 var redContextName, blueContextName;
 redContextName = _gearSpecFrameContext(classConstant, TEAM_RED, animationName, animationSubimage);

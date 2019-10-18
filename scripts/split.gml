@@ -9,9 +9,9 @@
 // return value - ds_list containing strings of values
 
 var text, delimeter, limit;
-text = argument0;
-delimeter = argument1;
-limit = argument2;
+text = argument[0];
+delimeter = argument[1];
+limit = argument[2];
 
 var list, count;
 list = ds_list_create();

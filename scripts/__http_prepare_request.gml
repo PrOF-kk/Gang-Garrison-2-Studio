@@ -28,12 +28,12 @@
 // requestMimeType - content type of request body, '' if no request body
 
 var client, method, url, headers, _requestBody, _requestBodyMimeType;
-client = argument0;
-method = argument1;
-url = argument2;
-headers = argument3;
-_requestBody = argument4;
-_requestBodyMimeType = argument5;
+client = argument[0];
+method = argument[1];
+url = argument[2];
+headers = argument[3];
+_requestBody = argument[4];
+_requestBodyMimeType = argument[5];
 
 var parsed;
 parsed = __http_parse_url(url);

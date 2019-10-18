@@ -1,9 +1,9 @@
 /// Select and return an acceptable new class for a player, based on the classlimits.
 
 var player, newTeam, desiredClass;
-player       = argument0;
-newTeam      = argument1;
-desiredClass = argument2;
+player       = argument[0];
+newTeam      = argument[1];
+desiredClass = argument[2];
 
 // Enough free slots for the desired class?
 if (countClassmembersExcept(player, newTeam, desiredClass) < global.classlimits[desiredClass])

@@ -5,7 +5,7 @@
 // Strings are prefixed with %, so {'foo': bar} becomes ["%foo", ":", "%bar"]
 
 var text;
-text = argument0;
+text = argument[0];
 
 var i, len, tokens;
 i = 1;

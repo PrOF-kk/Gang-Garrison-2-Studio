@@ -43,10 +43,10 @@ addButton("Load WM", '
     background_replace(BuilderWMB, wm, true, false);
     Builder.wmString = compressWalkmask();
 '); 
-addButton("Show BG", 'background_visible[7] = argument0;', 1, 1); 
-addButton("Show WM", 'Builder.showWM = argument0;', 1); 
-addButton("Show grid", 'Builder.showGrid = argument0;', 1);
-addButton("Show FG",'ParallaxController.visible = argument0;', 1, 1); 
+addButton("Show BG", 'background_visible[7] = argument[0];', 1, 1); 
+addButton("Show WM", 'Builder.showWM = argument[0];', 1); 
+addButton("Show grid", 'Builder.showGrid = argument[0];', 1);
+addButton("Show FG",'ParallaxController.visible = argument[0];', 1, 1); 
 addButton("Save & test", '
     if (Builder.mapWM == "") show_message("Select a walkmask first.");
     else if (Builder.mapBG == "") show_message("Select a background first");
@@ -100,16 +100,16 @@ addButton("Test w/o save", '
     }
 ');
 addButton("Symmetry mode", '
-    Builder.symmetry = argument0;
-    return argument0;
+    Builder.symmetry = argument[0];
+    return argument[0];
 ', 1); 
 addButton("Scale mode", '
-    Builder.scale = argument0;
-    return argument0;
+    Builder.scale = argument[0];
+    return argument[0];
 ', 1, 1);
 addButton("Fast scrolling",'
-    Builder.moveSpeed = 32 + 32*argument0;
-    return argument0;
+    Builder.moveSpeed = 32 + 32*argument[0];
+    return argument[0];
 ', 1);
 addButton("Edit metadata", '
     showPropertyMenu(Builder.metadata, Builder.metadata, true);

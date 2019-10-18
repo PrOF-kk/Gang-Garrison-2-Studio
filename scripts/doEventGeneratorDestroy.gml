@@ -1,10 +1,10 @@
-// The generator of the team given in argument0 has been destroyed
+// The generator of the team given in argument[0] has been destroyed
 var generatorToDestroy, winTeam;
 
-if (argument0 == TEAM_RED) {
+if (argument[0] == TEAM_RED) {
     winTeam = TEAM_BLUE;
     generatorToDestroy = GeneratorRed;
-} else if (argument0 == TEAM_BLUE) {
+} else if (argument[0] == TEAM_BLUE) {
     winTeam = TEAM_RED;
     generatorToDestroy = GeneratorBlue;
 } else {

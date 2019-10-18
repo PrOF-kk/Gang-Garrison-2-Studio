@@ -1,49 +1,49 @@
     // Record destruction in killlog
-    // argument0: The owner of the destroyed building
-    // argument1: The killer
-    // argument2: The healer, or -1 for no assist
-    // argument3: The source of the damage (e.g. DAMAGE_SOURCE_SCATTERGUN)
+    // argument[0]: The owner of the destroyed building
+    // argument[1]: The killer
+    // argument[2]: The healer, or -1 for no assist
+    // argument[3]: The source of the damage (e.g. DAMAGE_SOURCE_SCATTERGUN)
       
         with (KillLog) {
             map = ds_map_create();
 			
-            if (!argument1 || argument1 == argument0) {
+            if (!argument[1] || argument[1] == argument[0]) {
                 ds_map_add(map, "name1", "");
                 ds_map_add(map, "team1", 0);
             }
             else {
                 var killer;
-                killer = string_copy(argument1.name, 1, 20);
-                if (instance_exists(argument2))
-                    killer += " + " + string_copy(argument2.name, 1, 20);
+                killer = string_copy(argument[1].name, 1, 20);
+                if (instance_exists(argument[2]))
+                    killer += " + " + string_copy(argument[2].name, 1, 20);
                 ds_map_add(map, "name1", killer);
-                ds_map_add(map, "team1", argument1.team);
+                ds_map_add(map, "team1", argument[1].team);
 			}
             
-            if(argument3 == DAMAGE_SOURCE_BID_FAREWELL)
+            if(argument[3] == DAMAGE_SOURCE_BID_FAREWELL)
             {
                 ds_map_add(map, "name2", "");
                 ds_map_add(map, "team2", 0);
             }
             else
             {
-                ds_map_add(map, "name2", "Autogun (" + string_copy(argument0.name, 1, 20) + ")");
-                ds_map_add(map, "team2", argument0.team);
+                ds_map_add(map, "name2", "Autogun (" + string_copy(argument[0].name, 1, 20) + ")");
+                ds_map_add(map, "team2", argument[0].team);
             }
             
-            if (argument0 == global.myself || argument1 == global.myself || argument2 == global.myself) 
+            if (argument[0] == global.myself || argument[1] == global.myself || argument[2] == global.myself) 
                 ds_map_add(map, "inthis", true);
             else ds_map_add(map, "inthis", false);
             
-            ds_map_add(map, "weapon", findDamageSourceIcon(argument3));
+            ds_map_add(map, "weapon", findDamageSourceIcon(argument[3]));
             
-            switch(argument3) {
+            switch(argument[3]) {
                 case DAMAGE_SOURCE_FINISHED_OFF:
                 case DAMAGE_SOURCE_FINISHED_OFF_GIB:
                     ds_map_add(map, "string", "finished off ");
                     break;
                 case DAMAGE_SOURCE_BID_FAREWELL:
-                    ds_map_add(map, "string", string_copy(argument0.name, 1, 20) + " bid farewell, cruel world!");
+                    ds_map_add(map, "string", string_copy(argument[0].name, 1, 20) + " bid farewell, cruel world!");
                     break;
                 default:
                     ds_map_add(map, "string", "");

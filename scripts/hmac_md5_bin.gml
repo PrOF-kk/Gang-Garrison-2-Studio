@@ -2,8 +2,8 @@
 // Replace with extension function if needed.
 
 var key, msg, o_key_pad, i_key_pad, i, blocksize, byte, keylen;
-key = argument0;
-msg = argument1;
+key = argument[0];
+msg = argument[1];
 blocksize = 64;
 
 if(string_length(key) > blocksize)

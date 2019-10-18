@@ -37,7 +37,7 @@
 // It will not work correctly for IPv6 host values
 
 var url;
-url = argument0;
+url = argument[0];
 
 var map;
 map = ds_map_create();

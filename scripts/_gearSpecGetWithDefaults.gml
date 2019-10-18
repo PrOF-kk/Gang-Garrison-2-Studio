@@ -1,13 +1,13 @@
 // _gearSpecGetOverlay(gearSpec, classConstant, teamConstant, animationName, subimage, key, fallbackValue)
 var gearSpec, classConstant, teamConstant, animationName, subimage, key, fallbackValue;
 
-gearSpec = argument0;
-classConstant = argument1;
-teamConstant = argument2;
-animationName = argument3;
-subimage = argument4;
-key = argument5;
-fallbackValue = argument6;
+gearSpec = argument[0];
+classConstant = argument[1];
+teamConstant = argument[2];
+animationName = argument[3];
+subimage = argument[4];
+key = argument[5];
+fallbackValue = argument[6];
 
 var frameContextKey, classContextKey, teamContextKey;
 frameContextKey = _gearSpecFrameContext(classConstant, teamConstant, animationName, subimage) + " " + key;

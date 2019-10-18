@@ -3,10 +3,10 @@
 // This overlay will be used for all frames where no more specific overlay is defined
 var gearSpec, redOverlay, blueOverlay, subimage;
 
-gearSpec = argument0;
-redOverlay = argument1;
-blueOverlay = argument2;
-subimage = argument3;
+gearSpec = argument[0];
+redOverlay = argument[1];
+blueOverlay = argument[2];
+subimage = argument[3];
 
 _gearSpecSet(gearSpec, _gearSpecDefaultTeamContext(TEAM_RED), "overlay", redOverlay);
 _gearSpecSet(gearSpec, _gearSpecDefaultTeamContext(TEAM_RED), "overlaySubimage", subimage);

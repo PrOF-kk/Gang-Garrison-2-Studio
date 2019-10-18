@@ -1,4 +1,4 @@
 {
-    sound_volume(argument2, calculateVolume(argument0, argument1));
-    sound_pan(argument2, calculatePan(argument0));
+    sound_volume(argument[2], calculateVolume(argument[0], argument[1]));
+    sound_pan(argument[2], calculatePan(argument[0]));
 }

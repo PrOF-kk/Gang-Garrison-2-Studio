@@ -1,11 +1,11 @@
 /** 
  * Validates the gamemode
- * Argument0: the gamemode that should be validated
+ * argument[0]: the gamemode that should be validated
  * Returns true if the map is valid
 */
 
 var gmMap, code, error;
-gmMap = ds_list_find_value(global.gamemodes, argument0);
+gmMap = ds_list_find_value(global.gamemodes, argument[0]);
 
 // Basic validation
 var redCount, blueCount;

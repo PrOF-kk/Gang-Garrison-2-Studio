@@ -3,11 +3,11 @@
 // This overrides the default overlay specified using gearSpecDefaultOverlay
 var gearSpec, classConstant, redOverlay, blueOverlay, subimage;
 
-gearSpec = argument0;
-classConstant = argument1;
-redOverlay = argument2;
-blueOverlay = argument3;
-subimage = argument4;
+gearSpec = argument[0];
+classConstant = argument[1];
+redOverlay = argument[2];
+blueOverlay = argument[3];
+subimage = argument[4];
 
 _gearSpecSet(gearSpec, _gearSpecClassTeamContext(classConstant, TEAM_RED), "overlay", redOverlay);
 _gearSpecSet(gearSpec, _gearSpecClassTeamContext(classConstant, TEAM_RED), "overlaySubimage", subimage);

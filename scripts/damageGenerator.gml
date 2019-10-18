@@ -1,16 +1,16 @@
 // damageGenerator( sourcePlayer, damagedGenerator, damageDealt )
 
-argument1.alarm[0] = argument1.regenerationBuffer / global.delta_factor;
-argument1.isShieldRegenerating = false;
+argument[1].alarm[0] = argument[1].regenerationBuffer / global.delta_factor;
+argument[1].isShieldRegenerating = false;
 
-if (argument2 > argument1.shieldHp) //allow overkill to be applied directly to the target
+if (argument[2] > argument[1].shieldHp) //allow overkill to be applied directly to the target
 {
-    dealDamage( argument0, argument1, (argument2 - argument1.shieldHp) + (argument1.shieldHp * argument1.shieldResistance) );
-    argument1.shieldHp = 0;
+    dealDamage( argument[0], argument[1], (argument[2] - argument[1].shieldHp) + (argument[1].shieldHp * argument[1].shieldResistance) );
+    argument[1].shieldHp = 0;
 }
 else
 {
-    dealDamage( argument0, argument1, argument2 * argument1.shieldResistance );
-    argument1.shieldHp -= argument2;
+    dealDamage( argument[0], argument[1], argument[2] * argument[1].shieldResistance );
+    argument[1].shieldHp -= argument[2];
 }
 

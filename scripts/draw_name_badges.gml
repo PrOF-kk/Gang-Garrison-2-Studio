@@ -3,10 +3,10 @@
 // player is the ID of the Player object
 
 var _x, _y, player, alpha, prevalpha;
-_x = argument0;
-_y = argument1;
-player = argument2;
-alpha = argument3
+_x = argument[0];
+_y = argument[1];
+player = argument[2];
+alpha = argument[3]
 prevalpha = draw_get_alpha();
 
 draw_set_valign(fa_top);

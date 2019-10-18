@@ -4,7 +4,7 @@
 
 var classStr, class;
 classStr = "Unknown";
-class = argument0;
+class = argument[0];
 
 switch (class)
 {

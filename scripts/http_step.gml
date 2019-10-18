@@ -37,7 +37,7 @@
 // }
 
 var client;
-client = argument0;
+client = argument[0];
 
 __http_client_step(client);
 

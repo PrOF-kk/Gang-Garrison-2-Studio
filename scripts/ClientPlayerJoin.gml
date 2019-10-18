@@ -1,1 +1,1 @@
-write_ubyte(argument0, PLAYER_JOIN);
+write_ubyte(argument[0], PLAYER_JOIN);

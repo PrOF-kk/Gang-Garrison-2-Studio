@@ -1,7 +1,7 @@
 drawbg = true;
-bgwidth = argument0;
-bgheight = argument1;
-bgoffsetx = argument2;
-bgoffsety = argument3;
-bginset = argument4;
+bgwidth = argument[0];
+bgheight = argument[1];
+bgoffsetx = argument[2];
+bgoffsety = argument[3];
+bginset = argument[4];
 bgbezel = true;

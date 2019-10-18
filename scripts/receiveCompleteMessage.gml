@@ -13,14 +13,14 @@
 // argument 2: Buffer
 
 var buffer;
-buffer_clear(argument2);
+buffer_clear(argument[2]);
 
 do {
-    if(socket_has_error(argument0)) {
+    if(socket_has_error(argument[0])) {
         return 2;
     }
-} until(tcp_receive(argument0, argument1));
+} until(tcp_receive(argument[0], argument[1]));
 
-write_buffer(argument2, argument0);
+write_buffer(argument[2], argument[0]);
 
 return 0;

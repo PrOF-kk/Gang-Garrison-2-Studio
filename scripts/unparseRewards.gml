@@ -2,7 +2,7 @@
 // Produces rewardString from rewards ds_map serving as set
 
 var rewards;
-rewards = argument0;
+rewards = argument[0];
 
 var rewardString, reward;
 rewardString = '';

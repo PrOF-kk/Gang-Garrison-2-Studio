@@ -25,6 +25,6 @@
 // Return value is a buffer if client hasn't errored and is finished
 
 var client;
-client = argument0;
+client = argument[0];
 
 return client.responseBody;

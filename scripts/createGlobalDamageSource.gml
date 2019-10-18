@@ -5,8 +5,8 @@
 
 var name, sprite;
 
-name = argument0;
-sprite = argument1;
+name = argument[0];
+sprite = argument[1];
 
 execute_string("globalvar " + name + ";");
 variable_global_set(name, createDamageSource(sprite));

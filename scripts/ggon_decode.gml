@@ -3,7 +3,7 @@
 // Returns either a string or a ds_map handle 
 
 var text;
-text = argument0;
+text = argument[0];
 
 var tokens;
 tokens = ggon_tokenise(text);

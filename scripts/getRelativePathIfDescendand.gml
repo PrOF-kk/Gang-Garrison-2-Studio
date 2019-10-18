@@ -6,11 +6,11 @@
 // Path segment delimiters are converted to forward slashes.
 
 var startPath, endPath;
-startPath = string_replace_all(argument0, "\", "/");
-endPath = string_replace_all(argument1, "\", "/");
+startPath = string_replace_all(argument[0], "\", "/");
+endPath = string_replace_all(argument[1], "\", "/");
 
 if (string_char_at(startPath, string_length(startPath)) != "/") {
-    show_error("Starting path must end with a slash, but the given starting path was " + argument0 + ". Please report this problem.", true);
+    show_error("Starting path must end with a slash, but the given starting path was " + argument[0] + ". Please report this problem.", true);
 }
 
 // If startPath is not a prefix of endPath, return the absolute endPath

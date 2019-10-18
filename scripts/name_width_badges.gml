@@ -2,6 +2,6 @@
 // Returns the width that a player's name with badges would take up
 
 var player;
-player = argument0;
+player = argument[0];
 
 return string_width(sanitiseNewlines(player.name)) + (sprite_get_width(HaxxyBadgeS) * ds_list_size(player.badges));

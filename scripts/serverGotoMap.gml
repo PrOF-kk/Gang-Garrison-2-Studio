@@ -1,6 +1,6 @@
-// argument0: The name of the map to switch to. Must exist (internal or external) otherwise the game will error out.
+// argument[0]: The name of the map to switch to. Must exist (internal or external) otherwise the game will error out.
 
-global.currentMap = argument0;
+global.currentMap = argument[0];
 if (findInternalMapName(global.currentMap) != "")
 {
     global.currentMapMD5 = "";

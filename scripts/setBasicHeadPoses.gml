@@ -9,11 +9,11 @@
 // dxBase is the position of the reference point on the character's head in the standing sprite, relative to its origin.
 var className, dxBase, dyBase, bobAmount, tauntPoseString;
 
-className = argument0;
-dxBase = argument1;
-dyBase = argument2;
-bobAmount = argument3;
-tauntPoseString = argument4;
+className = argument[0];
+dxBase = argument[1];
+dyBase = argument[2];
+bobAmount = argument[3];
+tauntPoseString = argument[4];
 
 var basicAnimations, team, j;
 

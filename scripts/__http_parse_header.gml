@@ -22,8 +22,8 @@
 // Returns false if it errored (caller should return and destroy)
 
 var linebuf, line;
-linebuf = argument0;
-line = argument1;
+linebuf = argument[0];
+line = argument[1];
 
 // "HTTP/1.1 header field values can be folded onto multiple lines if the
 // continuation line begins with a space or horizontal tab."

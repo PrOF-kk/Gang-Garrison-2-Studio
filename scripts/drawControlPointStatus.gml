@@ -4,7 +4,7 @@
 
 var cpUnlock, xoffset, yoffset, xsize, ysize, drawx;
 
-cpUnlock = argument0;
+cpUnlock = argument[0];
 
 xoffset = view_xview[0];
 yoffset = view_yview[0];

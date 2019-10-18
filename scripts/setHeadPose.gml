@@ -10,12 +10,12 @@
 // The data structure is global.headPoseInfo: sprite -> subimage -> (dx, dy, angle, xscale)
 var sprite, subimage, dx, dy, angle, xscale;
 
-sprite = argument0;
-subimage = argument1;
-dx = argument2;
-dy = argument3;
-angle = argument4;
-xscale = argument5;
+sprite = argument[0];
+subimage = argument[1];
+dx = argument[2];
+dy = argument[3];
+angle = argument[4];
+xscale = argument[5];
 
 if(!variable_global_exists("headPoseInfo"))
     global.headPoseInfo = ds_map_create();

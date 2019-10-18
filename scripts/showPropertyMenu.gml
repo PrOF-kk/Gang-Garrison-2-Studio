@@ -1,10 +1,10 @@
 /** Allows the user to edit an entities properties
- * Argument0: A map with properties.
- * Argument1: A map to add the changed properties to.
- * [Argument2]: Allow adding new properties.
+ * argument[0]: A map with properties.
+ * argument[1]: A map to add the changed properties to.
+ * [argument[2]]: Allow adding new properties.
 */
 
-if (ds_map_size(argument0) == 0)
+if (ds_map_size(argument[0]) == 0)
     return false;
 
 var key, menu, res, keys, i, new, old, exists, _x, _y, newPropIdx, fullName;
@@ -17,20 +17,20 @@ do
     new = "";
     menu = "";
     i = 0;
-    for(key=ds_map_find_first(argument0); is_string(key); key=ds_map_find_next(argument0, key))
+    for(key=ds_map_find_first(argument[0]); is_string(key); key=ds_map_find_next(argument[0], key))
     {
         // Skip scales and the type, they're set by the editor itself.
         if (key == "type" || key == "xscale" || key == "yscale") continue;
         
         menu += key + ": ";
-        if (is_string(ds_map_find_value(argument1, key))) fullName = ds_map_find_value(argument1, key);
-        else fullName = ds_map_find_value(argument0, key);
+        if (is_string(ds_map_find_value(argument[1], key))) fullName = ds_map_find_value(argument[1], key);
+        else fullName = ds_map_find_value(argument[0], key);
         menu += string_copy(fullName, 1, 50) + "|";
         
         keys[i] = key;
         i += 1;
     }
-    if (argument2 > 0)
+    if (argument[2] > 0)
     {
         menu += "Add new property|";
         newPropIdx = i;
@@ -55,7 +55,7 @@ do
             prop = get_string("New property:", "");
             if (prop != "")
             {
-                if (is_string(ds_map_find_value(argument1, prop)))
+                if (is_string(ds_map_find_value(argument[1], prop)))
                 {
                     show_message("This property already exists, edit it instead.");
                     continue;
@@ -63,18 +63,18 @@ do
                 else
                 {
                     new = get_string("Value for " + prop + ":", "")
-                    ds_map_add(argument0, prop, new);
+                    ds_map_add(argument[0], prop, new);
                 }
             }            
         }
         else
         {
             prop = keys[res];
-            old = ds_map_find_value(argument1, prop);
+            old = ds_map_find_value(argument[1], prop);
             exists = true;
             if (!is_string(old))
             {
-                old = ds_map_find_value(argument0, prop);
+                old = ds_map_find_value(argument[0], prop);
                 exists = false;
             }
             
@@ -82,24 +82,24 @@ do
             if (old == "true")
             {
                 if (exists)
-                    ds_map_replace(argument1, prop, "false");
+                    ds_map_replace(argument[1], prop, "false");
                 else
-                    ds_map_add(argument1, prop, "false");
+                    ds_map_add(argument[1], prop, "false");
             }
             else if (old == "false")
             {
                 if (exists)
-                    ds_map_replace(argument1, prop, "true");
+                    ds_map_replace(argument[1], prop, "true");
                 else
-                    ds_map_add(argument1, prop, "true");
+                    ds_map_add(argument[1], prop, "true");
             }
             else
             {
                 new = get_string("New value for " + prop + ":", old);                    
                 if (exists)
-                    ds_map_replace(argument1, prop, new);
+                    ds_map_replace(argument[1], prop, new);
                 else
-                    ds_map_add(argument1, prop, new);
+                    ds_map_add(argument[1], prop, new);
             }
         }
     }
@@ -107,9 +107,9 @@ do
         new = " ";
     
     // Destroy de property if the contents are empty
-    if (argument2 > 0 && new == "")
+    if (argument[2] > 0 && new == "")
     {
-        ds_map_delete(argument1, prop);
+        ds_map_delete(argument[1], prop);
         i -= 1;
     }     
 } until(res == -1 || i <= 1);

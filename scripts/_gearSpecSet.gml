@@ -2,10 +2,10 @@
 
 var gearSpec, context, key, value;
 
-gearSpec = argument0;
-context = argument1;
-key = argument2;
-value = argument3;
+gearSpec = argument[0];
+context = argument[1];
+key = argument[2];
+value = argument[3];
 
 if(ds_map_exists(gearSpec, context + " " + key))
 {

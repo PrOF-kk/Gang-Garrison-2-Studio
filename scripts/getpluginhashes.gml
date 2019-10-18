@@ -1,5 +1,5 @@
 // gets MD5 hashes for plugins from ganggarrison.com
-// argument0 - comma separated plugin list 
+// argument[0] - comma separated plugin list 
 // returns comma-separated plugin list with hashes
 // or else the string 'failure'
 var list, i, pluginname, pluginhash, url, handle, filesize, failed, fp, hashedList;
@@ -8,7 +8,7 @@ failed = false;
 hashedList = '';
 
 // split plugin list string
-list = split(argument0, ',');
+list = split(argument[0], ',');
 
 for (i = 0; i < ds_list_size(list); i += 1)
 {

@@ -1,5 +1,5 @@
 // loads plugins from ganggarrison.com asked for by server
-// argument0 - comma separated plugin list (pluginname@md5hash)
+// argument[0] - comma separated plugin list (pluginname@md5hash)
 // returns true on success, false on failure
 var list, hashList, text, i, pluginname, pluginhash, realhash, url, handle, filesize, progress, tempfile, tempdir, failed, lastContact, isCached, env;
 
@@ -11,7 +11,7 @@ isDebug = false;
 hashList = ds_list_create();
 
 // split plugin list string
-list = split(argument0, ',');
+list = split(argument[0], ',');
 
 // Split hashes from plugin names
 for (i = 0; i < ds_list_size(list); i += 1)

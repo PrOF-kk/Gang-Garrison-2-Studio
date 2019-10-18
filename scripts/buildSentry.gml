@@ -1,9 +1,9 @@
 var player, xPos, yPos, startDirection;
 
-player = argument0;
-xPos = argument1;
-yPos = argument2;
-startDirection = argument3;
+player = argument[0];
+xPos = argument[1];
+yPos = argument[2];
+startDirection = argument[3];
 
 if(!player.sentry)
 {

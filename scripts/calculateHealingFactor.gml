@@ -1,7 +1,7 @@
  {
-    //argument0: time since the healtarget has taken damage
+    //argument[0]: time since the healtarget has taken damage
     var time, firstThreshold, lastThreshold;
-    time = argument0;
+    time = argument[0];
     firstThreshold = 5 * 30;
     lastThreshold = 7.5 * 30;
     

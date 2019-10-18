@@ -24,7 +24,7 @@
 // Only works for whole numbers (non-fractional numbers >= 0) and lowercase hex
 
 var hexString;
-hexString = argument0;
+hexString = argument[0];
 
 var result, hexValues;
 result = 0;

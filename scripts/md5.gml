@@ -1,1 +1,1 @@
-return hex(md5_bin(argument0));
+return hex(md5_bin(argument[0]));

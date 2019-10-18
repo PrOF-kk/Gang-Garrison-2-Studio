@@ -36,25 +36,25 @@
     bgtabs = true;
     
     menu_addedit_select("Timer Position", "global.timerPos", '
-        gg2_write_ini("Settings", "Timer Position", argument0);
+        gg2_write_ini("Settings", "Timer Position", argument[0]);
     ');
     menu_add_option(0, "Center");
     menu_add_option(1, "Left");
     
     menu_addedit_select("Kill Log Position", "global.killLogPos", '
-        gg2_write_ini("Settings", "Kill Log Position", argument0);
+        gg2_write_ini("Settings", "Kill Log Position", argument[0]);
     ');
     menu_add_option(0, "Default");
     menu_add_option(1, "Just Below Timers");
     
     menu_addedit_select("KOTH Timer Orientation", "global.kothHudPos", '
-        gg2_write_ini("Settings","KoTH HUD Position", argument0);
+        gg2_write_ini("Settings","KoTH HUD Position", argument[0]);
     ');
     menu_add_option(0, "Default");
     menu_add_option(1, "Stacked");
     
     menu_addedit_boolean("Fade Scoreboard:", "global.fadeScoreboard", '
-        gg2_write_ini("Settings", "Fade Scoreboard", argument0);
+        gg2_write_ini("Settings", "Fade Scoreboard", argument[0]);
     ');
     
     menu_addtablink("Ingame", '

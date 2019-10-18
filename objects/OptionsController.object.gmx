@@ -38,7 +38,7 @@
     oldPlayerName = global.playerName;
     menu_addedit_text2("Player name:", "global.playerName", '
         var newName;
-        newName = string_copy(argument0, 0, min(string_length(argument0), MAX_PLAYERNAME_LENGTH));
+        newName = string_copy(argument[0], 0, min(string_length(argument[0]), MAX_PLAYERNAME_LENGTH));
         gg2_write_ini("Settings", "PlayerName", newName);
         if(room != Options and newName != oldPlayerName)
         {
@@ -51,25 +51,25 @@
         return newName;
     '); 
     menu_addedit_boolean("Healer Radar:", "global.medicRadar", '
-        gg2_write_ini("Settings", "Healer Radar", argument0);
+        gg2_write_ini("Settings", "Healer Radar", argument[0]);
     ');
     menu_addedit_boolean("Show Healer:", "global.showHealer", '
-        gg2_write_ini("Settings", "Show Healer", argument0);
+        gg2_write_ini("Settings", "Show Healer", argument[0]);
     ');
     menu_addedit_boolean("Show Healing:", "global.showHealing", '
-        gg2_write_ini("Settings", "Show Healing", argument0);
+        gg2_write_ini("Settings", "Show Healing", argument[0]);
     ');
     menu_addedit_boolean("Additional Healthbar:", "global.showHealthBar", '
-        gg2_write_ini("Settings", "Show Healthbar", argument0);
+        gg2_write_ini("Settings", "Show Healthbar", argument[0]);
     ');
     menu_addedit_boolean("Additional Teammate Stats:", "global.showTeammateStats", '
-        gg2_write_ini("Settings", "Show Extra Teammate Stats", argument0);
+        gg2_write_ini("Settings", "Show Extra Teammate Stats", argument[0]);
     ');
     menu_addedit_boolean("Kill Cam:", "global.killCam", '
-        gg2_write_ini("Settings", "Kill Cam", argument0);
+        gg2_write_ini("Settings", "Kill Cam", argument[0]);
     ');
     menu_addedit_boolean("Queued Jumping (Bunnyhopping):", "global.queueJumping", '
-        gg2_write_ini("Settings", "Queued Jumping", argument0);
+        gg2_write_ini("Settings", "Queued Jumping", argument[0]);
     ');
     
     menu_addtablink("Ingame", '

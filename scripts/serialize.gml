@@ -1,4 +1,4 @@
-write_ushort(global.serializeBuffer, instance_number(argument0));
-with(argument0) {
+write_ushort(global.serializeBuffer, instance_number(argument[0]));
+with(argument[0]) {
     event_user(10);
 }

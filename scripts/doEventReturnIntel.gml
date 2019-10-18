@@ -1,14 +1,14 @@
 /**
- * argument0 = team of intel being returned
+ * argument[0] = team of intel being returned
  */
  
 var intelObj, intelBaseObj, intelInstance;
-if(argument0 == TEAM_RED)
+if(argument[0] == TEAM_RED)
 {
     intelObj = IntelligenceRed;
     intelBaseObj = IntelligenceBaseRed;
 }
-else if(argument0 == TEAM_BLUE)
+else if(argument[0] == TEAM_BLUE)
 {
     intelObj = IntelligenceBlue;
     intelBaseObj = IntelligenceBaseBlue;
@@ -25,7 +25,7 @@ if(!instance_exists(intelObj))
 {
     with(Character)
     {
-        if(team == argument0 and intel)
+        if(team == argument[0] and intel)
             event_user(5);
     }
 }
@@ -35,7 +35,7 @@ if(!instance_exists(intelObj))
     instance_create(intelBaseObj.x, intelBaseObj.y, intelObj);
 
 sound_play(IntelDropSnd);
-recordEventInLog(8, argument0, "", argument0);
+recordEventInLog(8, argument[0], "", argument[0]);
 intelObj.x = intelBaseObj.x;
 intelObj.y = intelBaseObj.y;
 intelObj.alarm[0]=-1;

@@ -2,7 +2,7 @@
 // Destroys a ds_map recursively (real values assumed to be ds_maps)
 
 var map;
-map = argument0;
+map = argument[0];
 
 var key, value;
 for (key = ds_map_find_first(map); is_string(key); key = ds_map_find_next(map, key))

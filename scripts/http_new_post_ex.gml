@@ -31,10 +31,10 @@
 
 var url, body, mimeType, heeaders, client;
 
-url = argument0;
-body = argument1;
-mimeType = argument2;
-headers = argument3;
+url = argument[0];
+body = argument[1];
+mimeType = argument[2];
+headers = argument[3];
 
 if (!variable_global_exists('__HttpClient'))
     __http_init();

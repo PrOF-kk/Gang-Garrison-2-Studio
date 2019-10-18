@@ -1,8 +1,8 @@
 var xoffset, yoffset, xsize, ysize, xshift, yshift, teamoffset;
-xoffset = argument0;
-yoffset = argument1;
-xsize = argument2;
-ysize = argument3;
+xoffset = argument[0];
+yoffset = argument[1];
+xsize = argument[2];
+ysize = argument[3];
 xshift = -320*global.timerPos;
 yshift = 5*global.timerPos;
 
@@ -23,4 +23,4 @@ if (global.myself != -1)
         teamoffset = 1;
 }
 
-draw_generictimer(xoffset+xshift, yoffset+yshift, xsize, ysize, argument4, teamoffset, 0);
+draw_generictimer(xoffset+xshift, yoffset+yshift, xsize, ysize, argument[4], teamoffset, 0);

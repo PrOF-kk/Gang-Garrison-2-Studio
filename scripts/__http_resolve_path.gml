@@ -27,8 +27,8 @@
 // Can be used to clean up .. and . in non-absolute paths too ('' as basePath)
 
 var basePath, refPath;
-basePath = argument0;
-refPath = argument1;
+basePath = argument[0];
+refPath = argument[1];
 
 // refPath begins with '/' (is absolute), we can ignore all of basePath
 if (string_char_at(refPath, 1) == '/')

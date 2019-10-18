@@ -3,7 +3,7 @@
 // Returns either a string or a ds_map handle
 
 var tokens;
-tokens = argument0;
+tokens = argument[0];
 
 var token;
 while (!ds_queue_empty(tokens))

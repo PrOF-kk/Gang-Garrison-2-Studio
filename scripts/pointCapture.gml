@@ -1,9 +1,9 @@
-//argument0 = the effected control point no.
+//argument[0] = the effected control point no.
 
 var soundPlayed;
 soundPlayed=false;
 
-point = global.cp[argument0];
+point = global.cp[argument[0]];
 capList = ds_list_create();
 
 var imInvolved;

@@ -1,5 +1,5 @@
 var ticks, totalSeconds, minutes, seconds, secstring;
-ticks = argument0;
+ticks = argument[0];
 
 totalSeconds = ceil(ticks/30);
 minutes = totalSeconds div 60;

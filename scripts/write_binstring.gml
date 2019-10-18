@@ -2,8 +2,8 @@
 // Slow, and probably doesn't work in GM8.1 and onwards, but there you go.
 
 var buffer, str, len, i;
-buffer = argument0;
-str = argument1;
+buffer = argument[0];
+str = argument[1];
 len = string_length(str);
 
 for(i=1; i<=len; i+=1)

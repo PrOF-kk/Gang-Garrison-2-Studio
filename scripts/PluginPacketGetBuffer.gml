@@ -1,11 +1,11 @@
 // Returns the buffer of the earliest received packet for a server-sent plugin
 // Buffer returned should not be modified or destroyed.
 // If there is no packet buffer to return, returns -1
-// argument0 - plugin packet ID, passed as argument1 to server-sent plugin upon execution
+// argument[0] - plugin packet ID, passed as argument[1] to server-sent plugin upon execution
 
 var packetID, packetBufferQueue;
 
-packetID = argument0;
+packetID = argument[0];
 
 // check to make sure the packet ID is valid
 if (!ds_map_exists(global.pluginPacketBuffers, packetID))

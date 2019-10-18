@@ -1,34 +1,34 @@
 /** 
  * Reads a property with error checking
- * Argument0: A map of properties
- * Argument1: The property name
- * Argument2: The type of the property {STRING, REAL, BOOL}
- * [Argument3]: Default value in case of error
+ * argument[0]: A map of properties
+ * argument[1]: The property name
+ * argument[2]: The type of the property {STRING, REAL, BOOL}
+ * [argument[3]]: Default value in case of error
  * Returns the property or the default value
 */
 
 var prop;
-prop = ds_map_find_value(argument0, argument1);
+prop = ds_map_find_value(argument[0], argument[1]);
 
-switch(argument2) {
+switch(argument[2]) {
     case STRING:
         if (is_string(prop)) return prop;
-        return string(argument3);
+        return string(argument[3]);
     break;
     case REAL:
         if (is_string(prop) && stringIsReal(prop)) return real(prop);
-        return real(argument3);
+        return real(argument[3]);
     break;
     case BOOL:
         if (is_string(prop)) {
             if (prop == "true" || prop == "false") return (prop == "true");
         }
-        if (is_real(argument3)) return (argument3 == true);
-        if (string(argument3) == "true") return true;
+        if (is_real(argument[3])) return (argument[3] == true);
+        if (string(argument[3]) == "true") return true;
         else return false;
     break;
     case HEX:
-        if (!is_string(prop)) return argument3; 
+        if (!is_string(prop)) return argument[3]; 
         prop = string_lower(string_replace(prop, "$", ""));
         var i, j, h;
         h = $0;
@@ -41,5 +41,5 @@ switch(argument2) {
         return h/16;        
     break;
     default: 
-        show_error("Unknown property type in readProperty script for '" + string(argument1) + "'.", false);
+        show_error("Unknown property type in readProperty script for '" + string(argument[1]) + "'.", false);
 }

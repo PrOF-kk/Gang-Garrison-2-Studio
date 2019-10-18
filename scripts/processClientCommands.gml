@@ -1,7 +1,7 @@
 var player, playerId, commandLimitRemaining;
 
-player = argument0;
-playerId = argument1;
+player = argument[0];
+playerId = argument[1];
 
 // To prevent players from flooding the server, limit the number of commands to process per step and player.
 commandLimitRemaining = 10;

@@ -46,37 +46,37 @@ bgtabs = true;
 
 menu_addedit_text2("Server Name:", "global.serverName", '
     var newName;
-    newName = string_copy(argument0, 0, 25);
+    newName = string_copy(argument[0], 0, 25);
     gg2_write_ini("Server", "ServerName", newName);
     return newName;
 ');
 menu_addedit_text2("Welcome message:", "global.welcomeMessage", '
     var newMessage;
-    newMessage = string_copy(argument0, 0, 255);
+    newMessage = string_copy(argument[0], 0, 255);
     gg2_write_ini("Server", "WelcomeMessage", newMessage);
     return newMessage;
 ');
 
 menu_addedit_text("Password:", "global.serverPassword", '
-    gg2_write_ini("Server", "Password", argument0);
+    gg2_write_ini("Server", "Password", argument[0]);
 ');
 menu_addedit_num("Player Limit:", "global.playerLimit", '
-    gg2_write_ini("Settings", "PlayerLimit", argument0);
+    gg2_write_ini("Settings", "PlayerLimit", argument[0]);
 ', 48);
 menu_addedit_num("Time Limit (mins):", "global.timeLimitMins", '
-    gg2_write_ini("Server", "Time Limit", argument0);
+    gg2_write_ini("Server", "Time Limit", argument[0]);
 ');
 menu_addedit_num("Capture Limit:", "global.caplimit", '
-    gg2_write_ini("Server", "CapLimit", argument0);
+    gg2_write_ini("Server", "CapLimit", argument[0]);
 ');
 menu_addedit_num("Deathmatch Kill Limit:", "global.killLimit", '
-    gg2_write_ini("Server", "Deathmatch Kill Limit", argument0);
+    gg2_write_ini("Server", "Deathmatch Kill Limit", argument[0]);
 ');
 menu_addedit_num("TDM Invulnerability (secs):", "global.tdmInvulnerabilitySeconds", '
-    gg2_write_ini("Server", "Team Deathmatch Invulnerability Seconds", argument0);
+    gg2_write_ini("Server", "Team Deathmatch Invulnerability Seconds", argument[0]);
 ');
 menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
-    gg2_write_ini("Server", "Respawn Time", argument0);
+    gg2_write_ini("Server", "Respawn Time", argument[0]);
 ');
     
     

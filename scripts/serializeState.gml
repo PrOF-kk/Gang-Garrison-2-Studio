@@ -5,24 +5,24 @@
     // INPUTSTATE gathers the keypresses and aim direction of every player
     // QUICK_UPDATE additionally gathers the player health, position and movement values
     // FULL_UPDATE gathers all relevant information
-    // argument0: Type of update
-    // argument1: Buffer to write the state data to
+    // argument[0]: Type of update
+    // argument[1]: Buffer to write the state data to
 
     var i, player;
         
-    global.updateType=argument0;
+    global.updateType=argument[0];
     
-    write_ubyte(argument1, argument0);
+    write_ubyte(argument[1], argument[0]);
     
-    if(argument0 == FULL_UPDATE) {
-        write_ushort(argument1, global.tdmInvulnerabilityTicks);
+    if(argument[0] == FULL_UPDATE) {
+        write_ushort(argument[1], global.tdmInvulnerabilityTicks);
     }
     
-    write_ubyte(argument1, ds_list_size(global.players));
+    write_ubyte(argument[1], ds_list_size(global.players));
     
-    global.serializeBuffer = argument1;
+    global.serializeBuffer = argument[1];
 
-    if argument0 != CAPS_UPDATE {
+    if argument[0] != CAPS_UPDATE {
         for(i=0; i<ds_list_size(global.players); i+=1) {
             player = ds_list_find_value(global.players, i);
             with(player) {
@@ -34,27 +34,27 @@
             event_user(10);
     }
 
-    if(argument0 == FULL_UPDATE) {
+    if(argument[0] == FULL_UPDATE) {
         serialize(IntelligenceRed);
         serialize(IntelligenceBlue);
         
-        write_ubyte(argument1, global.caplimit);
-        write_ubyte(argument1, global.redCaps);
-        write_ubyte(argument1, global.blueCaps);
-        write_ubyte(argument1, global.Server_RespawntimeSec);
+        write_ubyte(argument[1], global.caplimit);
+        write_ubyte(argument[1], global.redCaps);
+        write_ubyte(argument[1], global.blueCaps);
+        write_ubyte(argument[1], global.Server_RespawntimeSec);
         with (HUD)
             event_user(12);
         
         // Write classlimits to joining client
         for (a = 0; a < 10; a += 1)
-            write_ubyte(argument1, global.classlimits[a]);
+            write_ubyte(argument[1], global.classlimits[a]);
     }
     
-    if(argument0 == CAPS_UPDATE) {
+    if(argument[0] == CAPS_UPDATE) {
               
-        write_ubyte(argument1, global.redCaps);
-        write_ubyte(argument1, global.blueCaps);
-        write_ubyte(argument1, global.Server_RespawntimeSec);
+        write_ubyte(argument[1], global.redCaps);
+        write_ubyte(argument[1], global.blueCaps);
+        write_ubyte(argument[1], global.Server_RespawntimeSec);
         with (HUD)
             event_user(12);
     }

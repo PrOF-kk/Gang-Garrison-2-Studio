@@ -1,4 +1,4 @@
 // damageSentry( sourcePlayer, damagedSentry, damageDealt )
 
-dealDamage( argument0, argument1, argument2 );
-argument1.buildrate = 0.6;
+dealDamage( argument[0], argument[1], argument[2] );
+argument[1].buildrate = 0.6;

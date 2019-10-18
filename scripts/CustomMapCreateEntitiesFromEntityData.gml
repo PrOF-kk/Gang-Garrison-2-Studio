@@ -1,8 +1,8 @@
 // creates game objects per the list in the entity data
-// argument0: entity data
+// argument[0]: entity data
 
 var firstChar;
-firstChar = string_copy(argument0, 1, 1);
+firstChar = string_copy(argument[0], 1, 1);
 
 // It begins with a { or [ so it's a GGON map or list
 if (firstChar == "{" or firstChar == "[")
@@ -12,7 +12,7 @@ if (firstChar == "{" or firstChar == "[")
     // if the object has extra properties these should be read in its event_user(1) using the map 'other.properties'.
     
     var map, list, metadata, i;
-    map = ggon_decode(argument0);
+    map = ggon_decode(argument[0]);
     list = ggon_map_to_list(map);
     
     specialEntities = ds_list_create();
@@ -118,26 +118,26 @@ else
     DIVIDER = chr(10);
     DIVREPLACEMENT = " ";
     
-    argument0+=DIVIDER;
+    argument[0]+=DIVIDER;
     
     currentPos = 1;
 
-    while(string_pos(DIVIDER, argument0) != 0) // continue until there are no more entities left
+    while(string_pos(DIVIDER, argument[0]) != 0) // continue until there are no more entities left
     {
         // grab the entity type
-        wordLength = string_pos(DIVIDER, argument0) - currentPos;
-        entityType = string_copy(argument0, currentPos, wordLength);
-        argument0 = string_replace(argument0, DIVIDER, DIVREPLACEMENT);
+        wordLength = string_pos(DIVIDER, argument[0]) - currentPos;
+        entityType = string_copy(argument[0], currentPos, wordLength);
+        argument[0] = string_replace(argument[0], DIVIDER, DIVREPLACEMENT);
         currentPos += wordLength + string_length(DIVREPLACEMENT);
         // grab the x coordinate
-        wordLength = string_pos(DIVIDER, argument0) - currentPos;
-        entityX = real(string_copy(argument0, currentPos, wordLength));
-        argument0 = string_replace(argument0, DIVIDER, DIVREPLACEMENT);
+        wordLength = string_pos(DIVIDER, argument[0]) - currentPos;
+        entityX = real(string_copy(argument[0], currentPos, wordLength));
+        argument[0] = string_replace(argument[0], DIVIDER, DIVREPLACEMENT);
         currentPos += wordLength + string_length(DIVREPLACEMENT);
         // grab the y coordinate
-        wordLength = string_pos(DIVIDER, argument0) - currentPos;
-        entityY = real(string_copy(argument0, currentPos, wordLength));
-        argument0 = string_replace(argument0, DIVIDER, DIVREPLACEMENT);
+        wordLength = string_pos(DIVIDER, argument[0]) - currentPos;
+        entityY = real(string_copy(argument[0], currentPos, wordLength));
+        argument[0] = string_replace(argument[0], DIVIDER, DIVREPLACEMENT);
         currentPos += wordLength + string_length(DIVREPLACEMENT);
         
         var entity, obj;

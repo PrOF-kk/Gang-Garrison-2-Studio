@@ -18,18 +18,18 @@ var _sprite,
     _color,
     _alpha,
     _voffset;
-_sprite = argument0;
-overlayList = argument1;
-gearList = argument2;
-_subimg = argument3;
-_x = argument4;
-_y = argument5;
-_xscale = argument6;
-_yscale = argument7;
-_rot = argument8;
-_color = argument9;
-_alpha = argument10;
-_voffset = argument11;
+_sprite = argument[0];
+overlayList = argument[1];
+gearList = argument[2];
+_subimg = argument[3];
+_x = argument[4];
+_y = argument[5];
+_xscale = argument[6];
+_yscale = argument[7];
+_rot = argument[8];
+_color = argument[9];
+_alpha = argument[1]0;
+_voffset = argument[1]1;
 
 _subimg = floor(_subimg) mod sprite_get_number(_sprite);
 if(_subimg < 0)

@@ -1,9 +1,9 @@
 var player, answer, challenge, ipCheck, rewardId, authbuffer, item;
-player = argument0;
-answer = argument1;
-challenge = argument2;
-ipCheck = argument3;
-rewardId = argument4;
+player = argument[0];
+answer = argument[1];
+challenge = argument[2];
+ipCheck = argument[3];
+rewardId = argument[4];
 
 // Prevent one player from requesting auth several times
 with(player)

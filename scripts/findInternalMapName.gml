@@ -1,6 +1,6 @@
 // returns the filename of an internal map by name, or else (if it's not a valid internal map), ""
 
-switch(argument0)
+switch(argument[0])
 {
 case "ctf_truefort":
     return "ctf_truefort.png";

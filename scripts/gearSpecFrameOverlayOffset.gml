@@ -4,12 +4,12 @@
 
 var gearSpec, classConstant, animationName, animationSubimage, xoff, yoff;
 
-gearSpec = argument0;
-classConstant = argument1;
-animationName = argument2;
-animationSubimage = argument3;
-xoff = argument4;
-yoff = argument5;
+gearSpec = argument[0];
+classConstant = argument[1];
+animationName = argument[2];
+animationSubimage = argument[3];
+xoff = argument[4];
+yoff = argument[5];
 
 var redContextName, blueContextName;
 redContextName = _gearSpecFrameContext(classConstant, TEAM_RED, animationName, animationSubimage);

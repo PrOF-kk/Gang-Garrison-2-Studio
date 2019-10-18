@@ -20,7 +20,7 @@
 // Steps the HTTP client (needs to be called each step or so)
 
 var client;
-client = argument0;
+client = argument[0];
 
 with (client)
 {

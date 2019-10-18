@@ -1,5 +1,5 @@
 //collision_point_solid(x, y);
-instance_create(argument0, argument1, Point);
+instance_create(argument[0], argument[1], Point);
 var collide;
 with(Point)
 {

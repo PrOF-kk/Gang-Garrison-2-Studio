@@ -29,6 +29,6 @@
 // Call when the request has finished - otherwise may be incomplete or missing
 
 var client;
-client = argument0;
+client = argument[0];
 
 return client.responseHeaders;

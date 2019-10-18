@@ -1,12 +1,12 @@
 //createShot(x, y, projectile, damageSource, direction, projectileSpeed)
 
 var _x, _y, projectile, damageSource, dir, projectileSpeed, shot;
-_x = argument0;
-_y = argument1;
-projectile = argument2;
-damageSource = argument3;
-dir = argument4;
-projectileSpeed = argument5;
+_x = argument[0];
+_y = argument[1];
+projectile = argument[2];
+damageSource = argument[3];
+dir = argument[4];
+projectileSpeed = argument[5];
 
 shot = instance_create(_x,_y,projectile);
 with(shot)

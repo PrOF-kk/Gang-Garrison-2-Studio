@@ -2,9 +2,9 @@
 // For use in unit tests. Asserts that a map has a key with a certain value
 
 var map, key, value;
-map = argument0;
-key = argument1;
-value = argument2;
+map = argument[0];
+key = argument[1];
+value = argument[2];
 
 global.testAssertions += 1;
 

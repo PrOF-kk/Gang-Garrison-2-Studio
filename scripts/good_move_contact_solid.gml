@@ -2,7 +2,7 @@
 
 // Move our position by a movement vector until we hit a solid object or we finish the movement's magnitude.
 
-if(argument1 <= 0)
+if(argument[1] <= 0)
     return 0;
 
 var i, MAX_I, maxDistance, hvec, vvec, sfac, moveX, moveY, totalMoved;
@@ -10,9 +10,9 @@ var i, MAX_I, maxDistance, hvec, vvec, sfac, moveX, moveY, totalMoved;
 MAX_I = 8; // subpixel precision (MAX_I = 8 means 1/8th of a pixel)
 i = 8;
 
-maxDistance = argument1; // max distance alotted
-hvec = cos(degtorad(argument0))*maxDistance;  // h vector of direction
-vvec = -sin(degtorad(argument0))*maxDistance; // v '''
+maxDistance = argument[1]; // max distance alotted
+hvec = cos(degtorad(argument[0]))*maxDistance;  // h vector of direction
+vvec = -sin(degtorad(argument[0]))*maxDistance; // v '''
 sfac = max(abs(hvec), abs(vvec)); // Used to get pixel chunks from the movement vector
 totalMoved = 0;
 global.lastCollisionHappened = false;

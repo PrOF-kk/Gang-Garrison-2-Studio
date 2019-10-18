@@ -1,5 +1,5 @@
 var win;
-win = argument0;
+win = argument[0];
 
 if (win == TEAM_RED)
     redWins += 1;

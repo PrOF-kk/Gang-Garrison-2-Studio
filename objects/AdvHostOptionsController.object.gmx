@@ -32,7 +32,7 @@ menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
 menu_addedit_num("Hosting Port:", "global.hostingPort", '
-    gg2_write_ini("Settings", "HostingPort", argument0);
+    gg2_write_ini("Settings", "HostingPort", argument[0]);
 ', 65535);
 
 menu_addedit_script("Map Rotation:", menu_format_maprotation_filepath(global.mapRotationFile), '
@@ -53,22 +53,22 @@ menu_addedit_script("Map Rotation:", menu_format_maprotation_filepath(global.map
 ');
 
 menu_addedit_select("Shuffle map rotation:", "global.shuffleRotation", '
-    gg2_write_ini("Server", "ShuffleRotation", argument0);
+    gg2_write_ini("Server", "ShuffleRotation", argument[0]);
 ');
 menu_add_option(0, "Don't shuffle");
 menu_add_option(1, "Shuffle (no arena initial map)");
 menu_add_option(2, "Shuffle without bias");
 
 menu_addedit_boolean("Auto Balance:", "global.autobalance", '
-    gg2_write_ini("Server", "AutoBalance", argument0);
+    gg2_write_ini("Server", "AutoBalance", argument[0]);
 ');
 menu_addedit_boolean("Announce to Lobby:", "global.useLobbyServer", '
-    gg2_write_ini("Settings", "UseLobby", argument0);
+    gg2_write_ini("Settings", "UseLobby", argument[0]);
 ');
 menu_addedit_boolean("Attempt UPnP Forwarding:", "global.attemptPortForward", '
-    if (argument0 == 1)
+    if (argument[0] == 1)
         show_message("Warning: UPNP support is currently experimental and enabling it may cause freezing while starting a server, but should cause no freezing ingame")
-    gg2_write_ini("Server", "Attempt UPnP Forwarding", argument0);
+    gg2_write_ini("Server", "Attempt UPnP Forwarding", argument[0]);
 ');
 
 menu_addlink("Start Game", '

@@ -2,8 +2,8 @@
 // Slow, and probably doesn't work in GM8.1 and onwards, but there you go.
 
 var buffer, len, result;
-buffer = argument0;
-len = argument1;
+buffer = argument[0];
+len = argument[1];
 result = "";
 repeat(len)
     result += chr(read_ubyte(buffer));

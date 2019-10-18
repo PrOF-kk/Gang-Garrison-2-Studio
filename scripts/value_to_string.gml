@@ -4,7 +4,7 @@
 // If the value is a real, doesn't add anything
 
 var value;
-value = argument0;
+value = argument[0];
 
 if (is_string(value))
     return '"' + value + '"';

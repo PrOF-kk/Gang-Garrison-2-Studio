@@ -1,11 +1,11 @@
 /**
  * Start a prepared ubercharge
  *
- * argument0: The player who wants to ubercharge
+ * argument[0]: The player who wants to ubercharge
  */
  
 var uberer;
-uberer = argument0;
+uberer = argument[0];
                     
 if(uberer.object != -1) {
     playsound(uberer.object.x,uberer.object.y,UberStartSnd);

@@ -3,8 +3,8 @@
 // The old content of the badges list will be replaced.
 
 var rewards, badges;
-rewards = argument0;
-badges = argument1;
+rewards = argument[0];
+badges = argument[1];
 
 ds_list_clear(badges);
 

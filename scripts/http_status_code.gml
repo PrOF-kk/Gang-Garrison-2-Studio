@@ -38,7 +38,7 @@
 // See also: http_reason_phrase, gets the Reason-Phrase
 
 var client;
-client = argument0;
+client = argument[0];
 
 if (client.errored)
     return -1;

@@ -1,6 +1,6 @@
 var gearSprite, gearName, gearSpec;
-gearSprite = argument0;
-gearName = argument1;
+gearSprite = argument[0];
+gearName = argument[1];
 
 gearSpec = gearSpecCreate();
 gearSpecDefaultOverlay(gearSpec, gearSprite, gearSprite, 0);

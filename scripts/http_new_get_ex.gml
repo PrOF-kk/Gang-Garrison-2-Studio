@@ -29,8 +29,8 @@
 
 var url, headers, client;
 
-url = argument0;
-headers = argument1;
+url = argument[0];
+headers = argument[1];
 
 if (!variable_global_exists('__HttpClient'))
     __http_init();

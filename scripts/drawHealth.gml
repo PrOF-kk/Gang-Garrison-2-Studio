@@ -9,10 +9,10 @@ yoffset = view_yview[0];
 xsize = view_wview[0];
 ysize = view_hview[0];
 
-xpos = argument0;
-ypos = argument1;
-hp = argument2;
-maxHp = argument3;
+xpos = argument[0];
+ypos = argument[1];
+hp = argument[2];
+maxHp = argument[3];
 
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);

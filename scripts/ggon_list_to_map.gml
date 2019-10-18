@@ -5,7 +5,7 @@
 // The map produced has the same format as a decoded a GGON list
 
 var list;
-list = argument0;
+list = argument[0];
 
 var map;
 map = ds_map_create();

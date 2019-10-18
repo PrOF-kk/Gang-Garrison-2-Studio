@@ -1,1 +1,1 @@
-return hex(hmac_md5_bin(argument0, argument1));
+return hex(hmac_md5_bin(argument[0], argument[1]));

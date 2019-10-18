@@ -1,5 +1,5 @@
 var win;
-win = argument0;
+win = argument[0];
 
 for(i=0; i < mvps[TEAM_RED]; i+=1) {
     mvpName[TEAM_RED,i] = redMVP[i].name;

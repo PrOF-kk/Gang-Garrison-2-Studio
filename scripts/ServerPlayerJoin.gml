@@ -1,3 +1,3 @@
-write_ubyte(argument1, PLAYER_JOIN);
-write_ubyte(argument1, string_length(argument0));
-write_string(argument1, argument0);
+write_ubyte(argument[1], PLAYER_JOIN);
+write_ubyte(argument[1], string_length(argument[0]));
+write_string(argument[1], argument[0]);

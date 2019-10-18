@@ -2,8 +2,8 @@
 // For use in unit tests. If a and b are not equal, errors.
 
 var a, b;
-a = argument0;
-b = argument1;
+a = argument[0];
+b = argument[1];
 
 global.testAssertions += 1;
 

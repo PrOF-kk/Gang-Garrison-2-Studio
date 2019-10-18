@@ -23,7 +23,7 @@
 // client - HttpClient object
 
 var client;
-client = argument0;
+client = argument[0];
 
 with (client)
 {
