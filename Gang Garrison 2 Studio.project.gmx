@@ -2140,7 +2140,7 @@
     <object>objects\PluginEnvironment</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Gang Garrison 2</room>
+    <room>rooms\Gang_Garrison_2</room>
     <room>rooms\Menu</room>
     <room>rooms\Credits</room>
     <room>rooms\Options</room>
