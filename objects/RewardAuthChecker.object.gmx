@@ -30,7 +30,7 @@
 // Socket is 0 =&gt; not currently waiting for an answer
 socket = 0;
 currentPlayer = noone;
-responseBuffer = buffer_create();
+responseBuffer = buffer_create;
 </string>
           </argument>
         </arguments>

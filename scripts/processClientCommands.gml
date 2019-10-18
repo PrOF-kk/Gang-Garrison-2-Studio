@@ -337,7 +337,7 @@ while(commandLimitRemaining > 0) {
             packetID = read_ubyte(socket);
             
             // get packet data
-            buf = buffer_create();
+            buf = buffer_create;
             write_buffer_part(buf, socket, socket_receivebuffer_size(socket));
 
             // try to enqueue

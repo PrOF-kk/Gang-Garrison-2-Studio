@@ -132,7 +132,7 @@ case STATE_EXPECT_COMMAND:
         if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png"))
         {   // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
             buffer_destroy(mapDownloadBuffer);
-            mapDownloadBuffer = buffer_create();
+            mapDownloadBuffer = buffer_create;
             if(!append_file_to_buffer(mapDownloadBuffer, "Maps/" + advertisedMap + ".png")) {
                 buffer_destroy(mapDownloadBuffer);
                 mapDownloadBuffer = -1;

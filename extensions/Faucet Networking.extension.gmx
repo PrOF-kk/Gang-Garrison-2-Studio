@@ -108,7 +108,7 @@
           <name>buffer_create</name>
           <externalName>buffer_create</externalName>
           <kind>12</kind>
-          <help>buffer_create()</help>
+          <help>buffer_create</help>
           <returnType>2</returnType>
           <argCount>0</argCount>
           <args/>

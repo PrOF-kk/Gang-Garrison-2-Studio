@@ -128,7 +128,7 @@ with (client)
                 {
                     // Chunked transfer, let's decode it
                     var actualResponseBody, actualResponseSize;
-                    actualResponseBody = buffer_create();
+                    actualResponseBody = buffer_create;
                     actualResponseBodySize = 0;
 
                     // Parse chunks

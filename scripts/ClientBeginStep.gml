@@ -154,7 +154,7 @@ do {
                     socket_send(global.serverSocket);
                     receiveCompleteMessage(global.serverSocket,4,global.tempBuffer);
                     downloadMapBytes = read_uint(global.tempBuffer);
-                    downloadMapBuffer = buffer_create();
+                    downloadMapBuffer = buffer_create;
                     downloadingMap = true;
                     roomchange=true;
                 }
@@ -622,7 +622,7 @@ do {
             packetID = read_ubyte(global.tempBuffer);
 
             // get packet data
-            buf = buffer_create();
+            buf = buffer_create;
             write_buffer_part(buf, global.tempBuffer, packetLen - 1);
 
             // try to enqueue

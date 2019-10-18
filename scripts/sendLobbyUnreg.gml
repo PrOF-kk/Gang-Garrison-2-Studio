@@ -14,7 +14,7 @@ if(ip_lookup_has_next(iplookup))
     var lobbyIp, lobbyBuffer;
     lobbyIp = ip_lookup_next_result(iplookup);
     
-    lobbyBuffer = buffer_create();
+    lobbyBuffer = buffer_create;
     parseUuid("488984ac-45dc-86e1-9901-98dd1c01c064", lobbyBuffer); // Message Type "unregister"
     write_buffer(lobbyBuffer, GameServer.serverId);
     udp_send(lobbyBuffer, lobbyIp, LOBBY_SERVER_PORT);
