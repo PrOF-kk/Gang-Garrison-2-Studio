@@ -28,8 +28,8 @@ _xscale = argument[6];
 _yscale = argument[7];
 _rot = argument[8];
 _color = argument[9];
-_alpha = argument[1]0;
-_voffset = argument[1]1;
+_alpha = argument[10];
+_voffset = argument[11];
 
 _subimg = floor(_subimg) mod sprite_get_number(_sprite);
 if(_subimg < 0)
