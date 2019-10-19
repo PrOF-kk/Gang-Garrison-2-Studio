@@ -367,12 +367,10 @@ global.launchMap = "";
     /* Windows 8 is known to crash GM when more than three (?) sounds play at once
      * We'll store the kernel version (Win8 is 6.2, Win7 is 6.1) and check it there.
      ***/
-    registry_set_root(1); // HKLM
-    global.NTKernelVersion = real(registry_read_string_ext("\SOFTWARE\Microsoft\Windows NT\CurrentVersion\", "CurrentVersion")); // SIC
-    if(!registry_exists_ext("\SOFTWARE\Microsoft\Windows NT\CurrentVersion\", "CurrentMajorVersionNumber"))
+    if (os_type == os_windows && (os_version == 393218 || os_version == 393219))
+        global.CurrentMajorVersionNumber = (os_version - 393218)/10 + 6.2;
+    else 
         global.CurrentMajorVersionNumber = -1;
-    else
-        global.CurrentMajorVersionNumber = registry_read_real_ext("\SOFTWARE\Microsoft\Windows NT\CurrentVersion\", "CurrentMajorVersionNumber");
     
     globalvar previous_window_x, previous_window_y, previous_window_w;
     previous_window_x = window_get_x();
