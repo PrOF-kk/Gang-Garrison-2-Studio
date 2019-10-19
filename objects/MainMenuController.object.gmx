@@ -60,7 +60,7 @@
         room_goto_fix(Credits);
     ');
     menu_addlink("Visit The Forums",'
-        action_splash_web("http://www.ganggarrison.com/forums/index.php", 1)
+        url_open("http://www.ganggarrison.com/forums/index.php");
     ');
     menu_addback("Quit", '
         game_end();
@@ -177,7 +177,7 @@ if (global.backgroundHash != "default")
         if (mouse_check_button_pressed(mb_left))
         {
             mouse_clear(mb_left);
-            action_splash_web(global.backgroundURL, 1);
+            url_open(global.backgroundURL);
         }
     }
 }
