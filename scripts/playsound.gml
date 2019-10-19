@@ -10,6 +10,6 @@
         sound_stop(argument[2]);
         
     sound_volume(argument[2], vol);
-    sound_pan(argument[2], calculatePan(argument[0]));
+    //sound_pan(argument[2], calculatePan(argument[0]));
     sound_play(argument[2]);
 }
