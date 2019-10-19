@@ -1825,6 +1825,9 @@
       <script>scripts\domination_kills_getDomCount.gml</script>
       <script>scripts\clearPlayerDominations.gml</script>
     </scripts>
+    <scripts name="Compatibility">
+      <script>scripts\sleep_ms.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Networking">

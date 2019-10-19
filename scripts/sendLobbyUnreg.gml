@@ -7,7 +7,7 @@ var iplookup;
 iplookup = ip_lookup_create(LOBBY_SERVER_HOST);
 
 while(!ip_lookup_ready(iplookup))
-    sleep(10);
+    sleep_ms(10);
     
 if(ip_lookup_has_next(iplookup))
 {
