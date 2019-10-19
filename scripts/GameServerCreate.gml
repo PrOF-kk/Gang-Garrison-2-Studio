@@ -156,5 +156,5 @@
     
     // Disable vsync to minimize framerate drops which would be noticed as lag issues by all players.
     // "vsync makes the server desync" --Arctic
-    set_synchronization(false);
+    display_reset(0, false);
 }

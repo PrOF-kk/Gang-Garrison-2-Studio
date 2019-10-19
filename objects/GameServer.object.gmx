@@ -96,7 +96,7 @@ else
 if (global.serverPluginsInUse)
     pluginscleanup();
     
-set_synchronization(global.monitorSync);
+display_reset(0, global.monitorSync);
 </string>
           </argument>
         </arguments>

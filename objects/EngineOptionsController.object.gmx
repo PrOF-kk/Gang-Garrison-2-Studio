@@ -112,7 +112,7 @@
     menu_addedit_select("V Sync:", "global.monitorSync", '
         gg2_write_ini("Settings", "Monitor Sync", argument[0]);
         if (!instance_exists(GameServer))
-            set_synchronization(argument[0]);
+            display_reset(0, argument[0]);
     ');
     menu_add_option(0, "Off");
     menu_add_option(1, "On unless hosting");
