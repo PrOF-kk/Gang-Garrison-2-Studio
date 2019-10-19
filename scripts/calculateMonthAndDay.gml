@@ -1,19 +1,18 @@
-currentDate = date_current_date();
 global.aFirst = false;
 global.gg_birthday = false;
 global.xmas = false;
-if(date_get_month(currentDate) == 4 and date_get_day(currentDate) == 1)
+if(current_month == 4 and current_day == 1)
 {
-    if(date_get_year(currentDate) != 2011) // April fools bubble disabled this year because of big release
+    if(current_year != 2011) // April fools bubble disabled this year because of big release
         global.aFirst = true;
     else
         global.gg_birthday = true;
 }
 
-if(date_get_month(currentDate) == 9 and date_get_day(currentDate) == 7)
+if(current_month == 9 and current_day == 7)
     global.gg_birthday = true;
 
-if((date_get_month(currentDate) == 12 and date_get_day(currentDate) > 23) or (date_get_month(currentDate) == 1 and date_get_day(currentDate) < 3)) {
+if((current_month == 12 and current_day > 23) or (current_month == 1 and current_day < 3)) {
     global.xmas = true;
 }
 
