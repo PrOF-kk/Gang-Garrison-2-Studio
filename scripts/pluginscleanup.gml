@@ -10,6 +10,6 @@ if (argument_count == 0)
     showCancel = argument[0];
 
 if (global.restartPrompt == 1)
-    promptRestartOrQuit(msg,argument[0]);
+    promptRestartOrQuit(msg, showCancel);
 else
     restartGG2();

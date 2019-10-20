@@ -8,7 +8,6 @@
 var promptText, result, button2, showCancel;
 promptText = argument[0];
 button2 = "";
-showCancel = false;
 
 if (argument_count > 0 && argument[1])
     button2 = "Cancel";
