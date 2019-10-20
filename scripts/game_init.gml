@@ -45,7 +45,7 @@
 
     global.defaultBackground = choose(MenuBackground1, MenuBackground2);
     
-    window_set_region_scale(-1, false);
+    //window_set_region_scale(-1, false);
     
     ini_open("gg2.ini");
     global.playerName = ini_read_string("Settings", "PlayerName", "Player");

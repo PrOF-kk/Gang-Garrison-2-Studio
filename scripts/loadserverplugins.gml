@@ -117,7 +117,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
             // Also, Faucet HTTP reports an unknown size as -1
             if (filesize > 0)
                 draw_rectangle(50, 550, 50 + progress / filesize * 250, 560, 0);
-            screen_refresh();
+            //screen_refresh();
         }
 
         // request failed

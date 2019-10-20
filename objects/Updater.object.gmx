@@ -31,10 +31,10 @@ var downloadHandle, url, tmpfile, window_oldshowborder, window_oldfullscreen;
 timeLeft = 0;
 counter = 0;
 AudioControlPlaySong(-1, false);
-window_oldshowborder = window_get_showborder();
+window_oldshowborder = false;//window_get_showborder();
 window_oldfullscreen = window_get_fullscreen();
 window_set_fullscreen(false);
-window_set_showborder(false);
+//window_set_showborder(false);
 
 if(global.updaterBetaChannel)
     url = UPDATE_SOURCE_BETA;
@@ -54,7 +54,7 @@ while(!http_step(downloadHandle))
     if(keyboard_check(vk_escape)) 
     {
         http_destroy(downloadHandle);
-        window_set_showborder(window_oldshowborder);
+        //window_set_showborder(window_oldshowborder);
         window_set_fullscreen(window_oldfullscreen);
         room_goto_fix(Menu);
         exit;
@@ -84,14 +84,14 @@ while(!http_step(downloadHandle))
             offset+=12;
         }
     }
-    screen_refresh();
+    //screen_refresh();
 }
 // Errored
 if (http_status_code(downloadHandle) != 200)
 {
     show_message("Downloading update failed!#" + string(http_status_code(downloadHandle)) + " " + http_reason_phrase(downloadHandle));
     http_destroy(downloadHandle);
-    window_set_showborder(window_oldshowborder);
+    //window_set_showborder(window_oldshowborder);
     window_set_fullscreen(window_oldfullscreen);
     room_goto_fix(Menu);
     exit;
@@ -102,7 +102,7 @@ http_destroy(downloadHandle);
 
 if(!file_exists(tmpfile))
 {
-    window_set_showborder(window_oldshowborder);
+    //window_set_showborder(window_oldshowborder);
     window_set_fullscreen(window_oldfullscreen);
     show_message("Error updating: Missing gg2update.zip in temp directory, download failed(?)");
     room_goto_fix(Menu);

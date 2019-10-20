@@ -32,7 +32,7 @@ num_value = 0;
 var a, b;
 for(a = 0; a < height; a += 1){
     drawProgressBar(a / height * 100, "Compressing Walkmask");
-    screen_refresh();
+    //screen_refresh();
     for(b = 0; b < width; b += 1){
         //Shift preview bits left.
         num_value = num_value << 1;

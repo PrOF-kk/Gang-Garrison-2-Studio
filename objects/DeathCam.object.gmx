@@ -139,7 +139,7 @@ else
     killmessage = "You were killed by the late";
 }
 
-screen_redraw();
+//screen_redraw();
 
 var tempfile;
 tempfile = temp_directory + "/deathcam.png";
