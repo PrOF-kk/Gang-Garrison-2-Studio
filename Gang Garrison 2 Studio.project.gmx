@@ -1833,6 +1833,13 @@
         <script>scripts\variable_local_free.gml</script>
       </scripts>
       <script>scripts\show_message_ext_bootleg.gml</script>
+      <scripts name="Dummy">
+        <script>scripts\execute_string.gml</script>
+        <script>scripts\execute_program.gml</script>
+        <script>scripts\execute_file.gml</script>
+        <script>scripts\show_menu_pos.gml</script>
+        <script>scripts\export_include_file_location.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
