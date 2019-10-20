@@ -7,7 +7,7 @@ playerId = argument[1];
 commandLimitRemaining = 10;
 
 with(player) {
-    if(!variable_local_exists("commandReceiveState")) {
+    if(!variable_local_exists(id, "commandReceiveState")) {
         // 0: waiting for command byte.
         // 1: waiting for command data length (1 byte)
         // 2: waiting for command data.
@@ -286,7 +286,7 @@ while(commandLimitRemaining > 0) {
             {
                 with(player)
                 {
-                    if(variable_local_exists("lastNamechange")) 
+                    if(variable_local_exists(id, "lastNamechange")) 
                         if(current_time - lastNamechange < 1000)
                             break;
                     lastNamechange = current_time;
@@ -326,7 +326,7 @@ while(commandLimitRemaining > 0) {
             answer = read_binstring(socket, 16);
             
             with(player)
-                if(variable_local_exists("challenge") and variable_local_exists("rewardId"))
+                if(variable_local_exists(id, "challenge") and variable_local_exists(id, "rewardId"))
                     rewardAuthStart(player, answer, challenge, true, rewardId);
            
             break;

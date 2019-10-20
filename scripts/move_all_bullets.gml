@@ -2,7 +2,7 @@ var imp, colliding, dx, dy, ddx, ddy, mdone, mdist, motion, mdir;
 gunSetSolids();
 with(Shot)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
     
     vspeed += 0.15 * global.delta_factor;
@@ -37,7 +37,7 @@ with(Shot)
 }
 with(Rocket)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
     
     if(instance_exists(owner))
@@ -68,7 +68,7 @@ with(Rocket)
                 effect_create_below(ef_smoke,x-hspeed*1.3,y-vspeed*1.3,0,c_gray);
             else if(global.particles == PARTICLES_ALTERNATIVE)
             {
-                if (!variable_local_exists("rocketblurParticleType"))
+                if (!variable_local_exists(id, "rocketblurParticleType"))
                 {
                     rocketblurParticleType = part_type_create();
                     if team == TEAM_RED rocketParticleSprite = RedRocketS;
@@ -125,7 +125,7 @@ with(Rocket)
 }
 with(BladeB)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
 
     colliding = false;
@@ -151,7 +151,7 @@ with(BladeB)
 }
 with(BurningProjectile)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
     
     if(object_index == Flame)
@@ -224,7 +224,7 @@ with(BurningProjectile)
 }
 with(Mine)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
     
     if(stickied)
@@ -305,7 +305,7 @@ with(Mine)
 }
 with(Needle)
 {
-    if(!variable_local_exists("firststep"))
+    if(!variable_local_exists(id, "firststep"))
         firststep = true;
     
     vspeed += 0.2 * global.delta_factor;

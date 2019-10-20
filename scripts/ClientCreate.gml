@@ -8,7 +8,7 @@
     nocreate=false;
     usePreviousPwd = false;
     // Prevent overwriting
-    if (!variable_local_exists('skippedPlugins'))
+    if (!variable_local_exists(id, 'skippedPlugins'))
         skippedPlugins = false;
     noUnloadPlugins = false;
     noReloadPlugins = false;

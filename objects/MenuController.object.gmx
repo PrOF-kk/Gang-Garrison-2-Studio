@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!variable_local_exists("baseybegin"))
+            <string>if(!variable_local_exists(id, "baseybegin"))
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
@@ -181,7 +181,7 @@ if(editing != -1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!variable_local_exists("baseybegin")) // This needs to be duplicated because of code execution order issues
+            <string>if(!variable_local_exists(id, "baseybegin")) // This needs to be duplicated because of code execution order issues
 {
     baseybegin = ybegin;
     mouse_samples = ds_list_create();
