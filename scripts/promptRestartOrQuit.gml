@@ -5,12 +5,13 @@
 // argument[0]: message
 // argument[1]: (optional) show cancel button
 
-var promptText, result, button2;
+var promptText, result, button2, showCancel;
 promptText = argument[0];
-button2 = ""
+button2 = "";
+showCancel = false;
 
-if (argument[1])
-    button2 = "Cancel"
+if (argument_count > 0 && argument[1])
+    button2 = "Cancel";
     
 result = show_message_ext_bootleg(
     promptText,

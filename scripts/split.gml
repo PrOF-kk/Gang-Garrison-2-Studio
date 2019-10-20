@@ -11,7 +11,10 @@
 var text, delimeter, limit;
 text = argument[0];
 delimeter = argument[1];
-limit = argument[2];
+limit = 0;
+
+if (argument_count > 1)
+    limit = argument[2];
 
 var list, count;
 list = ds_list_create();
@@ -23,7 +26,7 @@ while (string_pos(delimeter, text) != 0)
     text = string_copy(text, string_pos(delimeter, text) + string_length(delimeter), string_length(text) - string_pos(delimeter, text));
 
     count += 1;
-    if (limit and count == limit)
+    if (limit > 0 and count == limit)
         break;
 }
 ds_list_add(list, text);

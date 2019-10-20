@@ -8,7 +8,10 @@ var packetID, dataBuffer, loopback, packetBuffer;
 
 packetID = argument[0];
 dataBuffer = argument[1];
-loopback = argument[2];
+
+loopback = false;
+if (argument_count > 1)
+    loopback = argument[2];
 
 // check to make sure the packet ID is valid
 if (!ds_map_exists(global.pluginPacketBuffers, packetID))
