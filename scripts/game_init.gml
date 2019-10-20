@@ -326,11 +326,11 @@ global.launchMap = "";
     instance_create(0, 0, SSControl);
     
     // custom dialog box graphics
-    message_background(popupBackgroundB);
-    message_button(popupButtonS);
-    message_text_font("Century", 9, c_white, 1);
-    message_button_font("Century", 9, c_white, 1);
-    message_input_font("Century", 9, c_white, 0);
+    //message_background(popupBackgroundB);
+    //message_button(popupButtonS);
+    //message_text_font("Century", 9, c_white, 1);
+    //message_button_font("Century", 9, c_white, 1);
+    //message_input_font("Century", 9, c_white, 0);
     
     //Key Mapping
     ini_open("controls.gg2");
