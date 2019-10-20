@@ -1832,6 +1832,7 @@
         <script>scripts\variable_local_created.gml</script>
         <script>scripts\variable_local_free.gml</script>
       </scripts>
+      <script>scripts\show_message_ext_bootleg.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

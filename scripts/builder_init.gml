@@ -59,7 +59,7 @@ addButton("Save & test", '
         if (file_exists("Maps\ggb2_tmp_map.png")) file_delete("Maps\ggb2_tmp_map.png");
         file_copy(Builder.mapBG, "Maps\ggb2_tmp_map.png");
         
-        switch(show_message_ext("Compilation completed. The map is saved to " + string(Builder.mapBG) + ".", "Ok", "Test separately", "Test here")) {
+        switch(show_message_ext_bootleg("Compilation completed. The map is saved to " + string(Builder.mapBG) + ".", "Ok", "Test separately", "Test here")) {
             case 2:             
                 startGG2("-map ggb2_tmp_map");
             break;       
@@ -85,7 +85,7 @@ addButton("Test w/o save", '
         leveldata = compressEntities() + chr(10) + Builder.wmString;
         GG2DLL_embed_PNG_leveldata("Maps/ggb2_tmp_map.png", leveldata);               
         
-        switch(show_message_ext("Where do you want to playtest?", "Test separately", "Test here", "Cancel")) {
+        switch(show_message_ext_bootleg("Where do you want to playtest?", "Test separately", "Test here", "Cancel")) {
             case 1:             
                 startGG2("-map ggb2_tmp_map");
             break;       

@@ -28,7 +28,7 @@ if (gmMap != -1) {
         else error = "Your setup is not valid:#" + error;
         
         if (!execute_string(ds_map_find_value(gmMap, "code"))) {
-            if (show_message_ext(error, "Continue", "Cancel", "") != 1) return false;
+            if (show_message_ext_bootleg(error, "Continue", "Cancel", "") != 1) return false;
         }
     }
 }

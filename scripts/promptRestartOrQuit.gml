@@ -12,7 +12,7 @@ button2 = ""
 if (argument[1])
     button2 = "Cancel"
     
-result = show_message_ext(
+result = show_message_ext_bootleg(
     promptText,
     "Restart", // 1
     button2,   // 2

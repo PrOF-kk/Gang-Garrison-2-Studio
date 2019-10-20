@@ -83,7 +83,7 @@ do {
                     var prompt;
                     if (pluginsRequired)
                     {
-                        prompt = show_message_ext(
+                        prompt = show_message_ext_bootleg(
                             'You need these plugins to play on this server: #'
                             + displayList
                             + PLUGIN_SOURCE_NOTICE
@@ -100,7 +100,7 @@ do {
                     }
                     else
                     {
-                        prompt = show_message_ext(
+                        prompt = show_message_ext_bootleg(
                             'These optional plugins are suggested for this server: #'
                             + displayList
                             + PLUGIN_SOURCE_NOTICE
