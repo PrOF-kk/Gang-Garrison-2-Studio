@@ -48,7 +48,7 @@ downloadHandle = http_new_get(url);
 while(!http_step(downloadHandle)) 
 { // while download isn't finished
     sleep_ms(floor(1000/30)); // sleep for the equivalent of one frame
-    io_handle(); // this prevents GameMaker from appearing locked-up
+    //io_handle(); // this prevents GameMaker from appearing locked-up
     
     // check if the user cancelled the download with the esc key
     if(keyboard_check(vk_escape)) 

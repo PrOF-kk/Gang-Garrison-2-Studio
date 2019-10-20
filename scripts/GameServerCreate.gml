@@ -70,7 +70,7 @@
             exit;
         }
         serverPlayer.socket = socket_accept(global.tcpListener);
-        io_handle(); // Make sure the game doesn't appear to freeze
+        //io_handle(); // Make sure the game doesn't appear to freeze
     } until(serverPlayer.socket>=0);
 
     global.playerID = 0;

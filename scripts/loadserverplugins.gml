@@ -92,7 +92,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
         // download it
         while (!http_step(handle)) {
             // prevent game locking up
-            io_handle();
+            //io_handle();
             
             if (!global.isHost) {
                 // send ping if we haven't contacted server in 20 seconds
