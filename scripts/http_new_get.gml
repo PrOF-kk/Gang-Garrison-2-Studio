@@ -30,9 +30,9 @@ var url, client;
 
 url = argument[0];
 
-if (!variable_global_exists('__HttpClient'))
+if (!variable_global_exists('HttpClientInitDone'))
     __http_init();
 
-client = instance_create(0, 0, global.__HttpClient);
+client = instance_create(0, 0, __HttpClient);
 __http_prepare_request(client, 'GET', url, -1, 0, '');
 return client;

@@ -20,5 +20,6 @@
 // Creates global.__HttpClient
 // real __http_init()
 
-global.__HttpClient = object_add();
-object_set_persistent(global.__HttpClient, true);
+//global.__HttpClient = object_add();
+global.HttpClientInitDone = true;
+object_set_persistent(__HttpClient, true);

@@ -1839,6 +1839,7 @@
       <object>objects\GameServer</object>
       <object>objects\Client</object>
       <object>objects\RewardAuthChecker</object>
+      <object>objects\__HttpClient</object>
     </objects>
     <objects name="Characters">
       <object>objects\Soldier</object>
