@@ -7,28 +7,32 @@
  * Returns the property or the default value
 */
 
-var prop;
+var prop, defValue;
 prop = ds_map_find_value(argument[0], argument[1]);
+defValue = 0;
+
+if (argument_count > 3)
+    defValue = argument[3];
 
 switch(argument[2]) {
     case STRING:
         if (is_string(prop)) return prop;
-        return string(argument[3]);
+        return string(defValue);
     break;
     case REAL:
         if (is_string(prop) && stringIsReal(prop)) return real(prop);
-        return real(argument[3]);
+        return real(defValue);
     break;
     case BOOL:
         if (is_string(prop)) {
             if (prop == "true" || prop == "false") return (prop == "true");
         }
-        if (is_real(argument[3])) return (argument[3] == true);
-        if (string(argument[3]) == "true") return true;
+        if (is_real(defValue)) return (defValue == true);
+        if (string(defValue) == "true") return true;
         else return false;
     break;
     case HEX:
-        if (!is_string(prop)) return argument[3]; 
+        if (!is_string(prop)) return defValue; 
         prop = string_lower(string_replace(prop, "$", ""));
         var i, j, h;
         h = $0;

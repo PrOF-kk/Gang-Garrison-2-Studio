@@ -7,10 +7,14 @@
 if (ds_map_size(argument[0]) == 0)
     return false;
 
-var key, menu, res, keys, i, new, old, exists, _x, _y, newPropIdx, fullName;
+var key, menu, res, keys, i, new, old, exists, _x, _y, newPropIdx, fullName, allowNewProp;
 _x = window_mouse_get_x() + window_get_x();
 _y = window_mouse_get_y() + window_get_y();
 newPropIdx = -1;
+allowNewProp = 0;
+
+if (argument_count > 2)
+    allowNewProp = argument[2];
 
 do
 {
@@ -30,7 +34,7 @@ do
         keys[i] = key;
         i += 1;
     }
-    if (argument[2] > 0)
+    if (allowNewProp > 0)
     {
         menu += "Add new property|";
         newPropIdx = i;
@@ -107,7 +111,7 @@ do
         new = " ";
     
     // Destroy de property if the contents are empty
-    if (argument[2] > 0 && new == "")
+    if (allowNewProp > 0 && new == "")
     {
         ds_map_delete(argument[1], prop);
         i -= 1;

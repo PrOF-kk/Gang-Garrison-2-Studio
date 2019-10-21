@@ -12,7 +12,12 @@
  * Returns: An identifier for the entity button
 */
 
-var index, map;
+var index, map, tooltip;
+
+tooltip = 0;
+if (argument_count > 8)
+    tooltip = argument[8];
+
 
 // Prevent dupes
 index = ds_list_find_index(global.entities, argument[0]);
@@ -30,7 +35,7 @@ ds_map_add(map, "entity_sprite", argument[4]);
 ds_map_add(map, "entity_image", argument[5]);
 ds_map_add(map, "button_sprite", argument[6]);
 ds_map_add(map, "button_image", argument[7]);
-ds_map_add(map, "tooltip", argument[8]);
+ds_map_add(map, "tooltip", tooltip);
 ds_map_add(map, "properties", ggon_decode(argument[2]));
 
 ds_list_add(global.entityData, map);

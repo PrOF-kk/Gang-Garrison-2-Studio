@@ -4,14 +4,19 @@
  * argument[1]: Y position
  * argument[2]: X scale
  * argument[3]: Y scale
- * [argument[4]]: Whether it's a mirrrored entity
+ * [argument[4]]: Whether it's a mirrored entity
 */
 
 with(Builder)
 {
-    var entity;  
+    var entity, isMirrored;  
     entity = instance_create(argument[0], argument[1], LevelEntity);
-    if (argument[4])
+
+    isMirrored = 0;
+    if (argument_count > 4)
+        isMirrored = argument[4];
+    
+    if (isMirrored)
     {
         entity.type = ds_list_find_value(global.entities, mirrored);
         entity.sprite_index = mirroredSprite;

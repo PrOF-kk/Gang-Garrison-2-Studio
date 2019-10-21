@@ -6,11 +6,19 @@
  * [argument[3]]: Button is active by default (if it's a toggle)
 */
 
-var map;
+var map, toggle, active;
+toggle = 0;
+active = 0;
 map = ds_map_create();
+
+if (argument_count > 2)
+    toggle = argument[2];
+if (argument_count > 3)
+    active = argument[3];
+
 ds_map_add(map, "name", argument[0]);
 ds_map_add(map, "code", argument[1]);
-ds_map_add(map, "toggle", argument[2]);
-ds_map_add(map, "active", argument[3]);
+ds_map_add(map, "toggle", toggle);
+ds_map_add(map, "active", active);
 
 ds_list_add(global.buttons, map);
