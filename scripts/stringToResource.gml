@@ -15,6 +15,8 @@ if (ext != "GIF")
         return -1;
 }
 
+isBackground = 0;
+output = 0;
 if (argument_count > 1)
     isBackground = argument[1];
 if (argument_count > 2)
