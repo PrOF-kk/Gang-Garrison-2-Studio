@@ -193,7 +193,7 @@ else
           <argument>
             <kind>1</kind>
             <string>if(owner.invisible)
-    break;
+    exit;
 
 x = owner.x;
 y = owner.y;
