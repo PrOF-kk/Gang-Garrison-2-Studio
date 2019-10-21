@@ -9,7 +9,7 @@ var promptText, result, button2, showCancel;
 promptText = argument[0];
 button2 = "";
 
-if (argument_count > 0 && argument[1])
+if (argument_count > 1 && argument[1])
     button2 = "Cancel";
     
 result = show_message_ext_bootleg(

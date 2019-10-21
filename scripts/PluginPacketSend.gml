@@ -10,7 +10,7 @@ packetID = argument[0];
 dataBuffer = argument[1];
 
 loopback = false;
-if (argument_count > 1)
+if (argument_count > 2)
     loopback = argument[2];
 
 // check to make sure the packet ID is valid

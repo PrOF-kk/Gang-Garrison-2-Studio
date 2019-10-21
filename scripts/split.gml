@@ -13,7 +13,7 @@ text = argument[0];
 delimeter = argument[1];
 limit = 0;
 
-if (argument_count > 1)
+if (argument_count > 2)
     limit = argument[2];
 
 var list, count;
