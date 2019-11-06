@@ -7,5 +7,9 @@ item_type[items] = "editnum";
 item_var[items] = argument[1];
 item_value[items] = string(menu_get_var(items));
 item_script[items] = argument[2];
-item_limit[items] = argument[3];
+
+if (argument_count > 3) {
+    item_limit[items] = argument[3];
+}
+
 items += 1;
