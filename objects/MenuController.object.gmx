@@ -115,6 +115,9 @@ if(editing != -1) {
             mouse_clear(mb_left);
             if(virtualitem &lt; itemcount) {
                 switch (item_type[virtualitem]) {
+                    case "userevent":
+                        event_user(item_script[virtualitem]);
+                        break;
                     case "script":
                         execute_string(item_script[virtualitem]);
                         break;
@@ -280,6 +283,9 @@ if(view_hview[0] &lt; 600)
         
         switch (item_type[i])
         {
+        case "userevent":
+            val = "";
+            break;
         case "script":
             val = "";
             break;
