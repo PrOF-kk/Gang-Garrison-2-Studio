@@ -2198,13 +2198,11 @@
     <room>rooms\BuilderOptions</room>
     <room>rooms\BuilderRoom</room>
   </rooms>
-  <constants number="137">
+  <constants number="133">
     <constant name="VERSION">29200</constant>
     <constant name="GAME_VERSION_STRING">"v2.9.2"</constant>
     <constant name="GAME_NAME_STRING">"Gang Garrison 2"</constant>
     <constant name="GAME_URL_STRING">"http://www.ganggarrison.com"</constant>
-    <constant name="PLUGIN_SOURCE">"http://www.ganggarrison.com/plugins/"</constant>
-    <constant name="PLUGIN_SOURCE_NOTICE">"While these plugins have been screened by the Gang Garrison 2 community, they cannot guarantee they are safe."</constant>
     <constant name="BACKGROUND_SOURCE">"http://www.ganggarrison.com/background.png"</constant>
     <constant name="DEVMESSAGES_SOURCE">"http://www.ganggarrison.com/devmessages.txt"</constant>
     <constant name="DEVMESSAGES_SOURCE_BETA">"http://www.ganggarrison.com/devmessages_beta.txt"</constant>
@@ -2267,8 +2265,6 @@
     <constant name="REWARD_CHALLENGE_RESPONSE">52</constant>
     <constant name="MESSAGE_STRING">53</constant>
     <constant name="WEAPON_FIRE">54</constant>
-    <constant name="PLUGIN_PACKET">55</constant>
-    <constant name="KICK_BAD_PLUGIN_PACKET">56</constant>
     <constant name="PING">57</constant>
     <constant name="CLIENT_SETTINGS">58</constant>
     <constant name="KICK_MULTI_CLIENT">59</constant>

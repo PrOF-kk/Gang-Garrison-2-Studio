@@ -86,10 +86,6 @@ case STATE_CLIENT_AUTHENTICATED:
     write_ubyte(socket, string_length(global.currentMapMD5));
     write_string(socket, global.currentMapMD5);
     
-    write_ubyte(socket, global.serverPluginsRequired);
-    write_ushort(socket, string_length(GameServer.pluginList));
-    write_string(socket, GameServer.pluginList);
-    
     advertisedMap = global.currentMap;
     advertisedMapMd5 = global.currentMapMD5;
     newState = STATE_EXPECT_COMMAND;
@@ -99,7 +95,7 @@ case STATE_CLIENT_AUTHENTICATED:
 case STATE_EXPECT_COMMAND:
     switch(read_ubyte(socket))
     {
-    // keeps connection open when downloading plugins
+    // keeps connection open when downloading
     case PING:
         newState = STATE_EXPECT_COMMAND;
         expectedBytes = 1;
@@ -143,7 +139,7 @@ case STATE_EXPECT_COMMAND:
         }
         break;
         
-    // Indicate that we want to join, but we still have to download the map / apply plugins / whatever
+    // Indicate that we want to join, but we still have to download the map / whatever
     // and we don't want to do that just to be greeted with a "Server is full" message.
     // RESERVE_SLOT is required before you can use PLAYER_JOIN, but PING and DOWNLOAD_MAP don't require it.
     case RESERVE_SLOT:

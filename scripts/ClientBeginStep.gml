@@ -1,5 +1,5 @@
 // receive and interpret the server's message(s)
-var i, playerObject, playerID, player, otherPlayerID, otherPlayer, sameVersion, buffer, usePlugins;
+var i, playerObject, playerID, player, otherPlayerID, otherPlayer, sameVersion, buffer;
 
 if(tcp_eof(global.serverSocket)) {
     if(gotServerHello)
@@ -43,8 +43,6 @@ do {
             downloadMapName = receivestring(global.serverSocket, 1);
             advertisedMapMd5 = receivestring(global.serverSocket, 1);
             receiveCompleteMessage(global.serverSocket, 1, global.tempBuffer);
-            pluginsRequired = read_ubyte(global.tempBuffer);
-            plugins = receivestring(global.serverSocket, 2);
 
             if(string_pos("/", downloadMapName) != 0 or string_pos("\", downloadMapName) != 0)
             {
@@ -57,82 +55,6 @@ do {
             break;
 
         case RESERVE_SLOT:
-            if (!noReloadPlugins && string_length(plugins))
-            {
-                usePlugins = pluginsRequired || !global.serverPluginsPrompt;
-                if (global.serverPluginsPrompt)
-                {
-                    // Split up plugin list
-                    var pluginList;
-                    pluginList = split(plugins, ',');
-
-                    // Iterate over list and make displayable list without hashes
-                    var displayList, i;
-                    displayList = '';
-                    for (i = 0; i < ds_list_size(pluginList); i += 1)
-                    {
-                        var pluginParts;
-                        pluginParts = split(ds_list_find_value(pluginList, i), '@');
-                        displayList += '- ' + ds_list_find_value(pluginParts, 0) + '#';
-                        ds_list_destroy(pluginParts);
-                    }
-
-                    // Destroy list
-                    ds_list_destroy(pluginList);
-                    
-                    var prompt;
-                    if (pluginsRequired)
-                    {
-                        prompt = show_message_ext_bootleg(
-                            'You need these plugins to play on this server: #'
-                            + displayList
-                            + PLUGIN_SOURCE_NOTICE
-                            + '#Do you want to download them and join the server?',
-                            'Download and join',
-                            '',
-                            'Disconnect'
-                        );
-                        if (prompt != 1)
-                        {
-                            instance_destroy();
-                            exit;
-                        }
-                    }
-                    else
-                    {
-                        prompt = show_message_ext_bootleg(
-                            'These optional plugins are suggested for this server: #'
-                            + displayList
-                            + PLUGIN_SOURCE_NOTICE
-                            + '#Do you want to download them?',
-                            'Download',
-                            '',
-                            'Skip'
-                        );
-                        if (prompt == 1)
-                        {
-                            usePlugins = true;
-                        }
-                        else
-                        {
-                            // We set this so that we won't prompt for plugins again if we re-connect to download a map
-                            skippedPlugins = true;
-                        }
-                    }
-                }
-                if (usePlugins)
-                {
-                    if (!loadserverplugins(plugins))
-                    {
-                        show_message("Error ocurred loading server-sent plugins.");
-                        instance_destroy();
-                        exit;
-                    }
-                    global.serverPluginsInUse = true;
-                }
-            }
-            noReloadPlugins = false;
-            
             if(advertisedMapMd5 != "")
             {
                 var download;
@@ -431,7 +353,6 @@ do {
             receiveCompleteMessage(global.serverSocket,1,global.tempBuffer);
             reason = read_ubyte(global.tempBuffer);
             if reason == KICK_NAME kickReason = "Name Exploit";
-            else if reason == KICK_BAD_PLUGIN_PACKET kickReason = "Invalid plugin packet ID";
             else if reason == KICK_MULTI_CLIENT kickReason = "There are too many connections from your IP";
             else kickReason = "";
             show_message("You have been kicked from the server. "+kickReason+".");
@@ -494,16 +415,8 @@ do {
                     var oldReturnRoom;
                     oldReturnRoom = returnRoom;
                     returnRoom = DownloadRoom;
-                    // Normally, GG2 is restarted when we disconnect, if plugins are in use
-                    // As we're only disconnecting to download a map, we won't restart
-                    if (global.serverPluginsInUse)
-                        noUnloadPlugins = true;
                     event_perform(ev_destroy,0);
                     ClientCreate();
-                    // Normally, GG2 will prompt to load plugins when connecting to a server
-                    // If they're already loaded, or the user skipped them, we won't prompt again
-                    if (global.serverPluginsInUse or skippedPlugins)
-                        noReloadPlugins = true;
                     returnRoom = oldReturnRoom;
                     usePreviousPwd = true;
                     exit;
@@ -608,33 +521,6 @@ do {
                 }
                 
                 doEventFireWeapon(player, read_ushort(global.tempBuffer));
-            }
-            break;
-
-        case PLUGIN_PACKET:
-            var packetID, packetLen, buf, success;
-
-            // fetch full packet
-            receiveCompleteMessage(global.serverSocket, 2, global.tempBuffer);
-            packetLen = read_ushort(global.tempBuffer);
-            receiveCompleteMessage(global.serverSocket, packetLen, global.tempBuffer);
-
-            packetID = read_ubyte(global.tempBuffer);
-
-            // get packet data
-            buf = buffer_create;
-            write_buffer_part(buf, global.tempBuffer, packetLen - 1);
-
-            // try to enqueue
-            // give "noone" value for client since received from server
-            success = _PluginPacketPush(packetID, buf, noone);
-            
-            // if it returned false, packetID was invalid
-            if (!success)
-            {
-                // clear up buffer
-                buffer_destroy(buf);
-                show_error("ERROR when reading plugin packet: no such plugin packet ID " + string(packetID), true);
             }
             break;
         
