@@ -1840,6 +1840,7 @@
       <script>scripts\getCharacterSpriteId.gml</script>
       <script>scripts\format_timer_value.gml</script>
       <script>scripts\getRelativePathIfDescendand.gml</script>
+      <script>scripts\extractzip.gml</script>
     </scripts>
     <scripts name="ggon">
       <script>scripts\ggon_decode.gml</script>
