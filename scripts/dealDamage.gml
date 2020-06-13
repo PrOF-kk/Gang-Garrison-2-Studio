@@ -9,6 +9,3 @@ with(argument[1])
 }
 
 argument[1].hp -= argument[2];
-
-execute_string( global.dealDamageFunction, argument[0], argument[1], argument[2] );
-
