@@ -36,94 +36,97 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
-    menu_addedit_boolean("Fullscreen:", "global.fullscreen", '
-        gg2_write_ini("Settings", "Fullscreen", argument[0]);
-        window_set_fullscreen(argument[0]);
-    ');
-    menu_addedit_select("Music:", "global.music", '
-        gg2_write_ini("Settings", "Music", argument[0]);
-        if(room != Options)
-        {
-            if (argument[0] == MUSIC_BOTH || argument[0] == MUSIC_INGAME_ONLY)
-            {
-                AudioControlPlaySong(global.IngameMusic, true);
-            }
-            else
-            {
-                AudioControlPlaySong(-1, false);
-            }
-        }
-        else
-        {
-            if(argument[0] == MUSIC_BOTH || argument[0] == MUSIC_MENU_ONLY)
-            {
-                AudioControlPlaySong(global.MenuMusic, true);
-            }
-            else
-            {
-                AudioControlPlaySong(-1, false);
-            }
-        }
-    ');
+    menu_addedit_boolean(
+        "Fullscreen:",
+        "global.fullscreen",
+        "OptionsEngineFullscreenCallback",
+        "Settings",
+        "Fullscreen"
+    );
+    
+    menu_addedit_select(
+        "Music:",
+        "global.music",
+        "OptionsEngineMusicCallback",
+        "Settings",
+        "Music"
+    );
     menu_add_option(MUSIC_NONE, "None");
     menu_add_option(MUSIC_MENU_ONLY, "Menu Only");
     menu_add_option(MUSIC_INGAME_ONLY, "In-Game Only");
     menu_add_option(MUSIC_BOTH, "Menu and In-Game");
     
-    menu_addedit_select("Particles:", "global.particles", '
-        gg2_write_ini("Settings", "Particles", argument[0]);
-    ');
+    menu_addedit_select(
+        "Particles:",
+        "global.particles",
+        "nullCallback",
+        "Settings",
+        "Particles"
+    );
     menu_add_option(PARTICLES_NORMAL, "Normal");
     menu_add_option(PARTICLES_OFF, "Disabled");
     menu_add_option(PARTICLES_ALTERNATIVE, "Alternative (faster)");
     
-    menu_addedit_select("Gibs:", "global.gibLevel", '
-        gg2_write_ini("Settings", "Gib Level", argument[0]);
-    ');
+    menu_addedit_select(
+        "Gibs:",
+        "global.gibLevel",
+        "nullCallback",
+        "Settings",
+        "Gib Level"
+    );
     menu_add_option(0, "Disabled");
     menu_add_option(1, "Blood only");
     menu_add_option(2, "Blood and medium gibs");
     menu_add_option(3, "Full blood and gibs");
 
-    menu_addedit_boolean("Hide Infiltrator 'Ghosts':", "global.hideSpyGhosts", '
-        gg2_write_ini("Settings", "Hide Spy Ghosts", argument[0]);
-    ');
+    menu_addedit_boolean(
+        "Hide Infiltrator 'Ghosts':",
+        "global.hideSpyGhosts",
+        "OptionsEngineFullscreenCallback",
+        "Settings",
+        "Hide Spy Ghosts"
+    );
     
-    menu_addedit_select("Ingame Aspect Ratio:", "global.resolutionkind", '
-        gg2_write_ini("Settings", "Resolution", argument[0]);
-        if(room != Options)
-            warnoptioneffect = !global.isHost;
-        global.changed_resolution = true;
-    ');
+    menu_addedit_select(
+        "Ingame Aspect Ratio:",
+        "global.resolutionkind",
+        "OptionsEngineResolutionCallback",
+        "Settings",
+        "Resolution"
+    );
     menu_add_option(0, "5:4");
     menu_add_option(1, "4:3");
     menu_add_option(2, "16:10");
     menu_add_option(3, "16:9");
     menu_add_option(4, "2:1");
     
-    menu_addedit_select("Framerate:", "global.frameratekind", '
-        gg2_write_ini("Settings", "Framerate", argument[0]);
-        if(room != Options)
-            warnoptioneffect = !global.isHost;
-    ');
+    menu_addedit_select(
+        "Framerate:",
+        "global.frameratekind",
+        "OptionsEngineFramerateCallback",
+        "Settings",
+        "Framerate"
+    );
     menu_add_option(0, "30");
     menu_add_option(1, "60");
     
-    menu_addedit_select("V Sync:", "global.monitorSync", '
-        gg2_write_ini("Settings", "Monitor Sync", argument[0]);
-        if (!instance_exists(GameServer))
-            display_reset(0, argument[0]);
-    ');
+    menu_addedit_select(
+        "V Sync:",
+        "global.monitorSync",
+        "OptionsEngineMonitorSyncCallback",
+        "Settings",
+        "Monitor Sync"
+    );
     menu_add_option(0, "Off");
     menu_add_option(1, "On unless hosting");
-    menu_addedit_boolean("Prompt for server-sent plugins:", "global.serverPluginsPrompt", '
-        if (argument[0] == false)
-            show_message("Please note that plugins can be dangerous, so you should only disable the prompt if you trust all plugins hosted at the source:#" + PLUGIN_SOURCE + "#" + PLUGIN_SOURCE_NOTICE)
-        gg2_write_ini("Settings", "ServerPluginsPrompt", argument[0]);
-    ');
-    menu_addedit_boolean("Prompt for restart:", "global.restartPrompt", '
-        gg2_write_ini("Settings", "RestartPrompt", argument[0]);
-    ');
+
+    menu_addedit_select(
+        "Prompt for restart:",
+        "global.restartPrompt",
+        "nullCallback",
+        "Settings",
+        "RestartPrompt"
+    );
     
     menu_addtablink("Ingame", 'OptionsTabIngameCallback');
     menu_addtablink("Engine", 'OptionsTabEngineCallback');

@@ -60,21 +60,18 @@
         "global.kothHudPos",
         "nullCallback",
         "Settings",
-        "KoTH HUD Positio"
+        "KoTH HUD Position"
     );
     menu_add_option(0, "Default");
     menu_add_option(1, "Stacked");
     
     menu_addedit_boolean(
-        "KOTH Timer Orientation:",
-        "global.kothHudPos",
+        "Fade Scoreboard:",
+        "global.fadeScoreboard",
         "nullCallback",
         "Settings",
-        "KoTH HUD Positio"
+        "Fade Scoreboard"
     );
-    menu_addedit_boolean("Fade Scoreboard:", "global.fadeScoreboard", '
-        gg2_write_ini("Settings", "Fade Scoreboard", argument[0]);
-    ');
     
     menu_addtablink("Ingame", 'OptionsTabIngameCallback');
     menu_addtablink("Engine", 'OptionsTabEngineCallback');

@@ -1574,6 +1574,11 @@
           <script>scripts\OptionsTabHudCallback.gml</script>
           <script>scripts\OptionsBackCallback.gml</script>
           <script>scripts\OptionsPlayerNameCallback.gml</script>
+          <script>scripts\OptionsEngineFullscreenCallback.gml</script>
+          <script>scripts\OptionsEngineMusicCallback.gml</script>
+          <script>scripts\OptionsEngineResolutionCallback.gml</script>
+          <script>scripts\OptionsEngineFramerateCallback.gml</script>
+          <script>scripts\OptionsEngineMonitorSyncCallback.gml</script>
         </scripts>
         <scripts name="InGameMenu">
           <script>scripts\InGameMenuReturnCallback.gml</script>
@@ -1611,6 +1616,7 @@
       <script>scripts\menu_hack_backbutton.gml</script>
       <script>scripts\menu_format_maprotation_filepath.gml</script>
       <script>scripts\menu_adduserevent.gml</script>
+      <script>scripts\persist_item_ini.gml</script>
     </scripts>
     <scripts name="Holidays">
       <script>scripts\xmasTime.gml</script>
