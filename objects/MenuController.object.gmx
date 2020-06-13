@@ -76,7 +76,6 @@ itemcount = menu_get_itemcount();
 
 if(editing != -1) {
     switch (item_type[editing]) {
-        case "edittext2":
         case "edittext":
         case "editnum":
             if (keyboard_check(vk_control) &amp;&amp; keyboard_check(ord("V"))) {
@@ -130,7 +129,6 @@ if(editing != -1) {
                         editing = virtualitem;
                         break;
                     case "edittext":
-                    case "edittext2":
                     case "editnum":
                         keyboard_string = "";
                         editing = virtualitem;

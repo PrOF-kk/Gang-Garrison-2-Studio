@@ -36,70 +36,70 @@
     bgtabs = true;
     
     oldPlayerName = global.playerName;
-    menu_addedit_text2("Player name:", "global.playerName", '
-        var newName;
-        newName = string_copy(argument[0], 0, min(string_length(argument[0]), MAX_PLAYERNAME_LENGTH));
-        gg2_write_ini("Settings", "PlayerName", newName);
-        if(room != Options and newName != oldPlayerName)
-        {
-            write_ubyte(global.serverSocket, PLAYER_CHANGENAME);
-            write_ubyte(global.serverSocket, string_length(newName));
-            write_string(global.serverSocket, newName);
-            socket_send(global.serverSocket);
-        }
-        oldPlayerName = newName;
-        return newName;
-    '); 
-    menu_addedit_boolean("Healer Radar:", "global.medicRadar", '
-        gg2_write_ini("Settings", "Healer Radar", argument[0]);
-    ');
-    menu_addedit_boolean("Show Healer:", "global.showHealer", '
-        gg2_write_ini("Settings", "Show Healer", argument[0]);
-    ');
-    menu_addedit_boolean("Show Healing:", "global.showHealing", '
-        gg2_write_ini("Settings", "Show Healing", argument[0]);
-    ');
-    menu_addedit_boolean("Additional Healthbar:", "global.showHealthBar", '
-        gg2_write_ini("Settings", "Show Healthbar", argument[0]);
-    ');
-    menu_addedit_boolean("Additional Teammate Stats:", "global.showTeammateStats", '
-        gg2_write_ini("Settings", "Show Extra Teammate Stats", argument[0]);
-    ');
-    menu_addedit_boolean("Kill Cam:", "global.killCam", '
-        gg2_write_ini("Settings", "Kill Cam", argument[0]);
-    ');
-    menu_addedit_boolean("Queued Jumping (Bunnyhopping):", "global.queueJumping", '
-        gg2_write_ini("Settings", "Queued Jumping", argument[0]);
-    ');
+    menu_addedit_text(
+        "Player Name:",
+        "global.playerName",
+        "OptionsPlayerNameCallback",
+        "Settings",
+        "PlayerName"
+    );
+    menu_addedit_boolean(
+        "Healer Radar:",
+        "global.medicRadar",
+        "nullCallback",
+        "Settings",
+        "Healer Radar"
+    );
+    menu_addedit_boolean(
+        "Show Healer:",
+        "global.showHealer",
+        "nullCallback",
+        "Settings",
+        "Show Healer"
+    );
+    menu_addedit_boolean(
+        "Show Healing:",
+        "global.showHealing",
+        "nullCallback",
+        "Settings",
+        "Show Healing"
+    );
+    menu_addedit_boolean(
+        "Additional Healthbar:",
+        "global.showHealthBar",
+        "nullCallback",
+        "Settings",
+        "Show Healthbar"
+    );
+    menu_addedit_boolean(
+        "Additional Teammate Stats:",
+        "global.showTeammateStats",
+        "nullCallback",
+        "Settings",
+        "Show Extra Teammate Stats"
+    );
+    menu_addedit_boolean(
+        "Kill Cam:",
+        "global.killCam",
+        "nullCallback",
+        "Settings",
+        "Kill Cam"
+    );
+    menu_addedit_boolean(
+        "Queued Jumping (Bunnyhopping):",
+        "global.queueJumping",
+        "nullCallback",
+        "Settings",
+        "Queued Jumping"
+    );
     
-    menu_addtablink("Ingame", '
-        instance_destroy();
-        instance_create(x,y,OptionsController);
-    ');
-    menu_addtablink("Engine", '
-        instance_destroy();
-        instance_create(x,y,EngineOptionsController);
-    ');
-    menu_addtablink("Controls 1", '
-        instance_destroy();
-        instance_create(x,y,ControlsController);
-    ');
-    menu_addtablink("Controls 2", '
-        instance_destroy();
-        instance_create(x,y,AdvControlsController);
-    ');
-    menu_addtablink("HUD", '
-        instance_destroy();
-        instance_create(x,y,HUDOptionsController);
-    ');
+    menu_addtablink("Ingame", 'OptionsTabIngameCallback');
+    menu_addtablink("Engine", 'OptionsTabEngineCallback');
+    menu_addtablink("Controls 1", 'OptionsTabControls1Callback');
+    menu_addtablink("Controls 2", 'OptionsTabControls2Callback');
+    menu_addtablink("HUD", 'OptionsTabHudCallback');
     
-    menu_addback("Back", '
-        instance_destroy();
-        if(room == Options)
-            room_goto_fix(Menu);
-        else
-            instance_create(0,0,InGameMenuController);
-    ');
+    menu_addback("Back", 'OptionsBackCallback');
 }
 </string>
           </argument>

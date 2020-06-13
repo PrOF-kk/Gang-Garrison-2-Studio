@@ -31,54 +31,92 @@ menumode = true;
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_addedit_num("Scout:", "global.classlimits[CLASS_SCOUT]", '
-    gg2_write_ini("Classlimits", "Scout", argument[0]);
-', 255);
-menu_addedit_num("Pyro:", "global.classlimits[CLASS_PYRO]", '
-    gg2_write_ini("Classlimits", "Pyro", argument[0]);
-', 255);
-menu_addedit_num("Soldier:", "global.classlimits[CLASS_SOLDIER]", '
-    gg2_write_ini("Classlimits", "Soldier", argument[0]);
-', 255);
-menu_addedit_num("Heavy:", "global.classlimits[CLASS_HEAVY]", '
-    gg2_write_ini("Classlimits", "Heavy", argument[0]);
-', 255);
-menu_addedit_num("Demoman:", "global.classlimits[CLASS_DEMOMAN]", '
-    gg2_write_ini("Classlimits", "Demoman", argument[0]);
-', 255);
-menu_addedit_num("Medic:", "global.classlimits[CLASS_MEDIC]", '
-    gg2_write_ini("Classlimits", "Medic", argument[0]);
-', 255);
-menu_addedit_num("Engineer:", "global.classlimits[CLASS_ENGINEER]", '
-    gg2_write_ini("Classlimits", "Engineer", argument[0]);
-', 255);
-menu_addedit_num("Spy:", "global.classlimits[CLASS_SPY]", '
-    gg2_write_ini("Classlimits", "Spy", argument[0]);
-', 255);
-menu_addedit_num("Sniper:", "global.classlimits[CLASS_SNIPER]", '
-    gg2_write_ini("Classlimits", "Sniper", argument[0]);
-', 255);
-menu_addedit_num("Quote:", "global.classlimits[CLASS_QUOTE]", '
-    gg2_write_ini("Classlimits", "Quote", argument[0]);
-', 255);
+menu_addedit_num(
+    "Runner:",
+    "global.classlimits[CLASS_SCOUT]",
+    "nullCallback",
+    "Classlimits",
+    "Runner",
+    255
+);
+menu_addedit_num(
+    "Firebug:",
+    "global.classlimits[CLASS_PYRO]",
+    "nullCallback",
+    "Classlimits",
+    "Firebug",
+    255
+);
+menu_addedit_num(
+    "Rocketman:",
+    "global.classlimits[CLASS_SOLDIER]",
+    "nullCallback",
+    "Classlimits",
+    "Rocketman",
+    255
+);
+menu_addedit_num(
+    "Overweight:",
+    "global.classlimits[CLASS_HEAVY]",
+    "nullCallback",
+    "Classlimits",
+    "Overweight",
+    255
+);
+menu_addedit_num(
+    "Detonator:",
+    "global.classlimits[CLASS_DEMOMAN]",
+    "nullCallback",
+    "Classlimits",
+    "Detonator",
+    255
+);
+menu_addedit_num(
+    "Healer:",
+    "global.classlimits[CLASS_MEDIC]",
+    "nullCallback",
+    "Classlimits",
+    "Healer",
+    255
+);
+menu_addedit_num(
+    "Constructor:",
+    "global.classlimits[CLASS_ENGINEER]",
+    "nullCallback",
+    "Classlimits",
+    "Constructor",
+    255
+);
+menu_addedit_num(
+    "Infiltrator:",
+    "global.classlimits[CLASS_SPY]",
+    "nullCallback",
+    "Classlimits",
+    "Infiltrator",
+    255
+);
+menu_addedit_num(
+    "Rifleman:",
+    "global.classlimits[CLASS_SNIPER]",
+    "nullCallback",
+    "Classlimits",
+    "Rifleman",
+    255
+);
+menu_addedit_num(
+    "Quote:",
+    "global.classlimits[CLASS_QUOTE]",
+    "nullCallback",
+    "Classlimits",
+    "Quote",
+    255
+);
 
-menu_addtablink("Main", '
-    instance_create(x,y,HostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Advanced", '
-    instance_create(x,y,AdvHostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Classlimits", '
-    instance_create(x,y,ClasslimitsMenuController);
-    instance_destroy();
-');
+menu_addtablink("Main", 'HostOptionsTabHostOptionsCallback');
+menu_addtablink("Advanced", 'HostOptionsTabAdvHostOptionsCallback');
+menu_addtablink("Classlimits", 'HostOptionsTabClasslimitsCallback');
 
-menu_addback("Back", '
-    instance_create(x,y,MainMenuController);
-    instance_destroy();
-');
+menu_addback("Back", 'HostOptionsBackCallback');
 </string>
           </argument>
         </arguments>

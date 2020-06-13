@@ -48,34 +48,13 @@
     menu_addedit_key("Drop Case:", "global.drop");
     menu_addedit_key("Show Scores:", "global.showScores");
     
-    menu_addtablink("Ingame", '
-        instance_destroy();
-        instance_create(x,y,OptionsController);
-    ');
-    menu_addtablink("Engine", '
-        instance_destroy();
-        instance_create(x,y,EngineOptionsController);
-    ');
-    menu_addtablink("Controls 1", '
-        instance_destroy();
-        instance_create(x,y,ControlsController);
-    ');
-    menu_addtablink("Controls 2", '
-        instance_destroy();
-        instance_create(x,y,AdvControlsController);
-    ');
-    menu_addtablink("HUD", '
-        instance_destroy();
-        instance_create(x,y,HUDOptionsController);
-    ');
+    menu_addtablink("Ingame", 'OptionsTabIngameCallback');
+    menu_addtablink("Engine", 'OptionsTabEngineCallback');
+    menu_addtablink("Controls 1", 'OptionsTabControls1Callback');
+    menu_addtablink("Controls 2", 'OptionsTabControls2Callback');
+    menu_addtablink("HUD", 'OptionsTabHudCallback');
     
-    menu_addback("Back", '
-        instance_destroy();
-        if(room == Options)
-            room_goto_fix(Menu);
-        else
-            instance_create(0,0,InGameMenuController);
-    ');
+    menu_addback("Back", 'OptionsBackCallback');
 }
 </string>
           </argument>
