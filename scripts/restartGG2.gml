@@ -1,4 +1,4 @@
-// restart the game, e.g. because of unexpected data or to clean up the plugins
+// restart the game, e.g. because of unexpected data
 
 startGG2();
 game_end();

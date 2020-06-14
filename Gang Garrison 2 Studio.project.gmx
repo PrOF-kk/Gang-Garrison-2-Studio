@@ -1543,6 +1543,58 @@
       <script>scripts\readClasslimitFromIni.gml</script>
     </scripts>
     <scripts name="Menus">
+      <scripts name="Callbacks">
+        <scripts name="MainMenu">
+          <script>scripts\MainMenuHostGameCallback.gml</script>
+          <script>scripts\MainMenuJoinLobbyCallback.gml</script>
+          <script>scripts\MainMenuJoinManualCallback.gml</script>
+          <script>scripts\MainMenuGarrisonBuilderCallback.gml</script>
+          <script>scripts\MainMenuOptionsCallback.gml</script>
+          <script>scripts\MainMenuHaxxyAwardsCallback.gml</script>
+          <script>scripts\MainMenuCreditsCallback.gml</script>
+          <script>scripts\MainMenuForumsCallback.gml</script>
+          <script>scripts\MainMenuQuitCallback.gml</script>
+        </scripts>
+        <scripts name="HostOptions">
+          <script>scripts\HostOptionsTabHostOptionsCallback.gml</script>
+          <script>scripts\HostOptionsTabAdvHostOptionsCallback.gml</script>
+          <script>scripts\HostOptionsTabClasslimitsCallback.gml</script>
+          <script>scripts\HostOptionsStartGameCallback.gml</script>
+          <script>scripts\HostOptionsBackCallback.gml</script>
+          <script>scripts\HostOptionsServerNameCallback.gml</script>
+          <script>scripts\HostOptionsWelcomeMessageCallback.gml</script>
+          <script>scripts\AdvHostOptionsMapRotCallback.gml</script>
+          <script>scripts\AdvHostOptionsUpnpCallback.gml</script>
+        </scripts>
+        <scripts name="Options">
+          <script>scripts\OptionsTabIngameCallback.gml</script>
+          <script>scripts\OptionsTabEngineCallback.gml</script>
+          <script>scripts\OptionsTabControls1Callback.gml</script>
+          <script>scripts\OptionsTabControls2Callback.gml</script>
+          <script>scripts\OptionsTabHudCallback.gml</script>
+          <script>scripts\OptionsBackCallback.gml</script>
+          <script>scripts\OptionsPlayerNameCallback.gml</script>
+          <script>scripts\OptionsEngineFullscreenCallback.gml</script>
+          <script>scripts\OptionsEngineMusicCallback.gml</script>
+          <script>scripts\OptionsEngineResolutionCallback.gml</script>
+          <script>scripts\OptionsEngineFramerateCallback.gml</script>
+          <script>scripts\OptionsEngineMonitorSyncCallback.gml</script>
+        </scripts>
+        <scripts name="InGameMenu">
+          <script>scripts\InGameMenuReturnCallback.gml</script>
+          <script>scripts\InGameMenuKickCallback.gml</script>
+          <script>scripts\InGameMenuOptionsCallback.gml</script>
+          <script>scripts\InGameMenuDisconnectCallback.gml</script>
+          <script>scripts\InGameMenuQuitCallback.gml</script>
+        </scripts>
+        <scripts name="BuilderMenu">
+          <script>scripts\BuilderMenuGamemodeCallback.gml</script>
+          <script>scripts\BuilderMenuMainCallback.gml</script>
+          <script>scripts\BuilderMenuBackBuilderCallback.gml</script>
+          <script>scripts\BuilderMenuBackMenuCallback.gml</script>
+        </scripts>
+        <script>scripts\nullCallback.gml</script>
+      </scripts>
       <script>scripts\menu_create.gml</script>
       <script>scripts\menu_addlink.gml</script>
       <script>scripts\menu_addtablink.gml</script>
@@ -1550,7 +1602,6 @@
       <script>scripts\menu_background.gml</script>
       <script>scripts\menu_addedit_num.gml</script>
       <script>scripts\menu_addedit_text.gml</script>
-      <script>scripts\menu_addedit_text2.gml</script>
       <script>scripts\menu_addedit_select.gml</script>
       <script>scripts\menu_add_option.gml</script>
       <script>scripts\menu_addedit_boolean.gml</script>
@@ -1565,6 +1616,7 @@
       <script>scripts\menu_hack_backbutton.gml</script>
       <script>scripts\menu_format_maprotation_filepath.gml</script>
       <script>scripts\menu_adduserevent.gml</script>
+      <script>scripts\persist_item_ini.gml</script>
     </scripts>
     <scripts name="Holidays">
       <script>scripts\xmasTime.gml</script>
@@ -1590,22 +1642,6 @@
       <script>scripts\rewardCreateChallenge.gml</script>
       <script>scripts\name_width_badges.gml</script>
       <script>scripts\getCapeSubimage.gml</script>
-    </scripts>
-    <scripts name="Plugins">
-      <scripts name="API">
-        <script>scripts\PluginPacketSend.gml</script>
-        <script>scripts\PluginPacketSendTo.gml</script>
-        <script>scripts\PluginPacketGetBuffer.gml</script>
-        <script>scripts\PluginPacketGetPlayer.gml</script>
-        <script>scripts\PluginPacketPop.gml</script>
-        <script>scripts\_PluginPacketPush.gml</script>
-      </scripts>
-      <script>scripts\loadplugins.gml</script>
-      <script>scripts\getpluginhashes.gml</script>
-      <script>scripts\loadserverplugins.gml</script>
-      <script>scripts\extractzip.gml</script>
-      <script>scripts\checkpluginname.gml</script>
-      <script>scripts\pluginscleanup.gml</script>
     </scripts>
     <scripts name="Maps">
       <scripts name="CustomMaps">
@@ -1804,6 +1840,7 @@
       <script>scripts\getCharacterSpriteId.gml</script>
       <script>scripts\format_timer_value.gml</script>
       <script>scripts\getRelativePathIfDescendand.gml</script>
+      <script>scripts\extractzip.gml</script>
     </scripts>
     <scripts name="ggon">
       <script>scripts\ggon_decode.gml</script>
@@ -1834,13 +1871,6 @@
         <script>scripts\variable_local_free.gml</script>
       </scripts>
       <script>scripts\show_message_ext_bootleg.gml</script>
-      <scripts name="Dummy">
-        <script>scripts\execute_string.gml</script>
-        <script>scripts\execute_program.gml</script>
-        <script>scripts\execute_file.gml</script>
-        <script>scripts\show_menu_pos.gml</script>
-        <script>scripts\export_include_file_location.gml</script>
-      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -2169,13 +2199,11 @@
     <room>rooms\BuilderOptions</room>
     <room>rooms\BuilderRoom</room>
   </rooms>
-  <constants number="137">
+  <constants number="133">
     <constant name="VERSION">29200</constant>
     <constant name="GAME_VERSION_STRING">"v2.9.2"</constant>
     <constant name="GAME_NAME_STRING">"Gang Garrison 2"</constant>
     <constant name="GAME_URL_STRING">"http://www.ganggarrison.com"</constant>
-    <constant name="PLUGIN_SOURCE">"http://www.ganggarrison.com/plugins/"</constant>
-    <constant name="PLUGIN_SOURCE_NOTICE">"While these plugins have been screened by the Gang Garrison 2 community, they cannot guarantee they are safe."</constant>
     <constant name="BACKGROUND_SOURCE">"http://www.ganggarrison.com/background.png"</constant>
     <constant name="DEVMESSAGES_SOURCE">"http://www.ganggarrison.com/devmessages.txt"</constant>
     <constant name="DEVMESSAGES_SOURCE_BETA">"http://www.ganggarrison.com/devmessages_beta.txt"</constant>
@@ -2238,8 +2266,6 @@
     <constant name="REWARD_CHALLENGE_RESPONSE">52</constant>
     <constant name="MESSAGE_STRING">53</constant>
     <constant name="WEAPON_FIRE">54</constant>
-    <constant name="PLUGIN_PACKET">55</constant>
-    <constant name="KICK_BAD_PLUGIN_PACKET">56</constant>
     <constant name="PING">57</constant>
     <constant name="CLIENT_SETTINGS">58</constant>
     <constant name="KICK_MULTI_CLIENT">59</constant>

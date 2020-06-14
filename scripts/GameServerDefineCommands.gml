@@ -22,5 +22,4 @@ commandBytes[PLAYER_CHANGENAME] = commandBytesPrefixLength1;
 commandBytes[INPUTSTATE] = 4;
 commandBytes[REWARD_REQUEST] = commandBytesPrefixLength1;
 commandBytes[REWARD_CHALLENGE_RESPONSE] = 16;
-commandBytes[PLUGIN_PACKET] = commandBytesPrefixLength2;
 commandBytes[CLIENT_SETTINGS] = 1;

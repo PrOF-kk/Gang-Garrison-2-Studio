@@ -35,7 +35,6 @@ bgtabs = false;
 menumode = false;
 screenheight = 600;
 
-// Hack: The back button should usually appear last in the menu, even if plugins
-// add new items later, so we treat it separately.
+// Hack: The back button should usually appear last in the menu, so we treat it separately.
 menu_script_back = "";
 menu_text_back = "";

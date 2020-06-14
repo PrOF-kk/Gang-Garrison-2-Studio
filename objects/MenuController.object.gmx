@@ -76,7 +76,6 @@ itemcount = menu_get_itemcount();
 
 if(editing != -1) {
     switch (item_type[editing]) {
-        case "edittext2":
         case "edittext":
         case "editnum":
             if (keyboard_check(vk_control) &amp;&amp; keyboard_check(ord("V"))) {
@@ -88,13 +87,13 @@ if(editing != -1) {
         case "editkeyormouse":
             if mouse_check_button(mb_left) {
                 menu_set_var(editing, MOUSE_LEFT);
-                execute_string(item_script[editing], MOUSE_LEFT);
+                script_execute(item_script[editing], MOUSE_LEFT);
                 editing = -1;
                 exit;
             }
             else if mouse_check_button(mb_right) {
                 menu_set_var(editing, MOUSE_RIGHT);
-                execute_string(item_script[editing], MOUSE_RIGHT);
+                script_execute(item_script[editing], MOUSE_RIGHT);
                 editing = -1;
                 exit;
             }
@@ -102,7 +101,7 @@ if(editing != -1) {
             if keyboard_check_direct(vk_tab) keyboard_lastkey = vk_tab;
             if keyboard_lastkey != 0 {
                 menu_set_var(editing, keyboard_lastkey);
-                execute_string(item_script[editing], menu_get_var(editing));
+                script_execute(item_script[editing], menu_get_var(editing));
                 editing = -1;
                 exit;
             }
@@ -119,10 +118,10 @@ if(editing != -1) {
                         event_user(item_script[virtualitem]);
                         break;
                     case "script":
-                        execute_string(item_script[virtualitem]);
+                        script_execute(item_script[virtualitem]);
                         break;
                     case "editscript":
-                        item_value[virtualitem] = execute_string(item_script[virtualitem]);
+                        item_value[virtualitem] = script_execute(item_script[virtualitem], menu_get_var(editing));
                         break;
                     case "editkey":
                     case "editkeyormouse":
@@ -130,7 +129,6 @@ if(editing != -1) {
                         editing = virtualitem;
                         break;
                     case "edittext":
-                    case "edittext2":
                     case "editnum":
                         keyboard_string = "";
                         editing = virtualitem;
@@ -138,7 +136,7 @@ if(editing != -1) {
                     case "editselect":
                         item_value[virtualitem] = (item_value[virtualitem]+1) mod item_options[virtualitem];
                         menu_set_var(virtualitem, item_option_value[virtualitem, item_value[virtualitem]]);
-                        execute_string(item_script[virtualitem], menu_get_var(virtualitem));
+                        script_execute(item_script[virtualitem], menu_get_var(virtualitem));
                         break;
                 }
             }
@@ -153,7 +151,7 @@ if(editing != -1) {
             mouse_clear(mb_left);
             if(-2-virtualitem &lt; tabs)
             {
-                execute_string(tab_script[-2-virtualitem]);
+                script_execute(tab_script[-2-virtualitem]);
             }
         }
     } else {
@@ -400,7 +398,7 @@ if(view_hview[0] &lt; 600)
           <argument>
             <kind>1</kind>
             <string>if(stepHasRun)
-    execute_string(menu_script_back);
+    script_execute(menu_script_back);
 
 </string>
           </argument>
@@ -427,21 +425,18 @@ if(view_hview[0] &lt; 600)
             <string>if(editing != -1) { 
     switch (item_type[editing]) {
         case "edittext":
-            menu_set_var(editing, item_value[editing]);
-            execute_string(item_script[editing], item_value[editing]);
-            break;
-        case "edittext2":
-            item_value[editing] = execute_string(item_script[editing], item_value[editing]);
-            menu_set_var(editing, item_value[editing]);
+            var value = script_execute(item_script[editing], item_value[editing]);
+            menu_set_var(editing, value);
+            persist_item_ini(editing, value);
             break;
         case "editnum":
             var newval;
             newval = real(string_digits(item_value[editing]));
             if(item_limit[editing]&gt;0)
                 newval = min(newval, item_limit[editing]);
-            menu_set_var(editing, newval);
-            execute_string(item_script[editing], menu_get_var(editing));
-            item_value[editing] = string(menu_get_var(editing));
+            var value = script_execute(item_script[editing], item_value[editing]);
+            menu_set_var(editing, value);
+            persist_item_ini(editing, value);
             break;
     }
     editing = -1;

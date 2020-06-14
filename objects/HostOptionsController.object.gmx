@@ -44,62 +44,78 @@ menumode = true;
 menu_background(512, 24, 8, 12, 4);
 bgtabs = true;
 
-menu_addedit_text2("Server Name:", "global.serverName", '
-    var newName;
-    newName = string_copy(argument[0], 0, 25);
-    gg2_write_ini("Server", "ServerName", newName);
-    return newName;
-');
-menu_addedit_text2("Welcome message:", "global.welcomeMessage", '
-    var newMessage;
-    newMessage = string_copy(argument[0], 0, 255);
-    gg2_write_ini("Server", "WelcomeMessage", newMessage);
-    return newMessage;
-');
-
-menu_addedit_text("Password:", "global.serverPassword", '
-    gg2_write_ini("Server", "Password", argument[0]);
-');
-menu_addedit_num("Player Limit:", "global.playerLimit", '
-    gg2_write_ini("Settings", "PlayerLimit", argument[0]);
-', 48);
-menu_addedit_num("Time Limit (mins):", "global.timeLimitMins", '
-    gg2_write_ini("Server", "Time Limit", argument[0]);
-');
-menu_addedit_num("Capture Limit:", "global.caplimit", '
-    gg2_write_ini("Server", "CapLimit", argument[0]);
-');
-menu_addedit_num("Deathmatch Kill Limit:", "global.killLimit", '
-    gg2_write_ini("Server", "Deathmatch Kill Limit", argument[0]);
-');
-menu_addedit_num("TDM Invulnerability (secs):", "global.tdmInvulnerabilitySeconds", '
-    gg2_write_ini("Server", "Team Deathmatch Invulnerability Seconds", argument[0]);
-');
-menu_addedit_num("Respawn Time (secs):", "global.Server_RespawntimeSec", '
-    gg2_write_ini("Server", "Respawn Time", argument[0]);
-');
+menu_addedit_text(
+    "Server Name:",
+    "global.serverName",
+    "HostOptionsServerNameCallback",
+    "Server",
+    "ServerName"
+);
+menu_addedit_text(
+    "Welcome message:",
+    "global.welcomeMessage",
+    "HostOptionsWelcomeMessageCallback",
+    "Server",
+    "WelcomeMessage"
+);
+menu_addedit_text(
+    "Password:",
+    "global.serverPassword",
+    "nullCallback",
+    "Server",
+    "Password"
+);
+menu_addedit_num(
+    "Player Limit:",
+    "global.playerLimit",
+    "nullCallback",
+    "Server",
+    "PlayerLimit",
+    48
+);
+menu_addedit_num(
+    "Time Limit (mins):",
+    "global.timeLimitMins",
+    "nullCallback",
+    "Server",
+    "Time Limit"
+);
+menu_addedit_num(
+    "Capture Limit:",
+    "global.caplimit",
+    "nullCallback",
+    "Server",
+    "CapLimit"
+);
+menu_addedit_num(
+    "Deathmatch Kill Limit:",
+    "global.killLimit",
+    "nullCallback",
+    "Server",
+    "Deathmatch Kill Limit"
+);
+menu_addedit_num(
+    "TDM Invulnerability (secs):",
+    "global.tdmInvulnerabilitySeconds",
+    "nullCallback",
+    "Server",
+    "Team Deathmatch Invulnerability Seconds"
+);
+menu_addedit_num(
+    "Respawn Time (secs):",
+    "global.Server_RespawntimeSec",
+    "nullCallback",
+    "Server",
+    "Respawn Time"
+);
     
     
-menu_addtablink("Main", '
-    instance_create(x,y,HostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Advanced", '
-    instance_create(x,y,AdvHostOptionsController);
-    instance_destroy();
-');
-menu_addtablink("Classlimits", '
-    instance_create(x,y,ClasslimitsMenuController);
-    instance_destroy();
-');
+menu_addtablink("Main", 'HostOptionsTabHostOptionsCallback');
+menu_addtablink("Advanced", 'HostOptionsTabAdvHostOptionsCallback');
+menu_addtablink("Classlimits", 'HostOptionsTabClasslimitsCallback');
 
-menu_addlink("Start Game", '
-    start_server();
-');
-menu_addback("Back", '
-    instance_create(x,y,MainMenuController);
-    instance_destroy();
-');
+menu_addlink("Start Game", 'HostOptionsStartGameCallback');
+menu_addback("Back", 'HostOptionsBackCallback');
 </string>
           </argument>
         </arguments>

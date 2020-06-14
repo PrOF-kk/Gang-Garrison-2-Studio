@@ -1,6 +1,6 @@
 // Ask the user whether he wants to restart the game, or quit.
 // This is used in situations where simply continuing to run is not advisable,
-// e.g. on unexpected errors (server sent unexpected data) or because plugin
+// e.g. on unexpected errors (server sent unexpected data)
 // code needs to be unloaded.
 // argument[0]: message
 // argument[1]: (optional) show cancel button

@@ -3,11 +3,9 @@
 // any desired state update itself.
 // Useful for things like file dialogs.
 // argument[0] - name
-// argument[1] - Initial display value
-// argument[2] - GML code to execute. Return value is set as new display value.
-
+// argument[1] - script to run upon change (argument[0] is new value)
 item_name[items] = argument[0];
 item_type[items] = "editscript";
-item_value[items] = argument[1];
-item_script[items] = argument[2];
+item_script[items] = argument[1];
+
 items += 1;

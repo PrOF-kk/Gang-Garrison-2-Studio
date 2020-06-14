@@ -46,7 +46,4 @@ with(Builder)
             entity.image_index = 0;
         }
     }
-    
-    // Custom script that which plugins can use
-    execute_string(global.placeEntityFunction, entity);
 }
