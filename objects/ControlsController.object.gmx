@@ -35,18 +35,18 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
-    menu_addedit_key("Jump/up:", "global.jump");
-    menu_addedit_key("Down:", "global.down");
-    menu_addedit_key("Left:", "global.left");
-    menu_addedit_key("Right:", "global.right");
-    menu_addedit_key("Jump/up (Alternate):", "global.jump2");
-    menu_addedit_key("Down (Alternate):", "global.down2");
-    menu_addedit_key("Left (Alternate):", "global.left2");
-    menu_addedit_key("Right (Alternate):", "global.right2");
-    menu_addedit_key("Taunt:", "global.taunt");
-    menu_addedit_key("Call for Healer:", "global.medic");
-    menu_addedit_key("Drop Case:", "global.drop");
-    menu_addedit_key("Show Scores:", "global.showScores");
+    menu_addedit_key("Jump/up:", "jump");
+    menu_addedit_key("Down:", "down");
+    menu_addedit_key("Left:", "left");
+    menu_addedit_key("Right:", "right");
+    menu_addedit_key("Jump/up (Alternate):", "jump2");
+    menu_addedit_key("Down (Alternate):", "down2");
+    menu_addedit_key("Left (Alternate):", "left2");
+    menu_addedit_key("Right (Alternate):", "right2");
+    menu_addedit_key("Taunt:", "taunt");
+    menu_addedit_key("Call for Healer:", "medic");
+    menu_addedit_key("Drop Case:", "drop");
+    menu_addedit_key("Show Scores:", "showScores");
     
     menu_addtablink("Ingame", OptionsTabIngameCallback);
     menu_addtablink("Engine", OptionsTabEngineCallback);

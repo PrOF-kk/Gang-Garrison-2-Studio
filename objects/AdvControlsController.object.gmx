@@ -35,13 +35,13 @@
     menu_background(512, 24, 8, 12, 4);
     bgtabs = true;
     
-    menu_addedit_keyormouse("Primary Fire:", "global.attack");
-    menu_addedit_keyormouse("Secondary Ability:", "global.special");
-    menu_addedit_key("Emoticon Menu:", "global.chat1");
-    menu_addedit_key("Gameplay Emote Menu:", "global.chat2");
-    menu_addedit_key("Direction Emote Menu:", "global.chat3");
-    menu_addedit_key("Change Team:", "global.changeTeam");
-    menu_addedit_key("Change Class:", "global.changeClass");
+    menu_addedit_keyormouse("Primary Fire:", "attack");
+    menu_addedit_keyormouse("Secondary Ability:", "special");
+    menu_addedit_key("Emoticon Menu:", "chat1");
+    menu_addedit_key("Gameplay Emote Menu:", "chat2");
+    menu_addedit_key("Direction Emote Menu:", "chat3");
+    menu_addedit_key("Change Team:", "changeTeam");
+    menu_addedit_key("Change Class:", "changeClass");
     
     menu_addtablink("Ingame", OptionsTabIngameCallback);
     menu_addtablink("Engine", OptionsTabEngineCallback);

@@ -38,56 +38,56 @@
     oldPlayerName = global.playerName;
     menu_addedit_text(
         "Player Name:",
-        "global.playerName",
+        "playerName",
         OptionsPlayerNameCallback,
         "Settings",
         "PlayerName"
     );
     menu_addedit_boolean(
         "Healer Radar:",
-        "global.medicRadar",
+        "medicRadar",
         nullCallback,
         "Settings",
         "Healer Radar"
     );
     menu_addedit_boolean(
         "Show Healer:",
-        "global.showHealer",
+        "showHealer",
         nullCallback,
         "Settings",
         "Show Healer"
     );
     menu_addedit_boolean(
         "Show Healing:",
-        "global.showHealing",
+        "showHealing",
         nullCallback,
         "Settings",
         "Show Healing"
     );
     menu_addedit_boolean(
         "Additional Healthbar:",
-        "global.showHealthBar",
+        "showHealthBar",
         nullCallback,
         "Settings",
         "Show Healthbar"
     );
     menu_addedit_boolean(
         "Additional Teammate Stats:",
-        "global.showTeammateStats",
+        "showTeammateStats",
         nullCallback,
         "Settings",
         "Show Extra Teammate Stats"
     );
     menu_addedit_boolean(
         "Kill Cam:",
-        "global.killCam",
+        "killCam",
         nullCallback,
         "Settings",
         "Kill Cam"
     );
     menu_addedit_boolean(
         "Queued Jumping (Bunnyhopping):",
-        "global.queueJumping",
+        "queueJumping",
         nullCallback,
         "Settings",
         "Queued Jumping"
