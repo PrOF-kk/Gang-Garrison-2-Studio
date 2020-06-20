@@ -34,15 +34,15 @@
     
     for(i=0;i&lt;ds_list_size(global.gamemodes); i+=1) {
         menu_addlink(ds_map_find_value(ds_list_find_value(global.gamemodes, i), "name"),
-            'BuilderMenuGamemodeCallback'
+            BuilderMenuGamemodeCallback
         );
     }
     
     if (room == BuilderRoom) {
-        menu_addlink("Main menu", 'BuilderMenuMainCallback');
-        menu_addback("Back", 'BuilderMenuBackBuilderCallback');
+        menu_addlink("Main menu", BuilderMenuMainCallback);
+        menu_addback("Back", BuilderMenuBackBuilderCallback);
     } else {
-        menu_addback("Back", 'BuilderMenuBackMenuCallback');
+        menu_addback("Back", BuilderMenuBackMenuCallback);
     }
 }
 </string>

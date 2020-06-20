@@ -33,14 +33,14 @@
     menu_background(212, 24, 8, 12, 4);
     menu_setdimmed();
     
-    menu_addlink("Return to Game", 'InGameMenuReturnCallback');
-    menu_addback("", 'InGameMenuReturnCallback');
+    menu_addlink("Return to Game", InGameMenuReturnCallback);
+    menu_addback("", InGameMenuReturnCallback);
     if (global.isHost) {
-        menu_addlink("Kick players", 'InGameMenuKickCallback');
+        menu_addlink("Kick players", InGameMenuKickCallback);
     }
-    menu_addlink("Options", 'InGameMenuOptionsCallback');
-    menu_addlink("Disconnect", 'InGameMenuDisconnectCallback');
-    menu_addlink("Quit Game", 'InGameMenuQuitCallback');
+    menu_addlink("Options", InGameMenuOptionsCallback);
+    menu_addlink("Disconnect", InGameMenuDisconnectCallback);
+    menu_addlink("Quit Game", InGameMenuQuitCallback);
 }
 </string>
           </argument>
