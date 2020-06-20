@@ -1872,6 +1872,12 @@
       </scripts>
       <script>scripts\show_message_ext_bootleg.gml</script>
     </scripts>
+    <scripts name="DummyScripts">
+      <script>scripts\execute_program.gml</script>
+      <script>scripts\execute_string.gml</script>
+      <script>scripts\show_menu_pos.gml</script>
+      <script>scripts\export_include_file_location.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Networking">
