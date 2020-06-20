@@ -31,18 +31,18 @@
     
     menu_background(208, 24, 8, 12, 4);
     
-    menu_addlink("Host Game", 'MainMenuHostGameCallback');
-    menu_addlink("Join (lobby)", 'MainMenuJoinGameCallback');
-    menu_addlink("Join (manual)", 'MainMenuJoinManualCallback');
-    menu_addlink("Garrison Builder", 'MainMenuGarrisonBuilderCallback');
-    menu_addlink("Options", 'MainMenuOptionsCallback');
+    menu_addlink("Host Game", MainMenuHostGameCallback);
+    menu_addlink("Join (lobby)", MainMenuJoinLobbyCallback);
+    menu_addlink("Join (manual)", MainMenuJoinManualCallback);
+    menu_addlink("Garrison Builder", MainMenuGarrisonBuilderCallback);
+    menu_addlink("Options", MainMenuOptionsCallback);
     if (global.rewardId != '')
     {
-        menu_addlink("Manage Haxxy Rewards", 'MainMenuHaxxyAwardsCallback');
+        menu_addlink("Manage Haxxy Rewards", MainMenuHaxxyAwardsCallback);
     }
-    menu_addlink("Credits", 'MainMenuCreditsCallback');
-    menu_addlink("Visit The Forums",'MainMenuForumsCallback');
-    menu_addback("Quit", 'MainMenuQuitCallback');
+    menu_addlink("Credits", MainMenuCreditsCallback);
+    menu_addlink("Visit The Forums",MainMenuForumsCallback);
+    menu_addback("Quit", MainMenuQuitCallback);
 
     // Music setting set to "Menu Only" or "Menu and In-Game"
     if (!sound_isplaying(global.MenuMusic)

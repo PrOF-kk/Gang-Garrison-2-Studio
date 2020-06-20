@@ -34,7 +34,7 @@ bgtabs = true;
 menu_addedit_num(
     "Hosting Port:",
     "global.hostingPort",
-    "nullCallback",
+    nullCallback,
     "Settings",
     "HostingPort",
     65535
@@ -44,13 +44,13 @@ menu_addedit_num(
 menu_addedit_script(
     "Map Rotation:",
     menu_format_maprotation_filepath(global.mapRotationFile),
-    'AdvHostOptionsMapRotCallback'
+    AdvHostOptionsMapRotCallback
 );
 
 menu_addedit_select(
     "Shuffle map rotation:",
     "global.shuffleRotation",
-    "nullCallback",
+    nullCallback,
     "Server",
     "ShuffleRotation"
 );
@@ -61,31 +61,31 @@ menu_add_option(2, "Shuffle without bias");
 menu_addedit_boolean(
     "Auto Balance:",
     "global.autobalance",
-    "nullCallback",
+    nullCallback,
     "Server",
     "AutoBalance"
 );
 menu_addedit_boolean(
     "Announce to Lobby:",
     "global.useLobbyServer",
-    "nullCallback",
+    nullCallback,
     "Settings",
     "UseLobby"
 );
 menu_addedit_boolean(
     "Attempt UPnP Forwarding:",
     "global.attemptPortForward",
-    "AdvHostOptionsUpnpCallback",
+    AdvHostOptionsUpnpCallback,
     "Server",
     "Attempt UPnP Forwarding"
 );
 
-menu_addtablink("Main", 'HostOptionsTabHostOptionsCallback');
-menu_addtablink("Advanced", 'HostOptionsTabAdvHostOptionsCallback');
-menu_addtablink("Classlimits", 'HostOptionsTabClasslimitsCallback');
+menu_addtablink("Main", HostOptionsTabHostOptionsCallback);
+menu_addtablink("Advanced", HostOptionsTabAdvHostOptionsCallback);
+menu_addtablink("Classlimits", HostOptionsTabClasslimitsCallback);
 
-menu_addlink("Start Game", 'HostOptionsStartGameCallback');
-menu_addback("Back", 'HostOptionsBackCallback');
+menu_addlink("Start Game", HostOptionsStartGameCallback);
+menu_addback("Back", HostOptionsBackCallback);
 </string>
           </argument>
         </arguments>

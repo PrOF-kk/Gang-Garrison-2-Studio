@@ -34,7 +34,7 @@ bgtabs = true;
 menu_addedit_num(
     "Runner:",
     "global.classlimits[CLASS_SCOUT]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Runner",
     255
@@ -42,7 +42,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Firebug:",
     "global.classlimits[CLASS_PYRO]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Firebug",
     255
@@ -50,7 +50,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Rocketman:",
     "global.classlimits[CLASS_SOLDIER]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Rocketman",
     255
@@ -58,7 +58,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Overweight:",
     "global.classlimits[CLASS_HEAVY]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Overweight",
     255
@@ -66,7 +66,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Detonator:",
     "global.classlimits[CLASS_DEMOMAN]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Detonator",
     255
@@ -74,7 +74,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Healer:",
     "global.classlimits[CLASS_MEDIC]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Healer",
     255
@@ -82,7 +82,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Constructor:",
     "global.classlimits[CLASS_ENGINEER]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Constructor",
     255
@@ -90,7 +90,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Infiltrator:",
     "global.classlimits[CLASS_SPY]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Infiltrator",
     255
@@ -98,7 +98,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Rifleman:",
     "global.classlimits[CLASS_SNIPER]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Rifleman",
     255
@@ -106,7 +106,7 @@ menu_addedit_num(
 menu_addedit_num(
     "Quote:",
     "global.classlimits[CLASS_QUOTE]",
-    "nullCallback",
+    nullCallback,
     "Classlimits",
     "Quote",
     255

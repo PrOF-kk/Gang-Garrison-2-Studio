@@ -47,28 +47,28 @@ bgtabs = true;
 menu_addedit_text(
     "Server Name:",
     "global.serverName",
-    "HostOptionsServerNameCallback",
+    HostOptionsServerNameCallback,
     "Server",
     "ServerName"
 );
 menu_addedit_text(
     "Welcome message:",
     "global.welcomeMessage",
-    "HostOptionsWelcomeMessageCallback",
+    HostOptionsWelcomeMessageCallback,
     "Server",
     "WelcomeMessage"
 );
 menu_addedit_text(
     "Password:",
     "global.serverPassword",
-    "nullCallback",
+    nullCallback,
     "Server",
     "Password"
 );
 menu_addedit_num(
     "Player Limit:",
     "global.playerLimit",
-    "nullCallback",
+    nullCallback,
     "Server",
     "PlayerLimit",
     48
@@ -76,35 +76,35 @@ menu_addedit_num(
 menu_addedit_num(
     "Time Limit (mins):",
     "global.timeLimitMins",
-    "nullCallback",
+    nullCallback,
     "Server",
     "Time Limit"
 );
 menu_addedit_num(
     "Capture Limit:",
     "global.caplimit",
-    "nullCallback",
+    nullCallback,
     "Server",
     "CapLimit"
 );
 menu_addedit_num(
     "Deathmatch Kill Limit:",
     "global.killLimit",
-    "nullCallback",
+    nullCallback,
     "Server",
     "Deathmatch Kill Limit"
 );
 menu_addedit_num(
     "TDM Invulnerability (secs):",
     "global.tdmInvulnerabilitySeconds",
-    "nullCallback",
+    nullCallback,
     "Server",
     "Team Deathmatch Invulnerability Seconds"
 );
 menu_addedit_num(
     "Respawn Time (secs):",
     "global.Server_RespawntimeSec",
-    "nullCallback",
+    nullCallback,
     "Server",
     "Respawn Time"
 );

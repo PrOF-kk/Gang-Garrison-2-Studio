@@ -73,13 +73,13 @@
         "Fade Scoreboard"
     );
     
-    menu_addtablink("Ingame", 'OptionsTabIngameCallback');
-    menu_addtablink("Engine", 'OptionsTabEngineCallback');
-    menu_addtablink("Controls 1", 'OptionsTabControls1Callback');
-    menu_addtablink("Controls 2", 'OptionsTabControls2Callback');
-    menu_addtablink("HUD", 'OptionsTabHudCallback');
+    menu_addtablink("Ingame", OptionsTabIngameCallback);
+    menu_addtablink("Engine", OptionsTabEngineCallback);
+    menu_addtablink("Controls 1", OptionsTabControls1Callback);
+    menu_addtablink("Controls 2", OptionsTabControls2Callback);
+    menu_addtablink("HUD", OptionsTabHudCallback);
     
-    menu_addback("Back", 'OptionsBackCallback');
+    menu_addback("Back", OptionsBackCallback);
 }
 </string>
           </argument>
