@@ -82,7 +82,7 @@
     menu_addedit_boolean(
         "Hide Infiltrator 'Ghosts':",
         "hideSpyGhosts",
-        OptionsEngineFullscreenCallback,
+        nullCallback,
         "Settings",
         "Hide Spy Ghosts"
     );

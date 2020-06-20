@@ -87,13 +87,17 @@ if(editing != -1) {
         case "editkeyormouse":
             if mouse_check_button(mb_left) {
                 menu_set_var(editing, MOUSE_LEFT);
-                script_execute(item_script[editing], MOUSE_LEFT);
+                if (item_script[editing] != undefined) {
+                    script_execute(item_script[editing], MOUSE_LEFT);
+                }
                 editing = -1;
                 exit;
             }
             else if mouse_check_button(mb_right) {
                 menu_set_var(editing, MOUSE_RIGHT);
-                script_execute(item_script[editing], MOUSE_RIGHT);
+                if (item_script[editing] != undefined) {
+                    script_execute(item_script[editing], MOUSE_RIGHT);
+                }
                 editing = -1;
                 exit;
             }
@@ -101,7 +105,9 @@ if(editing != -1) {
             if keyboard_check_direct(vk_tab) keyboard_lastkey = vk_tab;
             if keyboard_lastkey != 0 {
                 menu_set_var(editing, keyboard_lastkey);
-                script_execute(item_script[editing], menu_get_var(editing));
+                if (item_script[editing] != undefined) {
+                    script_execute(item_script[editing], menu_get_var(editing));
+                }
                 editing = -1;
                 exit;
             }
