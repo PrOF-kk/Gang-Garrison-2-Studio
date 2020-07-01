@@ -82,7 +82,7 @@
     menu_addedit_boolean(
         "Hide Infiltrator 'Ghosts':",
         "global.hideSpyGhosts",
-        OptionsEngineFullscreenCallback,
+        nullCallback,
         "Settings",
         "Hide Spy Ghosts"
     );
@@ -127,6 +127,8 @@
         "Settings",
         "RestartPrompt"
     );
+    menu_add_option(0, "No");
+    menu_add_option(1, "Yes");
     
     menu_addtablink("Ingame", OptionsTabIngameCallback);
     menu_addtablink("Engine", OptionsTabEngineCallback);
