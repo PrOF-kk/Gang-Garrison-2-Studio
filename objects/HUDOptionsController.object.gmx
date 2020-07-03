@@ -38,7 +38,7 @@
     menu_addedit_select(
         "Timer Position:",
         "global.timerPos",
-        "nullCallback",
+        nullCallback,
         "Settings",
         "Timer Position"
     );
@@ -48,7 +48,7 @@
     menu_addedit_select(
         "Kill Log Position:",
         "global.killLogPos",
-        "nullCallback",
+        nullCallback,
         "Settings",
         "Kill Log Position"
     );
@@ -58,7 +58,7 @@
     menu_addedit_select(
         "KOTH Timer Orientation:",
         "global.kothHudPos",
-        "nullCallback",
+        nullCallback,
         "Settings",
         "KoTH HUD Position"
     );
@@ -68,7 +68,7 @@
     menu_addedit_boolean(
         "Fade Scoreboard:",
         "global.fadeScoreboard",
-        "nullCallback",
+        nullCallback,
         "Settings",
         "Fade Scoreboard"
     );

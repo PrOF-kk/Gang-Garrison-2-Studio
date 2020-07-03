@@ -110,12 +110,12 @@ menu_addedit_num(
 );
     
     
-menu_addtablink("Main", 'HostOptionsTabHostOptionsCallback');
-menu_addtablink("Advanced", 'HostOptionsTabAdvHostOptionsCallback');
-menu_addtablink("Classlimits", 'HostOptionsTabClasslimitsCallback');
+menu_addtablink("Main", HostOptionsTabHostOptionsCallback);
+menu_addtablink("Advanced", HostOptionsTabAdvHostOptionsCallback);
+menu_addtablink("Classlimits", HostOptionsTabClasslimitsCallback);
 
-menu_addlink("Start Game", 'HostOptionsStartGameCallback');
-menu_addback("Back", 'HostOptionsBackCallback');
+menu_addlink("Start Game", HostOptionsStartGameCallback);
+menu_addback("Back", HostOptionsBackCallback);
 </string>
           </argument>
         </arguments>

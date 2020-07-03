@@ -90,7 +90,7 @@
     menu_addedit_select(
         "Ingame Aspect Ratio:",
         "global.resolutionkind",
-        "OptionsEngineResolutionCallback",
+        OptionsEngineResolutionCallback,
         "Settings",
         "Resolution"
     );

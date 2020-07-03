@@ -32,7 +32,7 @@ menu_background(272, 24, 8, 12, 4);
 menu_addedit_text(
     "Player Name:",
     "global.playerName",
-    "OptionsPlayerNameCallback",
+    OptionsPlayerNameCallback,
     "Settings",
     "PlayerName"
 );
