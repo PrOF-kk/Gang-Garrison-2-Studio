@@ -1566,6 +1566,9 @@
           <script>scripts\AdvHostOptionsMapRotCallback.gml</script>
           <script>scripts\AdvHostOptionsUpnpCallback.gml</script>
         </scripts>
+        <scripts name="Lobby">
+          <script>scripts\LobbySideBackCallback.gml</script>
+        </scripts>
         <scripts name="Options">
           <script>scripts\OptionsTabIngameCallback.gml</script>
           <script>scripts\OptionsTabEngineCallback.gml</script>
