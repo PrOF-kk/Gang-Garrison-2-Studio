@@ -13,14 +13,14 @@
 // argument 2: Buffer
 
 var buffer;
-buffer_clear(argument[2]);
+fct_buffer_clear(argument[2]);
 
 do {
-    if(socket_has_error(argument[0])) {
+    if(fct_socket_has_error(argument[0])) {
         return 2;
     }
-} until(tcp_receive(argument[0], argument[1]));
+} until(fct_tcp_receive(argument[0], argument[1]));
 
-write_buffer(argument[2], argument[0]);
+fct_write_buffer(argument[2], argument[0]);
 
 return 0;

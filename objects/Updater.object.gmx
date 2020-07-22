@@ -97,7 +97,7 @@ if (http_status_code(downloadHandle) != 200)
     exit;
 }
 
-write_buffer_to_file(http_response_body(downloadHandle), tmpfile);
+fct_write_buffer_to_file(http_response_body(downloadHandle), tmpfile);
 http_destroy(downloadHandle);
 
 if(!file_exists(tmpfile))

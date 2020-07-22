@@ -115,7 +115,7 @@
     ds_list_destroy(badges);
     with (ghost)
         instance_destroy();
-    socket_destroy(socket);
+    fct_socket_destroy(socket);
 
     clearPlayerDominations(id);
     domination_kills_destroy(dominationKills);
@@ -174,18 +174,18 @@
             <kind>1</kind>
             <string>    if(global.updateType == FULL_UPDATE) {
         receiveCompleteMessage(global.serverSocket,13,global.deserializeBuffer);
-        stats[KILLS] = read_ubyte(global.deserializeBuffer);
-        stats[DEATHS] = read_ubyte(global.deserializeBuffer);
-        stats[CAPS] = read_ubyte(global.deserializeBuffer);
-        stats[ASSISTS] = read_ubyte(global.deserializeBuffer);
-        stats[DESTRUCTION] = read_ubyte(global.deserializeBuffer);
-        stats[STABS] = read_ubyte(global.deserializeBuffer);
-        stats[HEALING] = read_ushort(global.deserializeBuffer);
-        stats[DEFENSES] = read_ubyte(global.deserializeBuffer);
-        stats[INVULNS] = read_ubyte(global.deserializeBuffer);
-        stats[BONUS] = read_ubyte(global.deserializeBuffer);
-        stats[POINTS] = read_ubyte(global.deserializeBuffer);
-        queueJump = read_ubyte(global.deserializeBuffer);
+        stats[KILLS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[DEATHS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[CAPS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[ASSISTS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[DESTRUCTION] = fct_read_ubyte(global.deserializeBuffer);
+        stats[STABS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[HEALING] = fct_read_ushort(global.deserializeBuffer);
+        stats[DEFENSES] = fct_read_ubyte(global.deserializeBuffer);
+        stats[INVULNS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[BONUS] = fct_read_ubyte(global.deserializeBuffer);
+        stats[POINTS] = fct_read_ubyte(global.deserializeBuffer);
+        queueJump = fct_read_ubyte(global.deserializeBuffer);
         parseRewards(receivestring(global.serverSocket, 2), rewards);
         parseBadges(rewards, badges);
         
@@ -196,13 +196,13 @@
         {
             victim = ds_list_find_value(global.players, i);
             if (victim != id)
-                domination_kills_set(dominationKills, victim, read_ubyte(global.deserializeBuffer));
+                domination_kills_set(dominationKills, victim, fct_read_ubyte(global.deserializeBuffer));
         }
     }
  
     var charObj, subobjects;
     receiveCompleteMessage(global.serverSocket,1,global.deserializeBuffer);
-    subobjects = read_ubyte(global.deserializeBuffer);
+    subobjects = fct_read_ubyte(global.deserializeBuffer);
     
     // If the player has a character object on the server
     if(subobjects &amp; $01 != 0) {
@@ -265,22 +265,22 @@
             <string>var subobjects;
 
     if(global.updateType == FULL_UPDATE) {
-        write_ubyte(global.serializeBuffer, stats[KILLS]);
-        write_ubyte(global.serializeBuffer, stats[DEATHS]);
-        write_ubyte(global.serializeBuffer, stats[CAPS]);
-        write_ubyte(global.serializeBuffer, stats[ASSISTS]);
-        write_ubyte(global.serializeBuffer, stats[DESTRUCTION]);
-        write_ubyte(global.serializeBuffer, stats[STABS]);
-        write_ushort(global.serializeBuffer, stats[HEALING]);
-        write_ubyte(global.serializeBuffer, stats[DEFENSES]);
-        write_ubyte(global.serializeBuffer, stats[INVULNS]);
-        write_ubyte(global.serializeBuffer, stats[BONUS]);
-        write_ubyte(global.serializeBuffer, stats[POINTS]);
-        write_ubyte(global.serializeBuffer, queueJump);
+        fct_write_ubyte(global.serializeBuffer, stats[KILLS]);
+        fct_write_ubyte(global.serializeBuffer, stats[DEATHS]);
+        fct_write_ubyte(global.serializeBuffer, stats[CAPS]);
+        fct_write_ubyte(global.serializeBuffer, stats[ASSISTS]);
+        fct_write_ubyte(global.serializeBuffer, stats[DESTRUCTION]);
+        fct_write_ubyte(global.serializeBuffer, stats[STABS]);
+        fct_write_ushort(global.serializeBuffer, stats[HEALING]);
+        fct_write_ubyte(global.serializeBuffer, stats[DEFENSES]);
+        fct_write_ubyte(global.serializeBuffer, stats[INVULNS]);
+        fct_write_ubyte(global.serializeBuffer, stats[BONUS]);
+        fct_write_ubyte(global.serializeBuffer, stats[POINTS]);
+        fct_write_ubyte(global.serializeBuffer, queueJump);
         var unparsed;
         unparsed = unparseRewards(rewards);
-        write_ushort(global.serializeBuffer, string_length(unparsed));
-        write_string(global.serializeBuffer, unparsed);
+        fct_write_ushort(global.serializeBuffer, string_length(unparsed));
+        fct_write_string(global.serializeBuffer, unparsed);
         
         // Serialize the domination kill table by sending the number of kills for each
         // player except self
@@ -289,7 +289,7 @@
         {
             victim = ds_list_find_value(global.players, i);
             if (victim != id)
-                write_ubyte(global.serializeBuffer, domination_kills_get(dominationKills, victim));
+                fct_write_ubyte(global.serializeBuffer, domination_kills_get(dominationKills, victim));
         }
     } 
     
@@ -298,7 +298,7 @@
     if(object != -1) subobjects |= $01;
     if(sentry) subobjects |= $02;
     
-    write_ubyte(global.serializeBuffer, subobjects);
+    fct_write_ubyte(global.serializeBuffer, subobjects);
 
     if(object != -1) with(object) event_user(12);     
     with(sentry)

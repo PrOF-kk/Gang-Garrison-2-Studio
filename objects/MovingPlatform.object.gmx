@@ -221,9 +221,9 @@ if(colldx != 0 or colldy != 0 or (movementState == 0 and trigger &gt; 0))
             <kind>1</kind>
             <string>if(global.updateType == QUICK_UPDATE) or (global.updateType == FULL_UPDATE) {
     receiveCompleteMessage(global.serverSocket,5,global.deserializeBuffer);
-    x_ = read_ushort(global.deserializeBuffer)/5;
-    y_ = read_ushort(global.deserializeBuffer)/5;
-    movementState = read_ubyte(global.deserializeBuffer);
+    x_ = fct_read_ushort(global.deserializeBuffer)/5;
+    y_ = fct_read_ushort(global.deserializeBuffer)/5;
+    movementState = fct_read_ubyte(global.deserializeBuffer);
     x = round(x_);
     y = round(y_);
 }
@@ -250,9 +250,9 @@ if(colldx != 0 or colldy != 0 or (movementState == 0 and trigger &gt; 0))
           <argument>
             <kind>1</kind>
             <string>if(global.updateType == QUICK_UPDATE or global.updateType == FULL_UPDATE) {
-    write_ushort(global.serializeBuffer, x_*5);
-    write_ushort(global.serializeBuffer, y_*5);
-    write_ubyte(global.serializeBuffer, movementState);
+    fct_write_ushort(global.serializeBuffer, x_*5);
+    fct_write_ushort(global.serializeBuffer, y_*5);
+    fct_write_ubyte(global.serializeBuffer, movementState);
 }
 </string>
           </argument>

@@ -181,8 +181,8 @@ if (justShot)
             <kind>1</kind>
             <string>{
     receiveCompleteMessage(global.serverSocket, 2, global.deserializeBuffer);
-    readyToShoot = read_ubyte(global.deserializeBuffer);
-    alarm[0] = read_ubyte(global.deserializeBuffer)/global.delta_factor;    
+    readyToShoot = fct_read_ubyte(global.deserializeBuffer);
+    alarm[0] = fct_read_ubyte(global.deserializeBuffer)/global.delta_factor;    
 }
 </string>
           </argument>
@@ -207,8 +207,8 @@ if (justShot)
           <argument>
             <kind>1</kind>
             <string>{
-    write_ubyte(global.serializeBuffer, readyToShoot);
-    write_ubyte(global.serializeBuffer, alarm[0]*global.delta_factor);    
+    fct_write_ubyte(global.serializeBuffer, readyToShoot);
+    fct_write_ubyte(global.serializeBuffer, alarm[0]*global.delta_factor);    
 }
 </string>
           </argument>

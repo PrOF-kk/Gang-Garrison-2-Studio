@@ -85,10 +85,10 @@ if ((global.redCaps &gt;= killLimit) or (global.blueCaps &gt;= killLimit) or tim
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,7,global.deserializeBuffer);
-global.timeLimitMins = read_ubyte(global.deserializeBuffer);
+global.timeLimitMins = fct_read_ubyte(global.deserializeBuffer);
 timeLimit=global.timeLimitMins*30*60;
-timer=read_uint(global.deserializeBuffer);
-killLimit = read_ushort(global.deserializeBuffer);
+timer=fct_read_uint(global.deserializeBuffer);
+killLimit = fct_read_ushort(global.deserializeBuffer);
 </string>
           </argument>
         </arguments>
@@ -111,9 +111,9 @@ killLimit = read_ushort(global.deserializeBuffer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ubyte(global.serializeBuffer, global.timeLimitMins);
-write_uint(global.serializeBuffer, timer);
-write_ushort(global.serializeBuffer, killLimit);
+            <string>fct_write_ubyte(global.serializeBuffer, global.timeLimitMins);
+fct_write_uint(global.serializeBuffer, timer);
+fct_write_ushort(global.serializeBuffer, killLimit);
 </string>
           </argument>
         </arguments>

@@ -20,8 +20,8 @@
 // Clears up contents of an httpClient prior to destruction or after error
 
 if (!destroyed) {
-    socket_destroy_abortive(socket);
-    buffer_destroy(responseBody);
+    fct_socket_destroy_abortive(socket);
+    fct_buffer_destroy(responseBody);
     ds_map_destroy(responseHeaders);
 }
 destroyed = true;

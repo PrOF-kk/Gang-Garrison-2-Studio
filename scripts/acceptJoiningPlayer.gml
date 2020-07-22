@@ -1,9 +1,9 @@
 var joiningSocket, joiningPlayer, totalClientNumber;
-joiningSocket = socket_accept(global.tcpListener);
+joiningSocket = fct_socket_accept(global.tcpListener);
 if (joiningSocket >= 0)
 {
     var ip;
-    ip = socket_remote_ip(joiningSocket);
+    ip = fct_socket_remote_ip(joiningSocket);
 
     // Only enforce multiclient limit for non-localhost connections
     if (ip != '127.0.0.1' and ip != '::1')
@@ -13,22 +13,22 @@ if (joiningSocket >= 0)
         clientCount = 1;
         with (Player)
         {
-            if (socket_remote_ip(socket) == ip)
+            if (fct_socket_remote_ip(socket) == ip)
                 clientCount += 1;
         }
         with (JoiningPlayer)
         {
-            if (socket_remote_ip(socket) == ip)
+            if (fct_socket_remote_ip(socket) == ip)
                 clientCount += 1;
         }
         
         if (clientCount > global.multiClientLimit)
         {
             // Kick instead of letting join
-            write_ubyte(joiningSocket, KICK);
-            write_ubyte(joiningSocket, KICK_MULTI_CLIENT);
-            socket_send(joiningSocket);
-            socket_destroy(joiningSocket);
+            fct_write_ubyte(joiningSocket, KICK);
+            fct_write_ubyte(joiningSocket, KICK_MULTI_CLIENT);
+            fct_socket_send(joiningSocket);
+            fct_socket_destroy(joiningSocket);
             exit;
         }
     }

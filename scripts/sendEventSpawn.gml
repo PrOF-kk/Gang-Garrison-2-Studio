@@ -6,7 +6,7 @@
  * argument[2]: The spawn group
  */
 
-write_ubyte(global.sendBuffer, PLAYER_SPAWN);
-write_ubyte(global.sendBuffer, ds_list_find_index(global.players,argument[0]));
-write_ubyte(global.sendBuffer, argument[1]);
-write_ubyte(global.sendBuffer, argument[2]);
+fct_write_ubyte(global.sendBuffer, PLAYER_SPAWN);
+fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players,argument[0]));
+fct_write_ubyte(global.sendBuffer, argument[1]);
+fct_write_ubyte(global.sendBuffer, argument[2]);

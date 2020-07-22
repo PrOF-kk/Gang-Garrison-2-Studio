@@ -7,4 +7,4 @@ str = argument[1];
 len = string_length(str);
 
 for(i=1; i<=len; i+=1)
-    write_ubyte(buffer, ord(string_char_at(str, i)));
+    fct_write_ubyte(buffer, ord(string_char_at(str, i)));

@@ -12,16 +12,16 @@ killer = argument[1];
 healer = argument[2];
 damageSource = argument[3];
 
-write_ubyte(global.sendBuffer, DESTROY_SENTRY);
-write_ubyte(global.sendBuffer, ds_list_find_index(global.players, owner));
+fct_write_ubyte(global.sendBuffer, DESTROY_SENTRY);
+fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, owner));
 if(instance_exists(killer)) {
-    write_ubyte(global.sendBuffer, ds_list_find_index(global.players, killer));
+    fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, killer));
 } else {
-    write_ubyte(global.sendBuffer, 255);
+    fct_write_ubyte(global.sendBuffer, 255);
 }
 if(instance_exists(healer)) {
-    write_ubyte(global.sendBuffer, ds_list_find_index(global.players, healer));
+    fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, healer));
 } else {
-    write_ubyte(global.sendBuffer, 255);
+    fct_write_ubyte(global.sendBuffer, 255);
 }  
-write_ubyte(global.sendBuffer, damageSource);
+fct_write_ubyte(global.sendBuffer, damageSource);

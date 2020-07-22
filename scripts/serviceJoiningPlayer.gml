@@ -1,6 +1,6 @@
-if(socket_has_error(socket) or (current_time-lastContact > 30000) or kicked)
+if(fct_socket_has_error(socket) or (current_time-lastContact > 30000) or kicked)
 {   // Connection closed unexpectedly or timed out, remove client
-    socket_destroy(socket);
+    fct_socket_destroy(socket);
     instance_destroy();
     exit;
 }
@@ -13,13 +13,13 @@ if(state==STATE_CLIENT_DOWNLOADING)
     {
         var bytesToSend;
         bytesToSend = round(min(max(global.mapBytesRemainingInStep, 400), cumulativeMapBytes));
-        write_buffer_part(socket, mapDownloadBuffer, bytesToSend);
-        socket_send(socket);
+        fct_write_buffer_part(socket, mapDownloadBuffer, bytesToSend);
+        fct_socket_send(socket);
         global.mapBytesRemainingInStep -= bytesToSend;
         cumulativeMapBytes -= bytesToSend;
-        if(!buffer_bytes_left(mapDownloadBuffer))
+        if(!fct_buffer_bytes_left(mapDownloadBuffer))
         {
-            buffer_destroy(mapDownloadBuffer);
+            fct_buffer_destroy(mapDownloadBuffer);
             mapDownloadBuffer = -1;
             state = STATE_EXPECT_COMMAND;
             expectedBytes = 1;
@@ -28,7 +28,7 @@ if(state==STATE_CLIENT_DOWNLOADING)
     exit;
 }
 
-if(!tcp_receive(socket, expectedBytes))
+if(!fct_tcp_receive(socket, expectedBytes))
     exit;
 
 lastContact = current_time;
@@ -40,14 +40,14 @@ switch(state)
 {
 case STATE_EXPECT_HELLO:
     var sameProtocol, noOfPlayers;
-    sameProtocol = (read_ubyte(socket) == HELLO);
-    buffer_set_readpos(global.protocolUuid, 0)
+    sameProtocol = (fct_read_ubyte(socket) == HELLO);
+    fct_buffer_set_readpos(global.protocolUuid, 0)
     for(i=0; i<4; i+=1)
-        if(read_uint(socket) != read_uint(global.protocolUuid))
+        if(fct_read_uint(socket) != fct_read_uint(global.protocolUuid))
             sameProtocol = false;
             
     if(!sameProtocol)
-        write_ubyte(socket, INCOMPATIBLE_PROTOCOL);
+        fct_write_ubyte(socket, INCOMPATIBLE_PROTOCOL);
     else if(global.serverPassword == "")
     {
         newState = STATE_CLIENT_AUTHENTICATED;
@@ -55,7 +55,7 @@ case STATE_EXPECT_HELLO:
     }
     else
     {
-        write_ubyte(socket, PASSWORD_REQUEST);
+        fct_write_ubyte(socket, PASSWORD_REQUEST);
         newState = STATE_EXPECT_MESSAGELEN;
         messageState = STATE_EXPECT_PASSWORD;
         expectedBytes = 1;
@@ -63,28 +63,28 @@ case STATE_EXPECT_HELLO:
     break;
 
 case STATE_EXPECT_MESSAGELEN:
-    expectedBytes = read_ubyte(socket);
+    expectedBytes = fct_read_ubyte(socket);
     newState = messageState;
     break;
 
 case STATE_EXPECT_PASSWORD:
-    if(read_string(socket, expectedBytes) == global.serverPassword)
+    if(fct_read_string(socket, expectedBytes) == global.serverPassword)
     {
         newState = STATE_CLIENT_AUTHENTICATED;
         expectedBytes = 0;
     }
     else
-        write_ubyte(socket, PASSWORD_WRONG);
+        fct_write_ubyte(socket, PASSWORD_WRONG);
     break;
 
 case STATE_CLIENT_AUTHENTICATED:
-    write_ubyte(socket, HELLO);
-    write_ubyte(socket, string_length(global.serverName));
-    write_string(socket, global.serverName);
-    write_ubyte(socket, string_length(global.currentMap));
-    write_string(socket, global.currentMap);
-    write_ubyte(socket, string_length(global.currentMapMD5));
-    write_string(socket, global.currentMapMD5);
+    fct_write_ubyte(socket, HELLO);
+    fct_write_ubyte(socket, string_length(global.serverName));
+    fct_write_string(socket, global.serverName);
+    fct_write_ubyte(socket, string_length(global.currentMap));
+    fct_write_string(socket, global.currentMap);
+    fct_write_ubyte(socket, string_length(global.currentMapMD5));
+    fct_write_string(socket, global.currentMapMD5);
     
     advertisedMap = global.currentMap;
     advertisedMapMd5 = global.currentMapMD5;
@@ -93,7 +93,7 @@ case STATE_CLIENT_AUTHENTICATED:
     break;
     
 case STATE_EXPECT_COMMAND:
-    switch(read_ubyte(socket))
+    switch(fct_read_ubyte(socket))
     {
     // keeps connection open when downloading
     case PING:
@@ -127,14 +127,14 @@ case STATE_EXPECT_COMMAND:
     case DOWNLOAD_MAP:
         if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png"))
         {   // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
-            buffer_destroy(mapDownloadBuffer);
-            mapDownloadBuffer = buffer_create;
-            if(!append_file_to_buffer(mapDownloadBuffer, "Maps/" + advertisedMap + ".png")) {
-                buffer_destroy(mapDownloadBuffer);
+            fct_buffer_destroy(mapDownloadBuffer);
+            mapDownloadBuffer = fct_buffer_create;
+            if(!fct_append_file_to_buffer(mapDownloadBuffer, "Maps/" + advertisedMap + ".png")) {
+                fct_buffer_destroy(mapDownloadBuffer);
                 mapDownloadBuffer = -1;
                 break;
             }
-            write_uint(socket, buffer_size(mapDownloadBuffer));
+            fct_write_uint(socket, fct_buffer_size(mapDownloadBuffer));
             newState = STATE_CLIENT_DOWNLOADING;
         }
         break;
@@ -158,7 +158,7 @@ case STATE_EXPECT_NAME:
         
     if(noOfOccupiedSlots >= global.playerLimit)
     {
-        write_ubyte(socket, SERVER_FULL);
+        fct_write_ubyte(socket, SERVER_FULL);
         break;
     }
 
@@ -168,17 +168,17 @@ case STATE_EXPECT_NAME:
         
     occupiesSlot = true;
 
-    name = read_string(socket, expectedBytes);
+    name = fct_read_string(socket, expectedBytes);
     name = string_copy(name, 0, MAX_PLAYERNAME_LENGTH);
     
-    write_ubyte(socket, RESERVE_SLOT);
+    fct_write_ubyte(socket, RESERVE_SLOT);
     
     newState = STATE_EXPECT_COMMAND;
     expectedBytes = 1;
     break;
 }
 
-socket_send(socket);
+fct_socket_send(socket);
 state = newState;
 if(state==-1)
 {   // We're done, either because of a protocol error or because the client finished joining.

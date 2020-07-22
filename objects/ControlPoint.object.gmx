@@ -297,9 +297,9 @@ if(capping &lt;= 0) {
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,4,global.deserializeBuffer);
-temp = read_byte(global.deserializeBuffer);
-cappingTeam = read_byte(global.deserializeBuffer);
-capping = read_ushort(global.deserializeBuffer);
+temp = fct_read_byte(global.deserializeBuffer);
+cappingTeam = fct_read_byte(global.deserializeBuffer);
+capping = fct_read_ushort(global.deserializeBuffer);
 if team != temp {
     pointCapture(cp);
     team = temp;
@@ -326,9 +326,9 @@ if team != temp {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_byte(global.serializeBuffer, team);
-write_byte(global.serializeBuffer, cappingTeam);
-write_ushort(global.serializeBuffer, round(capping));
+            <string>fct_write_byte(global.serializeBuffer, team);
+fct_write_byte(global.serializeBuffer, cappingTeam);
+fct_write_ushort(global.serializeBuffer, round(capping));
 </string>
           </argument>
         </arguments>

@@ -111,10 +111,10 @@ if (timer &lt;= 0 and global.winners == -1)
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,7,global.deserializeBuffer);
-global.timeLimitMins = read_ubyte(global.deserializeBuffer);
+global.timeLimitMins = fct_read_ubyte(global.deserializeBuffer);
 timeLimit=global.timeLimitMins*30*60;
-timer=read_uint(global.deserializeBuffer);
-global.setupTimer=read_ushort(global.deserializeBuffer);
+timer=fct_read_uint(global.deserializeBuffer);
+global.setupTimer=fct_read_ushort(global.deserializeBuffer);
 
 </string>
           </argument>
@@ -138,9 +138,9 @@ global.setupTimer=read_ushort(global.deserializeBuffer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ubyte(global.serializeBuffer, global.timeLimitMins);
-write_uint(global.serializeBuffer, timer);
-write_ushort(global.serializeBuffer, global.setupTimer);
+            <string>fct_write_ubyte(global.serializeBuffer, global.timeLimitMins);
+fct_write_uint(global.serializeBuffer, timer);
+fct_write_ushort(global.serializeBuffer, global.setupTimer);
 
 </string>
           </argument>

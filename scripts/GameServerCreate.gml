@@ -23,9 +23,9 @@
     global.serverSocket = -1;
     
     var i;
-    serverId = buffer_create;
+    serverId = fct_buffer_create;
     for (i = 0; i < 16; i += 1)
-        write_ubyte(serverId, irandom(255));
+        fct_write_ubyte(serverId, irandom(255));
     
     serverbalance=0;
     balancecounter=0;
@@ -45,15 +45,15 @@
             global.classlimits[a] = 255;
     }
     
-    global.tcpListener = tcp_listen(global.hostingPort);
-    if(socket_has_error(global.tcpListener))
+    global.tcpListener = fct_tcp_listen(global.hostingPort);
+    if(fct_socket_has_error(global.tcpListener))
     {
-        show_message("Unable to host: " + socket_error(global.tcpListener));
+        show_message("Unable to host: " + fct_socket_error(global.tcpListener));
         instance_destroy();
         exit;
     }
-    global.serverSocket = tcp_connect("127.0.0.1", global.hostingPort);    
-    if(socket_has_error(global.serverSocket))
+    global.serverSocket = fct_tcp_connect("127.0.0.1", global.hostingPort);    
+    if(fct_socket_has_error(global.serverSocket))
     {
         show_message("Unable to connect to self. Epic fail, dude.");
         instance_destroy();
@@ -69,7 +69,7 @@
             instance_destroy();
             exit;
         }
-        serverPlayer.socket = socket_accept(global.tcpListener);
+        serverPlayer.socket = fct_socket_accept(global.tcpListener);
         //io_handle(); // Make sure the game doesn't appear to freeze
     } until(serverPlayer.socket>=0);
 

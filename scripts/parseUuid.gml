@@ -21,5 +21,5 @@ for(i=0; i<16; i+=1)
         show_error("Invalid UUID: "+argument[0], true);
     numericByte += string_pos(currentNibble, posValueString)-1;
     
-    write_ubyte(argument[1], numericByte);
+    fct_write_ubyte(argument[1], numericByte);
 }

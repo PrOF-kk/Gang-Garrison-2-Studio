@@ -20,14 +20,14 @@ with(player) {
 while(commandLimitRemaining > 0) {
     var socket;
     socket = player.socket;
-    if(!tcp_receive(socket, player.commandReceiveExpectedBytes)) {
+    if(!fct_tcp_receive(socket, player.commandReceiveExpectedBytes)) {
         return 0;
     }
     
     switch(player.commandReceiveState)
     {
     case 0:
-        player.commandReceiveCommand = read_ubyte(socket);
+        player.commandReceiveCommand = fct_read_ubyte(socket);
         switch(commandBytes[player.commandReceiveCommand]) {
         case commandBytesInvalidCommand:
             // Invalid byte received. Wait for another command byte.
@@ -52,12 +52,12 @@ while(commandLimitRemaining > 0) {
         
     case 1:
         player.commandReceiveState = 2;
-        player.commandReceiveExpectedBytes = read_ubyte(socket);
+        player.commandReceiveExpectedBytes = fct_read_ubyte(socket);
         break;
 
     case 3:
         player.commandReceiveState = 2;
-        player.commandReceiveExpectedBytes = read_ushort(socket);
+        player.commandReceiveExpectedBytes = fct_read_ushort(socket);
         break;
         
     case 2:
@@ -68,13 +68,13 @@ while(commandLimitRemaining > 0) {
         switch(player.commandReceiveCommand)
         {
         case PLAYER_LEAVE:
-            socket_destroy(player.socket);
+            fct_socket_destroy(player.socket);
             player.socket = -1;
             break;
             
         case PLAYER_CHANGECLASS:
             var class;
-            class = read_ubyte(socket);
+            class = fct_read_ubyte(socket);
             if(getCharacterObject(class) != -1)
             {
                 if(player.object != -1)
@@ -114,7 +114,7 @@ while(commandLimitRemaining > 0) {
             
         case PLAYER_CHANGETEAM:
             var newTeam, balance, redSuperiority;
-            newTeam = read_ubyte(socket);
+            newTeam = fct_read_ubyte(socket);
             
             // Invalid team was requested, treat it as a random team
             if(newTeam != TEAM_RED and newTeam != TEAM_BLUE and newTeam != TEAM_SPECTATOR)
@@ -193,14 +193,14 @@ while(commandLimitRemaining > 0) {
             
         case CHAT_BUBBLE:
             var bubbleImage;
-            bubbleImage = read_ubyte(socket);
+            bubbleImage = fct_read_ubyte(socket);
             if(global.aFirst and bubbleImage != 45)
             {
                 bubbleImage = 0;
             }
-            write_ubyte(global.sendBuffer, CHAT_BUBBLE);
-            write_ubyte(global.sendBuffer, playerId);
-            write_ubyte(global.sendBuffer, bubbleImage);
+            fct_write_ubyte(global.sendBuffer, CHAT_BUBBLE);
+            fct_write_ubyte(global.sendBuffer, playerId);
+            fct_write_ubyte(global.sendBuffer, bubbleImage);
             
             setChatBubble(player, bubbleImage);
             break;
@@ -215,11 +215,11 @@ while(commandLimitRemaining > 0) {
                         and !player.sentry
                         and !player.object.onCabinet)
                 {
-                    write_ubyte(global.sendBuffer, BUILD_SENTRY);
-                    write_ubyte(global.sendBuffer, playerId);
-                    write_ushort(global.serializeBuffer, round(player.object.x*5));
-                    write_ushort(global.serializeBuffer, round(player.object.y*5));
-                    write_byte(global.serializeBuffer, player.object.image_xscale);
+                    fct_write_ubyte(global.sendBuffer, BUILD_SENTRY);
+                    fct_write_ubyte(global.sendBuffer, playerId);
+                    fct_write_ushort(global.serializeBuffer, round(player.object.x*5));
+                    fct_write_ushort(global.serializeBuffer, round(player.object.y*5));
+                    fct_write_byte(global.serializeBuffer, player.object.image_xscale);
                     buildSentry(player, player.object.x, player.object.y, player.object.image_xscale);
                 }
             }
@@ -249,8 +249,8 @@ while(commandLimitRemaining > 0) {
                     and player.object.canEat
                     and player.class==CLASS_HEAVY)
                 {                            
-                    write_ubyte(global.sendBuffer, OMNOMNOMNOM);
-                    write_ubyte(global.sendBuffer, playerId);
+                    fct_write_ubyte(global.sendBuffer, OMNOMNOMNOM);
+                    fct_write_ubyte(global.sendBuffer, playerId);
                     with(player.object)
                     {
                         omnomnomnom = true;
@@ -265,8 +265,8 @@ while(commandLimitRemaining > 0) {
         case TOGGLE_ZOOM:
             if player.object != -1 {
                 if player.class == CLASS_SNIPER {
-                    write_ubyte(global.sendBuffer, TOGGLE_ZOOM);
-                    write_ubyte(global.sendBuffer, playerId);
+                    fct_write_ubyte(global.sendBuffer, TOGGLE_ZOOM);
+                    fct_write_ubyte(global.sendBuffer, playerId);
                     toggleZoom(player.object);
                 }
             }
@@ -274,12 +274,12 @@ while(commandLimitRemaining > 0) {
                                                       
         case PLAYER_CHANGENAME:
             var nameLength;
-            nameLength = socket_receivebuffer_size(socket);
+            nameLength = fct_socket_receivebuffer_size(socket);
             if(nameLength > MAX_PLAYERNAME_LENGTH)
             {
-                write_ubyte(player.socket, KICK);
-                write_ubyte(player.socket, KICK_NAME);
-                socket_destroy(player.socket);
+                fct_write_ubyte(player.socket, KICK);
+                fct_write_ubyte(player.socket, KICK_NAME);
+                fct_socket_destroy(player.socket);
                 player.socket = -1;
             }
             else
@@ -290,11 +290,11 @@ while(commandLimitRemaining > 0) {
                         if(current_time - lastNamechange < 1000)
                             break;
                     lastNamechange = current_time;
-                    name = read_string(socket, nameLength);
-                    write_ubyte(global.sendBuffer, PLAYER_CHANGENAME);
-                    write_ubyte(global.sendBuffer, playerId);
-                    write_ubyte(global.sendBuffer, string_length(name));
-                    write_string(global.sendBuffer, name);
+                    name = fct_read_string(socket, nameLength);
+                    fct_write_ubyte(global.sendBuffer, PLAYER_CHANGENAME);
+                    fct_write_ubyte(global.sendBuffer, playerId);
+                    fct_write_ubyte(global.sendBuffer, string_length(name));
+                    fct_write_string(global.sendBuffer, name);
                 }
             }
             break;
@@ -304,20 +304,20 @@ while(commandLimitRemaining > 0) {
             {
                 with(player.object)
                 {
-                    keyState = read_ubyte(socket);
-                    netAimDirection = read_ushort(socket);
+                    keyState = fct_read_ubyte(socket);
+                    netAimDirection = fct_read_ushort(socket);
                     aimDirection = netAimDirection*360/65536;
-                    aimDistance = read_ubyte(socket)*2;
+                    aimDistance = fct_read_ubyte(socket)*2;
                     event_user(1);
                 }
             }
             break;
         
         case REWARD_REQUEST:
-            player.rewardId = read_string(socket, socket_receivebuffer_size(socket));
+            player.rewardId = fct_read_string(socket, fct_socket_receivebuffer_size(socket));
             player.challenge = rewardCreateChallenge();
             
-            write_ubyte(socket, REWARD_CHALLENGE_CODE);
+            fct_write_ubyte(socket, REWARD_CHALLENGE_CODE);
             write_binstring(socket, player.challenge);
             break;
             
@@ -333,12 +333,12 @@ while(commandLimitRemaining > 0) {
             
         case CLIENT_SETTINGS:
             var mirror;
-            mirror = read_ubyte(player.socket);
+            mirror = fct_read_ubyte(player.socket);
             player.queueJump = mirror;
             
-            write_ubyte(global.sendBuffer, CLIENT_SETTINGS);
-            write_ubyte(global.sendBuffer, playerId);
-            write_ubyte(global.sendBuffer, mirror);
+            fct_write_ubyte(global.sendBuffer, CLIENT_SETTINGS);
+            fct_write_ubyte(global.sendBuffer, playerId);
+            fct_write_ubyte(global.sendBuffer, mirror);
             break;
         
         }

@@ -1,3 +1,3 @@
-write_ubyte(argument[2], PLAYER_CHANGETEAM);
-write_ubyte(argument[2], argument[0]);
-write_ubyte(argument[2], argument[1]);
+fct_write_ubyte(argument[2], PLAYER_CHANGETEAM);
+fct_write_ubyte(argument[2], argument[0]);
+fct_write_ubyte(argument[2], argument[1]);

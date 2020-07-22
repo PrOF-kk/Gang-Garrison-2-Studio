@@ -28,21 +28,21 @@ with (client)
         exit;
     
     // Socket error
-    if (socket_has_error(socket))
+    if (fct_socket_has_error(socket))
     {
         errored = true;
-        error = "Socket error: " + socket_error(socket);
+        error = "Socket error: " + fct_socket_error(socket);
         return __http_client_destroy();
     }
     
     var available;
-    available = tcp_receive_available(socket);
+    available = fct_tcp_receive_available(socket);
     
     switch (state)
     {
     // Receiving lines
     case 0:
-        if (!available && tcp_eof(socket))
+        if (!available && fct_tcp_eof(socket))
         {
             errored = true;
             error = "Unexpected EOF when receiving headers/status code";
@@ -52,7 +52,7 @@ with (client)
         var bytesRead, c;
         for (bytesRead = 1; bytesRead <= available; bytesRead += 1)
         {
-            c = read_string(socket, 1);
+            c = fct_read_string(socket, 1);
             // Reached end of line
             // "HTTP/1.1 defines the sequence CR LF as the end-of-line marker for all
             // protocol elements except the entity-body (see appendix 19.3 for
@@ -97,7 +97,7 @@ with (client)
                     {
                         state = 1;
                         // write remainder
-                        write_buffer_part(responseBody, socket, available - bytesRead);
+                        fct_write_buffer_part(responseBody, socket, available - bytesRead);
                         responseBodyProgress = available - bytesRead;
                         break;
                     }
@@ -118,9 +118,9 @@ with (client)
         break;
     // Receiving response body
     case 1:
-        write_buffer(responseBody, socket);
+        fct_write_buffer(responseBody, socket);
         responseBodyProgress += available;
-        if (tcp_eof(socket))
+        if (fct_tcp_eof(socket))
         {
             if (ds_map_exists(responseHeaders, 'transfer-encoding'))
             {
@@ -128,22 +128,22 @@ with (client)
                 {
                     // Chunked transfer, let's decode it
                     var actualResponseBody, actualResponseSize;
-                    actualResponseBody = buffer_create;
+                    actualResponseBody = fct_buffer_create;
                     actualResponseBodySize = 0;
 
                     // Parse chunks
                     // chunk          = chunk-size [ chunk-extension ] CRLF
                     //                  chunk-data CRLF
                     // chunk-size     = 1*HEX
-                    while (buffer_bytes_left(responseBody))
+                    while (fct_buffer_bytes_left(responseBody))
                     {
                         var chunkSize, c;
                         chunkSize = '';
                         
                         // Read chunk size byte by byte 
-                        while (buffer_bytes_left(responseBody))
+                        while (fct_buffer_bytes_left(responseBody))
                         {
-                            c = read_string(responseBody, 1);
+                            c = fct_read_string(responseBody, 1);
                             if (c == CR or c == ';')
                                 break;
                             else
@@ -154,21 +154,21 @@ with (client)
                         if (c == ';')
                         {
                             // skip all extension stuff
-                            while (buffer_bytes_left(responseBody) && c != CR)
+                            while (fct_buffer_bytes_left(responseBody) && c != CR)
                             {
-                                c = read_string(responseBody, 1);
+                                c = fct_read_string(responseBody, 1);
                             }
                         }
                         // Reached end of header
                         if (c == CR)
                         {
-                            c += read_string(responseBody, 1);
+                            c += fct_read_string(responseBody, 1);
                             // Doesn't end in CRLF
                             if (c != CRLF)
                             {
                                 errored = true;
                                 error = 'header of chunk in chunked transfer did not end in CRLF';
-                                buffer_destroy(actualResponseBody);
+                                fct_buffer_destroy(actualResponseBody);
                                 return __http_client_destroy();
                             }
                             // chunk-size is empty - something's up!
@@ -176,7 +176,7 @@ with (client)
                             {
                                 errored = true;
                                 error = 'empty chunk-size in a chunked transfer';
-                                buffer_destroy(actualResponseBody);
+                                fct_buffer_destroy(actualResponseBody);
                                 return __http_client_destroy();
                             }
                             chunkSize = __http_parse_hex(chunkSize);
@@ -185,22 +185,22 @@ with (client)
                             {
                                 errored = true;
                                 error = 'chunk-size was not hexadecimal in a chunked transfer';
-                                buffer_destroy(actualResponseBody);
+                                fct_buffer_destroy(actualResponseBody);
                                 return __http_client_destroy();
                             }
                             // Is the chunk bigger than the remaining response?
-                            if (chunkSize + 2 > buffer_bytes_left(responseBody))
+                            if (chunkSize + 2 > fct_buffer_bytes_left(responseBody))
                             {
                                 errored = true;
                                 error = 'chunk-size was greater than remaining data in a chunked transfer';
-                                buffer_destroy(actualResponseBody);
+                                fct_buffer_destroy(actualResponseBody);
                                 return __http_client_destroy();
                             }
                             // OK, everything's good, read the chunk
-                            write_buffer_part(actualResponseBody, responseBody, chunkSize);
+                            fct_write_buffer_part(actualResponseBody, responseBody, chunkSize);
                             actualResponseBodySize += chunkSize;
                             // Check for CRLF
-                            if (read_string(responseBody, 2) != CRLF)
+                            if (fct_read_string(responseBody, 2) != CRLF)
                             {
                                 errored = true;
                                 error = 'chunk did not end in CRLF in a chunked transfer';
@@ -221,19 +221,19 @@ with (client)
                             // Parse header lines
                             var line;
                             line = 1;
-                            while (buffer_bytes_left(responseBody))
+                            while (fct_buffer_bytes_left(responseBody))
                             {
                                 var linebuf;
                                 linebuf = '';
-                                while (buffer_bytes_left(responseBody))
+                                while (fct_buffer_bytes_left(responseBody))
                                 {
-                                    c = read_string(responseBody, 1);
+                                    c = fct_read_string(responseBody, 1);
                                     if (c != CR)
                                         linebuf += c;
                                     else
                                         break;
                                 }
-                                c += read_string(responseBody, 1);
+                                c += fct_read_string(responseBody, 1);
                                 if (c != CRLF)
                                 {
                                     errored = true;
@@ -247,7 +247,7 @@ with (client)
                         }
                     }
                     responseBodySize = actualResponseBodySize;
-                    buffer_destroy(responseBody);
+                    fct_buffer_destroy(responseBody);
                     responseBody = actualResponseBody;
                 }
                 else

@@ -9,7 +9,7 @@
     usePreviousPwd = false;
     
     global.players = ds_list_create();
-    global.deserializeBuffer = buffer_create;
+    global.deserializeBuffer = fct_buffer_create;
     global.isHost = false;
 
     global.myself = -1;
@@ -18,11 +18,11 @@
     downloadingMap = false;
     downloadMapBuffer = -1;
     
-    global.serverSocket = tcp_connect(global.serverIP, global.serverPort);
+    global.serverSocket = fct_tcp_connect(global.serverIP, global.serverPort);
     
-    write_ubyte(global.serverSocket, HELLO);
-    write_buffer(global.serverSocket, global.protocolUuid);
-    socket_send(global.serverSocket);
+    fct_write_ubyte(global.serverSocket, HELLO);
+    fct_write_buffer(global.serverSocket, global.protocolUuid);
+    fct_socket_send(global.serverSocket);
     
     room_goto_fix(DownloadRoom);
 }
