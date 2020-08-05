@@ -5,6 +5,6 @@ if(
         global.myself.humiliated == false &&
         random(9) <= 1) {
     bubbleImage = 50 + global.myself.class;
-    write_ubyte(global.serverSocket, CHAT_BUBBLE);
-    write_ubyte(global.serverSocket, bubbleImage);
+    fct_write_ubyte(global.serverSocket, CHAT_BUBBLE);
+    fct_write_ubyte(global.serverSocket, bubbleImage);
 }

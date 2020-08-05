@@ -23,7 +23,7 @@ if (ds_queue_empty(packetBufferQueue))
 
 // dequeue from both queues
 // (the queues are synchronised, two are used because GML has no tuples)
-buffer_destroy(ds_queue_dequeue(packetBufferQueue));
+fct_buffer_destroy(ds_queue_dequeue(packetBufferQueue));
 ds_queue_dequeue(packetPlayerQueue);
 return true;
 

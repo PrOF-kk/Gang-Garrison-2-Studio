@@ -77,9 +77,9 @@
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket, 6, global.deserializeBuffer);
-x = read_ushort(global.deserializeBuffer)/5;
-y = read_ushort(global.deserializeBuffer)/5;
-alarm[0] = read_short(global.deserializeBuffer)/global.delta_factor;
+x = fct_read_ushort(global.deserializeBuffer)/5;
+y = fct_read_ushort(global.deserializeBuffer)/5;
+alarm[0] = fct_read_short(global.deserializeBuffer)/global.delta_factor;
 </string>
           </argument>
         </arguments>
@@ -102,9 +102,9 @@ alarm[0] = read_short(global.deserializeBuffer)/global.delta_factor;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ushort(global.serializeBuffer, round(x*5));
-write_ushort(global.serializeBuffer, round(y*5));
-write_short(global.serializeBuffer, alarm[0]*global.delta_factor);
+            <string>fct_write_ushort(global.serializeBuffer, round(x*5));
+fct_write_ushort(global.serializeBuffer, round(y*5));
+fct_write_short(global.serializeBuffer, alarm[0]*global.delta_factor);
 </string>
           </argument>
         </arguments>

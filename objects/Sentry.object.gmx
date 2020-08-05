@@ -288,10 +288,10 @@ wallUnsetSolid();
 
 if(oldVspeed != 0 and vspeed == 0 and global.isHost)
 {
-    write_ubyte(global.sendBuffer, SENTRY_POSITION);
-    write_ubyte(global.sendBuffer, ds_list_find_index(global.players, ownerPlayer));
-    write_ushort(global.sendBuffer, round(x*5));
-    write_ushort(global.sendBuffer, round(y*5));
+    fct_write_ubyte(global.sendBuffer, SENTRY_POSITION);
+    fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, ownerPlayer));
+    fct_write_ushort(global.sendBuffer, round(x*5));
+    fct_write_ushort(global.sendBuffer, round(y*5));
 }
 
 oldVspeed = vspeed;
@@ -421,22 +421,22 @@ lastDamageDealer = noone;
             <kind>1</kind>
             <string>if(global.updateType == FULL_UPDATE) {
     receiveCompleteMessage(global.serverSocket, 5, global.deserializeBuffer);
-    startDirection = read_byte(global.deserializeBuffer);
-    x = read_ushort(global.deserializeBuffer)/5;
-    y = read_ushort(global.deserializeBuffer)/5;
+    startDirection = fct_read_byte(global.deserializeBuffer);
+    x = fct_read_ushort(global.deserializeBuffer)/5;
+    y = fct_read_ushort(global.deserializeBuffer)/5;
     xprevious = x;
     yprevious = y;
 }
 if(global.updateType == QUICK_UPDATE or global.updateType == FULL_UPDATE) {
     receiveCompleteMessage(global.serverSocket, 1, global.deserializeBuffer);
     var tbyte;
-    tbyte = read_ubyte(global.deserializeBuffer);
+    tbyte = fct_read_ubyte(global.deserializeBuffer);
     built = (tbyte &amp; $80) != false;
     hp = tbyte &amp; $7F;
     if(global.updateType == FULL_UPDATE and !built)
     {
         receiveCompleteMessage(global.serverSocket, 1, global.deserializeBuffer);
-        vspeed = read_ubyte(global.deserializeBuffer);
+        vspeed = fct_read_ubyte(global.deserializeBuffer);
     }
     if(built)
     {
@@ -466,15 +466,15 @@ if(global.updateType == QUICK_UPDATE or global.updateType == FULL_UPDATE) {
           <argument>
             <kind>1</kind>
             <string>if(global.updateType == FULL_UPDATE) {
-    write_byte(global.serializeBuffer, startDirection);
-    write_ushort(global.serializeBuffer, round(x*5));
-    write_ushort(global.serializeBuffer, round(y*5));
+    fct_write_byte(global.serializeBuffer, startDirection);
+    fct_write_ushort(global.serializeBuffer, round(x*5));
+    fct_write_ushort(global.serializeBuffer, round(y*5));
 }
 if(global.updateType == QUICK_UPDATE or global.updateType == FULL_UPDATE) {
-    write_ubyte(global.serializeBuffer, (built != false)*$80 + min(127,hp));
+    fct_write_ubyte(global.serializeBuffer, (built != false)*$80 + min(127,hp));
 }
 if(!built and global.updateType == FULL_UPDATE)
-    write_ubyte(global.serializeBuffer, vspeed);
+    fct_write_ubyte(global.serializeBuffer, vspeed);
 
 
 </string>

@@ -196,7 +196,7 @@ if(afk)
             <string>    if((not done) and (global.myself.team != team))
     {
         ClientPlayerChangeteam(team, global.serverSocket);
-        socket_send(global.serverSocket);
+        fct_socket_send(global.serverSocket);
     }
     done = true;
     if team == TEAM_SPECTATOR{

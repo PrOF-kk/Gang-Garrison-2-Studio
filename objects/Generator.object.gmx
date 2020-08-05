@@ -243,8 +243,8 @@ if (shieldHp &gt; 0) {
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,4,global.deserializeBuffer);
-hp = read_ushort(global.deserializeBuffer);
-shieldHp = read_ushort(global.deserializeBuffer);
+hp = fct_read_ushort(global.deserializeBuffer);
+shieldHp = fct_read_ushort(global.deserializeBuffer);
 </string>
           </argument>
         </arguments>
@@ -267,8 +267,8 @@ shieldHp = read_ushort(global.deserializeBuffer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ushort(global.serializeBuffer, ceil(hp));
-write_ushort(global.serializeBuffer, ceil(shieldHp));
+            <string>fct_write_ushort(global.serializeBuffer, ceil(hp));
+fct_write_ushort(global.serializeBuffer, ceil(shieldHp));
 </string>
           </argument>
         </arguments>

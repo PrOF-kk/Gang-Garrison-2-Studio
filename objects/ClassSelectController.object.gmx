@@ -237,7 +237,7 @@ if mouse_check_button(mb_left) &amp;&amp; newclass !=-1{
     if((not done) and (class != global.myself.class))
     {
         ClientPlayerChangeclass(class, global.serverSocket);
-        socket_send(global.serverSocket);
+        fct_socket_send(global.serverSocket);
     }
     done=true;
 }

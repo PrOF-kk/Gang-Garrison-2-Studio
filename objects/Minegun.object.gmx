@@ -168,7 +168,7 @@ if ammoCount &lt; maxAmmo {
             <string>{
     var i, mine;
     receiveCompleteMessage(global.serverSocket, 1, global.deserializeBuffer);
-    lobbed = read_ubyte(global.deserializeBuffer);
+    lobbed = fct_read_ubyte(global.deserializeBuffer);
     
     with(Mine) {
         if(ownerPlayer == other.ownerPlayer) {
@@ -223,7 +223,7 @@ if ammoCount &lt; maxAmmo {
           <argument>
             <kind>1</kind>
             <string>{
-    write_ubyte(global.serializeBuffer, lobbed);
+    fct_write_ubyte(global.serializeBuffer, lobbed);
     with(Mine) {
         if(ownerPlayer == other.ownerPlayer) {
             event_user(12);

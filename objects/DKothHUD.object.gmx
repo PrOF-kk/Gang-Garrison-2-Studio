@@ -129,9 +129,9 @@ if (cpUnlock &gt; 0 and global.run_virtual_ticks)
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,6,global.deserializeBuffer);
-cpUnlock=read_ushort(global.deserializeBuffer);
-redTimer=read_ushort(global.deserializeBuffer);
-blueTimer=read_ushort(global.deserializeBuffer);
+cpUnlock=fct_read_ushort(global.deserializeBuffer);
+redTimer=fct_read_ushort(global.deserializeBuffer);
+blueTimer=fct_read_ushort(global.deserializeBuffer);
 with KothRedControlPoint event_user(13);
 with KothBlueControlPoint event_user(13);
 </string>
@@ -156,9 +156,9 @@ with KothBlueControlPoint event_user(13);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ushort(global.serializeBuffer, cpUnlock);
-write_ushort(global.serializeBuffer, redTimer);
-write_ushort(global.serializeBuffer, blueTimer);
+            <string>fct_write_ushort(global.serializeBuffer, cpUnlock);
+fct_write_ushort(global.serializeBuffer, redTimer);
+fct_write_ushort(global.serializeBuffer, blueTimer);
 with KothRedControlPoint event_user(12);
 with KothBlueControlPoint event_user(12);
 </string>

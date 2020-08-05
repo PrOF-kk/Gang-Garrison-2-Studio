@@ -70,7 +70,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
             break;
         }
 
-        pluginhash = read_string(http_response_body(handle), 32);
+        pluginhash = fct_read_string(http_response_body(handle), 32);
         http_destroy(handle);
     }
 

@@ -216,20 +216,20 @@ if (global.run_virtual_ticks)
             <string>if (global.updateType == FULL_UPDATE)
 {
     receiveCompleteMessage(global.serverSocket, 6, global.deserializeBuffer);
-    redWins = read_ubyte(global.deserializeBuffer);
-    blueWins = read_ubyte(global.deserializeBuffer);
-    state = read_ubyte(global.deserializeBuffer);
-    winners = read_byte(global.deserializeBuffer);
-    endCount = read_ushort(global.deserializeBuffer);
+    redWins = fct_read_ubyte(global.deserializeBuffer);
+    blueWins = fct_read_ubyte(global.deserializeBuffer);
+    state = fct_read_ubyte(global.deserializeBuffer);
+    winners = fct_read_byte(global.deserializeBuffer);
+    endCount = fct_read_ushort(global.deserializeBuffer);
 }
 
 receiveCompleteMessage(global.serverSocket, 8, global.deserializeBuffer);
-global.timeLimitMins = read_ubyte(global.deserializeBuffer);
+global.timeLimitMins = fct_read_ubyte(global.deserializeBuffer);
 timeLimit = global.timeLimitMins*30*60;
-timer = read_uint(global.deserializeBuffer);
-cpUnlock = read_ushort(global.deserializeBuffer);
+timer = fct_read_uint(global.deserializeBuffer);
+cpUnlock = fct_read_ushort(global.deserializeBuffer);
 ArenaControlPoint.locked = cpUnlock &gt; 0;
-roundStart = read_ubyte(global.deserializeBuffer)*2;
+roundStart = fct_read_ubyte(global.deserializeBuffer)*2;
 with (ArenaControlPoint) event_user(13);
 </string>
           </argument>
@@ -255,17 +255,17 @@ with (ArenaControlPoint) event_user(13);
             <kind>1</kind>
             <string>if (global.updateType == FULL_UPDATE)
 {
-    write_ubyte(global.serializeBuffer, redWins);
-    write_ubyte(global.serializeBuffer, blueWins);
-    write_ubyte(global.serializeBuffer, state);
-    write_byte(global.serializeBuffer, winners);
-    write_ushort(global.serializeBuffer, endCount);
+    fct_write_ubyte(global.serializeBuffer, redWins);
+    fct_write_ubyte(global.serializeBuffer, blueWins);
+    fct_write_ubyte(global.serializeBuffer, state);
+    fct_write_byte(global.serializeBuffer, winners);
+    fct_write_ushort(global.serializeBuffer, endCount);
 }
 
-write_ubyte(global.serializeBuffer, global.timeLimitMins);
-write_uint(global.serializeBuffer, timer);
-write_ushort(global.serializeBuffer, cpUnlock);
-write_ubyte(global.serializeBuffer, floor(roundStart/2));
+fct_write_ubyte(global.serializeBuffer, global.timeLimitMins);
+fct_write_uint(global.serializeBuffer, timer);
+fct_write_ushort(global.serializeBuffer, cpUnlock);
+fct_write_ubyte(global.serializeBuffer, floor(roundStart/2));
 with (ArenaControlPoint) event_user(12);
 </string>
           </argument>

@@ -106,9 +106,9 @@ else if (timer &lt;= 0 and instance_exists(GeneratorRed) and instance_exists(Gen
           <argument>
             <kind>1</kind>
             <string>receiveCompleteMessage(global.serverSocket,5,global.deserializeBuffer);
-global.timeLimitMins = read_ubyte(global.deserializeBuffer);
+global.timeLimitMins = fct_read_ubyte(global.deserializeBuffer);
 timeLimit=global.timeLimitMins*30*60;
-timer=read_uint(global.deserializeBuffer);
+timer=fct_read_uint(global.deserializeBuffer);
 with GeneratorBlue event_user(13);
 with GeneratorRed event_user(13);
 </string>
@@ -133,8 +133,8 @@ with GeneratorRed event_user(13);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>write_ubyte(global.serializeBuffer, global.timeLimitMins);
-write_uint(global.serializeBuffer, timer);
+            <string>fct_write_ubyte(global.serializeBuffer, global.timeLimitMins);
+fct_write_uint(global.serializeBuffer, timer);
 with GeneratorBlue event_user(12);
 with GeneratorRed event_user(12);
 </string>

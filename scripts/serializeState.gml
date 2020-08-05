@@ -12,13 +12,13 @@
         
     global.updateType=argument[0];
     
-    write_ubyte(argument[1], argument[0]);
+    fct_write_ubyte(argument[1], argument[0]);
     
     if(argument[0] == FULL_UPDATE) {
-        write_ushort(argument[1], global.tdmInvulnerabilityTicks);
+        fct_write_ushort(argument[1], global.tdmInvulnerabilityTicks);
     }
     
-    write_ubyte(argument[1], ds_list_size(global.players));
+    fct_write_ubyte(argument[1], ds_list_size(global.players));
     
     global.serializeBuffer = argument[1];
 
@@ -38,23 +38,23 @@
         serialize(IntelligenceRed);
         serialize(IntelligenceBlue);
         
-        write_ubyte(argument[1], global.caplimit);
-        write_ubyte(argument[1], global.redCaps);
-        write_ubyte(argument[1], global.blueCaps);
-        write_ubyte(argument[1], global.Server_RespawntimeSec);
+        fct_write_ubyte(argument[1], global.caplimit);
+        fct_write_ubyte(argument[1], global.redCaps);
+        fct_write_ubyte(argument[1], global.blueCaps);
+        fct_write_ubyte(argument[1], global.Server_RespawntimeSec);
         with (HUD)
             event_user(12);
         
         // Write classlimits to joining client
         for (a = 0; a < 10; a += 1)
-            write_ubyte(argument[1], global.classlimits[a]);
+            fct_write_ubyte(argument[1], global.classlimits[a]);
     }
     
     if(argument[0] == CAPS_UPDATE) {
               
-        write_ubyte(argument[1], global.redCaps);
-        write_ubyte(argument[1], global.blueCaps);
-        write_ubyte(argument[1], global.Server_RespawntimeSec);
+        fct_write_ubyte(argument[1], global.redCaps);
+        fct_write_ubyte(argument[1], global.blueCaps);
+        fct_write_ubyte(argument[1], global.Server_RespawntimeSec);
         with (HUD)
             event_user(12);
     }
