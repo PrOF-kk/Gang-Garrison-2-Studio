@@ -108,7 +108,7 @@ if (http_step(handle)) {
 
     var data;
     data = http_response_body(handle);
-    data = read_string(data, buffer_size(data));
+    data = fct_read_string(data, fct_buffer_size(data));
 
     global.devMessagesChecked = true;
 

@@ -39,16 +39,16 @@ numServers = -1;
 serversRead = 0;
 serverInfoLength = -1;
 
-lobbysocket = tcp_connect(LOBBY_SERVER_HOST, LOBBY_SERVER_PORT);
-set_little_endian(lobbysocket, false);
+lobbysocket = fct_tcp_connect(LOBBY_SERVER_HOST, LOBBY_SERVER_PORT);
+fct_set_little_endian(lobbysocket, false);
 
 // List protocol ID
 parseUuid("297d0df4-430c-bf61-640a-640897eaef57", lobbysocket);
 
 // Send Lobby UUID (big endian)
-write_buffer(lobbysocket, global.gg2lobbyId);
+fct_write_buffer(lobbysocket, global.gg2lobbyId);
 
-socket_send(lobbysocket);
+fct_socket_send(lobbysocket);
 </string>
           </argument>
         </arguments>
@@ -75,7 +75,7 @@ socket_send(lobbysocket);
     instance_destroy();
 }
 
-socket_destroy(lobbysocket);
+fct_socket_destroy(lobbysocket);
 ds_list_destroy(servers);
 </string>
           </argument>
@@ -103,60 +103,60 @@ ds_list_destroy(servers);
     var size, namelength, server;
     
     if(lobbysocket != -1) {
-        if(socket_has_error(lobbysocket)) {
+        if(fct_socket_has_error(lobbysocket)) {
             if(numServers == -1) {
-                show_message("Connecting to the lobby server has failed. Reason:#" + socket_error(lobbysocket));
+                show_message("Connecting to the lobby server has failed. Reason:#" + fct_socket_error(lobbysocket));
             }
-            socket_destroy(lobbysocket);
+            fct_socket_destroy(lobbysocket);
             lobbysocket = -1;
         } else if(numServers == -1) {
-            if(tcp_receive(lobbysocket, 4)) {
-                numServers = read_uint(lobbysocket);
+            if(fct_tcp_receive(lobbysocket, 4)) {
+                numServers = fct_read_uint(lobbysocket);
             }
         } else if(serversRead &lt; numServers) {
             if(serverInfoLength == -1) {
-                if(tcp_receive(lobbysocket, 4)) {
-                    serverInfoLength = read_uint(lobbysocket);
+                if(fct_tcp_receive(lobbysocket, 4)) {
+                    serverInfoLength = fct_read_uint(lobbysocket);
                     if(serverInfoLength&gt;100000)
                     {
                         show_message("Server data block from lobby is too large ("+string(serverInfoLength)+")");
                         serverInfoLength = -1;
-                        socket_destroy(lobbysocket);
+                        fct_socket_destroy(lobbysocket);
                         lobbysocket = -1;
                     }
                 }
             }
             if(serverInfoLength != -1)
             {
-                if(tcp_receive(lobbysocket, serverInfoLength))
+                if(fct_tcp_receive(lobbysocket, serverInfoLength))
                 {
                     var infolen, playercount, sameProtocolId;
                     sameProtocolId = false;
                     server = instance_create(0,0,Server);
-                    server.protocol = read_ubyte(lobbysocket);
-                    server.port = read_ushort(lobbysocket);
-                    server.ip = string(read_ubyte(lobbysocket))+"."+string(read_ubyte(lobbysocket))+"."+string(read_ubyte(lobbysocket))+"."+string(read_ubyte(lobbysocket));
-                    read_string(lobbysocket, 2+16);
-                    server.slots = read_ushort(lobbysocket);
-                    server.players = read_ushort(lobbysocket);
-                    server.bots = read_ushort(lobbysocket);
-                    server.private = ((read_ushort(lobbysocket)&amp;1) != 0);
-                    infolen = read_ushort(lobbysocket);
+                    server.protocol = fct_read_ubyte(lobbysocket);
+                    server.port = fct_read_ushort(lobbysocket);
+                    server.ip = string(fct_read_ubyte(lobbysocket))+"."+string(fct_read_ubyte(lobbysocket))+"."+string(fct_read_ubyte(lobbysocket))+"."+string(fct_read_ubyte(lobbysocket));
+                    fct_read_string(lobbysocket, 2+16);
+                    server.slots = fct_read_ushort(lobbysocket);
+                    server.players = fct_read_ushort(lobbysocket);
+                    server.bots = fct_read_ushort(lobbysocket);
+                    server.private = ((fct_read_ushort(lobbysocket)&amp;1) != 0);
+                    infolen = fct_read_ushort(lobbysocket);
                     repeat(infolen)
                     {
                         var key, val;
-                        key = read_string(lobbysocket, read_ubyte(lobbysocket));
+                        key = fct_read_string(lobbysocket, fct_read_ubyte(lobbysocket));
                         if(key=="protocol_id")
                         {
-                            buffer_set_readpos(global.protocolUuid, 0);
+                            fct_buffer_set_readpos(global.protocolUuid, 0);
                             sameProtocolId = true;
-                            repeat(read_ushort(lobbysocket))
-                                if(read_ubyte(global.protocolUuid) != read_ubyte(lobbysocket))
+                            repeat(fct_read_ushort(lobbysocket))
+                                if(fct_read_ubyte(global.protocolUuid) != fct_read_ubyte(lobbysocket))
                                     sameProtocolId = false;
                         }
                         else
                         {
-                            val = read_string(lobbysocket, read_ushort(lobbysocket));
+                            val = fct_read_string(lobbysocket, fct_read_ushort(lobbysocket));
                             ds_map_add(server.infos, key, val);
                         }
                     }
@@ -183,7 +183,7 @@ ds_list_destroy(servers);
                 }
             }
         } else {
-            socket_destroy(lobbysocket);
+            fct_socket_destroy(lobbysocket);
             lobbysocket = -1;
         }                    
     }

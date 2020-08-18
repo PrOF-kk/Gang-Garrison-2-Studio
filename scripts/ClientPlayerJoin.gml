@@ -1,1 +1,1 @@
-write_ubyte(argument[0], PLAYER_JOIN);
+fct_write_ubyte(argument[0], PLAYER_JOIN);

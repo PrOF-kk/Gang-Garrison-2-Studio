@@ -29,30 +29,30 @@ while ds_priority_size(blueteam) > 3{
 mvps[TEAM_RED] = ds_priority_size(redteam);
 mvps[TEAM_BLUE] = ds_priority_size(blueteam);
 
-write_ubyte(global.sendBuffer, ARENA_ENDROUND);
+fct_write_ubyte(global.sendBuffer, ARENA_ENDROUND);
 
-write_ubyte(global.sendBuffer, win);
-write_ubyte(global.sendBuffer, mvps[TEAM_RED]);
-write_ubyte(global.sendBuffer, mvps[TEAM_BLUE]);
-write_ubyte(global.sendBuffer, redWins);
-write_ubyte(global.sendBuffer, blueWins);
+fct_write_ubyte(global.sendBuffer, win);
+fct_write_ubyte(global.sendBuffer, mvps[TEAM_RED]);
+fct_write_ubyte(global.sendBuffer, mvps[TEAM_BLUE]);
+fct_write_ubyte(global.sendBuffer, redWins);
+fct_write_ubyte(global.sendBuffer, blueWins);
 
 for(i=0; i < mvps[TEAM_RED]; i+=1) {
     redMVP[i] = ds_priority_delete_max(redteam);
     redMVP[i].roundStats[HEALING] = round(redMVP[i].roundStats[HEALING]);
-    write_ubyte(global.sendBuffer, ds_list_find_index(global.players, redMVP[i]));
-    write_ubyte(global.sendBuffer, redMVP[i].roundStats[KILLS]);
-    write_ushort(global.sendBuffer, redMVP[i].roundStats[HEALING]);
-    write_ubyte(global.sendBuffer, redMVP[i].roundStats[POINTS]);
+    fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, redMVP[i]));
+    fct_write_ubyte(global.sendBuffer, redMVP[i].roundStats[KILLS]);
+    fct_write_ushort(global.sendBuffer, redMVP[i].roundStats[HEALING]);
+    fct_write_ubyte(global.sendBuffer, redMVP[i].roundStats[POINTS]);
 }
 
 for(i=0; i < mvps[TEAM_BLUE]; i+=1) {
     blueMVP[i] = ds_priority_delete_max(blueteam);
     blueMVP[i].roundStats[HEALING] = round(blueMVP[i].roundStats[HEALING]);
-    write_ubyte(global.sendBuffer, ds_list_find_index(global.players, blueMVP[i]));
-    write_ubyte(global.sendBuffer, blueMVP[i].roundStats[KILLS]);
-    write_ushort(global.sendBuffer, blueMVP[i].roundStats[HEALING]);
-    write_ubyte(global.sendBuffer, blueMVP[i].roundStats[POINTS]);
+    fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, blueMVP[i]));
+    fct_write_ubyte(global.sendBuffer, blueMVP[i].roundStats[KILLS]);
+    fct_write_ushort(global.sendBuffer, blueMVP[i].roundStats[HEALING]);
+    fct_write_ubyte(global.sendBuffer, blueMVP[i].roundStats[POINTS]);
 }
 
 with Sentry if team != win event_user(1);

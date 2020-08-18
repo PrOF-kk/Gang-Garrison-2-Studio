@@ -4,5 +4,5 @@
  * argument[0]: The player who just filled his uberMeter
  */
 
-write_ubyte(global.sendBuffer, UBER_CHARGED);
-write_ubyte(global.sendBuffer, ds_list_find_index(global.players,argument[0]));
+fct_write_ubyte(global.sendBuffer, UBER_CHARGED);
+fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players,argument[0]));

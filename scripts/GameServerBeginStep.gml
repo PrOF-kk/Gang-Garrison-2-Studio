@@ -15,7 +15,7 @@ for(i=0; i < ds_list_size(global.players); i+=1)
     var player, noOfPlayers;
     player = ds_list_find_value(global.players, i);
     
-    if(socket_has_error(player.socket) or player.kicked)
+    if(fct_socket_has_error(player.socket) or player.kicked)
     {
         var noOfOccupiedSlots, player;
         noOfOccupiedSlots = getNumberOfOccupiedSlots();
@@ -68,11 +68,11 @@ if(global.winners != -1 and !global.mapchanging)
     global.mapchanging = true;
     impendingMapChange = 300; // in 300 ticks (ten seconds), we'll do a map change
     
-    write_ubyte(global.sendBuffer, MAP_END);
-    write_ubyte(global.sendBuffer, string_length(global.nextMap));
-    write_string(global.sendBuffer, global.nextMap);
-    write_ubyte(global.sendBuffer, global.winners);
-    write_ubyte(global.sendBuffer, global.currentMapArea);
+    fct_write_ubyte(global.sendBuffer, MAP_END);
+    fct_write_ubyte(global.sendBuffer, string_length(global.nextMap));
+    fct_write_string(global.sendBuffer, global.nextMap);
+    fct_write_ubyte(global.sendBuffer, global.winners);
+    fct_write_ubyte(global.sendBuffer, global.currentMapArea);
     
     if(!instance_exists(ScoreTableController))
         instance_create(0,0,ScoreTableController);

@@ -2,5 +2,5 @@
  * argument[0]: The team who destroyed the bomb
  */
  
-write_ubyte(global.sendBuffer, GENERATOR_DESTROY);
-write_ubyte(global.sendBuffer, argument[0]);
+fct_write_ubyte(global.sendBuffer, GENERATOR_DESTROY);
+fct_write_ubyte(global.sendBuffer, argument[0]);

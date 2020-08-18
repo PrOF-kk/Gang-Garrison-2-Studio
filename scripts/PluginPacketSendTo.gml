@@ -26,36 +26,36 @@ if (!ds_map_exists(global.pluginPacketBuffers, packetID))
 }
 
 // check size of buffer (limited because ushort used for length of packet)
-if (buffer_size(dataBuffer) > 65534)
+if (fct_buffer_size(dataBuffer) > 65534)
     return false;
 
 // Short-cicuit when sending to self
 if (player == global.myself)
 {
-    packetBuffer = buffer_create;
-    write_buffer(packetBuffer, dataBuffer);
+    packetBuffer = fct_buffer_create;
+    fct_write_buffer(packetBuffer, dataBuffer);
     _PluginPacketPush(packetID, packetBuffer, global.myself);
     return true;
 }
 
 // send packet to specified client
-packetBuffer = buffer_create;
+packetBuffer = fct_buffer_create;
 
 // ID of plugin packet container packet
-write_ubyte(packetBuffer, PLUGIN_PACKET);
+fct_write_ubyte(packetBuffer, PLUGIN_PACKET);
 
 // packet remainder length
-write_ushort(packetBuffer, buffer_size(dataBuffer) + 1);
+fct_write_ushort(packetBuffer, fct_buffer_size(dataBuffer) + 1);
 
 // plugin packet ID
-write_ubyte(packetBuffer, packetID);
+fct_write_ubyte(packetBuffer, packetID);
 
 // plugin packet data buffer
-write_buffer(packetBuffer, dataBuffer);
+fct_write_buffer(packetBuffer, dataBuffer);
 
 // write to appropriate buffer and call send if needed
-write_buffer(player.socket, packetBuffer);
-socket_send(player.socket);
+fct_write_buffer(player.socket, packetBuffer);
+fct_socket_send(player.socket);
 
-buffer_destroy(packetBuffer);
+fct_buffer_destroy(packetBuffer);
 return true;

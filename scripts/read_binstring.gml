@@ -6,5 +6,5 @@ buffer = argument[0];
 len = argument[1];
 result = "";
 repeat(len)
-    result += chr(read_ubyte(buffer));
+    result += chr(fct_read_ubyte(buffer));
 return result;

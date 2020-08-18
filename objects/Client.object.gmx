@@ -68,10 +68,10 @@
           <argument>
             <kind>1</kind>
             <string>if(not nocreate) {
-    socket_destroy(global.serverSocket);
+    fct_socket_destroy(global.serverSocket);
     ds_list_destroy(global.players);
-    buffer_destroy(global.deserializeBuffer);
-    buffer_destroy(downloadMapBuffer);
+    fct_buffer_destroy(global.deserializeBuffer);
+    fct_buffer_destroy(downloadMapBuffer);
     
     with(Player)
         instance_destroy();
@@ -239,7 +239,7 @@
     {
         draw_text(50, 530, "Downloading map (press Esc to abort)");
         if(downloadMapBytes &gt; 0)
-            draw_rectangle(50, 550, 50+buffer_size(downloadMapBuffer)/downloadMapBytes * 250, 560, 0);
+            draw_rectangle(50, 550, 50+fct_buffer_size(downloadMapBuffer)/downloadMapBytes * 250, 560, 0);
     }
     else
         draw_text(50, 530, "Connecting (press Esc to abort)");

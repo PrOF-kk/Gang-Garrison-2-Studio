@@ -8,5 +8,5 @@
 var player;
 player = argument[0];
 
-write_ubyte(global.sendBuffer, DROP_INTEL);
-write_ubyte(global.sendBuffer, ds_list_find_index(global.players, player));
+fct_write_ubyte(global.sendBuffer, DROP_INTEL);
+fct_write_ubyte(global.sendBuffer, ds_list_find_index(global.players, player));

@@ -22,41 +22,41 @@ if (!ds_map_exists(global.pluginPacketBuffers, packetID))
 }
 
 // check size of buffer (limited because ushort used for length of packet)
-if (buffer_size(dataBuffer) > 65534)
+if (fct_buffer_size(dataBuffer) > 65534)
     return false;
 
 // Short-cicuit when sending to self
 if (loopback)
 {
-    packetBuffer = buffer_create;
-    write_buffer(packetBuffer, dataBuffer);
+    packetBuffer = fct_buffer_create;
+    fct_write_buffer(packetBuffer, dataBuffer);
     _PluginPacketPush(packetID, packetBuffer, global.myself);
 }
 
 // send packet to every client (if server), or to server (if client)
-packetBuffer = buffer_create;
+packetBuffer = fct_buffer_create;
 
 // ID of plugin packet container packet
-write_ubyte(packetBuffer, PLUGIN_PACKET);
+fct_write_ubyte(packetBuffer, PLUGIN_PACKET);
 
 // packet remainder length
-write_ushort(packetBuffer, buffer_size(dataBuffer) + 1);
+fct_write_ushort(packetBuffer, fct_buffer_size(dataBuffer) + 1);
 
 // plugin packet ID
-write_ubyte(packetBuffer, packetID);
+fct_write_ubyte(packetBuffer, packetID);
 
 // plugin packet data buffer
-write_buffer(packetBuffer, dataBuffer);
+fct_write_buffer(packetBuffer, dataBuffer);
 
 // write to appropriate buffer and call send if needed
 if (global.isHost) {
-    write_buffer(global.sendBuffer, packetBuffer);
+    fct_write_buffer(global.sendBuffer, packetBuffer);
 } else {
-    write_buffer(global.serverSocket, packetBuffer);
-    socket_send(global.serverSocket);
+    fct_write_buffer(global.serverSocket, packetBuffer);
+    fct_socket_send(global.serverSocket);
 }
 
-buffer_destroy(packetBuffer);
+fct_buffer_destroy(packetBuffer);
 return true;
 
 
@@ -89,38 +89,38 @@ if (!ds_map_exists(global.pluginPacketBuffers, packetID))
 }
 
 // check size of buffer (limited because ushort used for length of packet)
-if (buffer_size(dataBuffer) > 65534)
+if (fct_buffer_size(dataBuffer) > 65534)
     return false;
 
 // Short-cicuit when sending to self
 if (player == global.myself)
 {
-    packetBuffer = buffer_create;
-    write_buffer(packetBuffer, dataBuffer);
+    packetBuffer = fct_buffer_create;
+    fct_write_buffer(packetBuffer, dataBuffer);
     _PluginPacketPush(packetID, packetBuffer, global.myself);
     return true;
 }
 
 // send packet to specified client
-packetBuffer = buffer_create;
+packetBuffer = fct_buffer_create;
 
 // ID of plugin packet container packet
-write_ubyte(packetBuffer, PLUGIN_PACKET);
+fct_write_ubyte(packetBuffer, PLUGIN_PACKET);
 
 // packet remainder length
-write_ushort(packetBuffer, buffer_size(dataBuffer) + 1);
+fct_write_ushort(packetBuffer, fct_buffer_size(dataBuffer) + 1);
 
 // plugin packet ID
-write_ubyte(packetBuffer, packetID);
+fct_write_ubyte(packetBuffer, packetID);
 
 // plugin packet data buffer
-write_buffer(packetBuffer, dataBuffer);
+fct_write_buffer(packetBuffer, dataBuffer);
 
 // write to appropriate buffer and call send if needed
-write_buffer(player.socket, packetBuffer);
-socket_send(player.socket);
+fct_write_buffer(player.socket, packetBuffer);
+fct_socket_send(player.socket);
 
-buffer_destroy(packetBuffer);
+fct_buffer_destroy(packetBuffer);
 return true;
 
 
@@ -202,7 +202,7 @@ if (ds_queue_empty(packetBufferQueue))
 
 // dequeue from both queues
 // (the queues are synchronised, two are used because GML has no tuples)
-buffer_destroy(ds_queue_dequeue(packetBufferQueue));
+fct_buffer_destroy(ds_queue_dequeue(packetBufferQueue));
 ds_queue_dequeue(packetPlayerQueue);
 return true;
 
@@ -348,7 +348,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
             break;
         }
 
-        pluginhash = read_string(http_response_body(handle), 32);
+        pluginhash = fct_read_string(http_response_body(handle), 32);
         http_destroy(handle);
     }
 
@@ -475,8 +475,8 @@ for (i = 0; i < ds_list_size(list); i += 1)
                 // send ping if we haven't contacted server in 20 seconds
                 // we need to do this to keep the connection open
                 if (current_time-lastContact > 20000) {
-                    write_byte(global.serverSocket, PING);
-                    socket_send(global.serverSocket);
+                    fct_write_byte(global.serverSocket, PING);
+                    fct_socket_send(global.serverSocket);
                     lastContact = current_time;
                 }
             }
@@ -506,7 +506,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
         }
         else
         {
-            write_buffer_to_file(http_response_body(handle), tempfile);
+            fct_write_buffer_to_file(http_response_body(handle), tempfile);
             if (!file_exists(tempfile))
             {
                 show_message('Error loading server-sent plugins - download failed for "' + pluginname + '":# No such file?');

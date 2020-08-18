@@ -64,8 +64,8 @@ cumulativeMapBytes = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>buffer_destroy(mapDownloadBuffer);
-socket_destroy_abortive(socket);
+            <string>fct_buffer_destroy(mapDownloadBuffer);
+fct_socket_destroy_abortive(socket);
 </string>
           </argument>
         </arguments>

@@ -98,8 +98,8 @@ for (i = 0; i < ds_list_size(list); i += 1)
                 // send ping if we haven't contacted server in 20 seconds
                 // we need to do this to keep the connection open
                 if (current_time-lastContact > 20000) {
-                    write_byte(global.serverSocket, PING);
-                    socket_send(global.serverSocket);
+                    fct_write_byte(global.serverSocket, PING);
+                    fct_socket_send(global.serverSocket);
                     lastContact = current_time;
                 }
             }
@@ -129,7 +129,7 @@ for (i = 0; i < ds_list_size(list); i += 1)
         }
         else
         {
-            write_buffer_to_file(http_response_body(handle), tempfile);
+            fct_write_buffer_to_file(http_response_body(handle), tempfile);
             if (!file_exists(tempfile))
             {
                 show_message('Error loading server-sent plugins - download failed for "' + pluginname + '":# No such file?');
