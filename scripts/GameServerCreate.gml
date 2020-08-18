@@ -23,7 +23,7 @@
     global.serverSocket = -1;
     
     var i;
-    serverId = fct_buffer_create;
+    serverId = fct_buffer_create();
     for (i = 0; i < 16; i += 1)
         fct_write_ubyte(serverId, irandom(255));
     

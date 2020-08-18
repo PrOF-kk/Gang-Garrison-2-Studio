@@ -36,8 +36,8 @@
     if(global.FaucetMusic != -1)
         sound_volume(global.FaucetMusic, 0.8);
     
-    global.sendBuffer = fct_buffer_create;
-    global.tempBuffer = fct_buffer_create;
+    global.sendBuffer = fct_buffer_create();
+    global.tempBuffer = fct_buffer_create();
     global.HudCheck = false;
     global.map_rotation = ds_list_create(); // Map rotation that is actually used by the server
     global.ini_map_rotation = ds_list_create(); // Always holds the priority-based map rotation from the gg2.ini
@@ -231,10 +231,10 @@
     global.mapchanging = false;
     
     // parse the protocol version UUID for later use
-    global.protocolUuid = fct_buffer_create;
+    global.protocolUuid = fct_buffer_create();
     parseUuid(PROTOCOL_UUID, global.protocolUuid);
 
-    global.gg2lobbyId = fct_buffer_create;
+    global.gg2lobbyId = fct_buffer_create();
     parseUuid(GG2_LOBBY_UUID, global.gg2lobbyId);
 
     // Create abbreviations array for rewards use

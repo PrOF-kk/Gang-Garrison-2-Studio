@@ -128,7 +128,7 @@ case STATE_EXPECT_COMMAND:
         if(advertisedMapMd5 != "" and file_exists("Maps/" + advertisedMap + ".png"))
         {   // If the md5 was empty, we advertised an internal map, which obviously can't be downloaded.
             fct_buffer_destroy(mapDownloadBuffer);
-            mapDownloadBuffer = fct_buffer_create;
+            mapDownloadBuffer = fct_buffer_create();
             if(!fct_append_file_to_buffer(mapDownloadBuffer, "Maps/" + advertisedMap + ".png")) {
                 fct_buffer_destroy(mapDownloadBuffer);
                 mapDownloadBuffer = -1;

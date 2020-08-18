@@ -28,13 +28,13 @@ if (fct_buffer_size(dataBuffer) > 65534)
 // Short-cicuit when sending to self
 if (loopback)
 {
-    packetBuffer = fct_buffer_create;
+    packetBuffer = fct_buffer_create();
     fct_write_buffer(packetBuffer, dataBuffer);
     _PluginPacketPush(packetID, packetBuffer, global.myself);
 }
 
 // send packet to every client (if server), or to server (if client)
-packetBuffer = fct_buffer_create;
+packetBuffer = fct_buffer_create();
 
 // ID of plugin packet container packet
 fct_write_ubyte(packetBuffer, PLUGIN_PACKET);
@@ -95,14 +95,14 @@ if (fct_buffer_size(dataBuffer) > 65534)
 // Short-cicuit when sending to self
 if (player == global.myself)
 {
-    packetBuffer = fct_buffer_create;
+    packetBuffer = fct_buffer_create();
     fct_write_buffer(packetBuffer, dataBuffer);
     _PluginPacketPush(packetID, packetBuffer, global.myself);
     return true;
 }
 
 // send packet to specified client
-packetBuffer = fct_buffer_create;
+packetBuffer = fct_buffer_create();
 
 // ID of plugin packet container packet
 fct_write_ubyte(packetBuffer, PLUGIN_PACKET);

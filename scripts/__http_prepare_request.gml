@@ -60,7 +60,7 @@ with (client)
     line = 0;
     statusCode = -1;
     reasonPhrase = '';
-    responseBody = fct_buffer_create;
+    responseBody = fct_buffer_create();
     responseBodySize = -1;
     responseBodyProgress = -1;
     responseHeaders = ds_map_create();

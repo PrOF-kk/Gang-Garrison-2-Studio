@@ -1,7 +1,7 @@
 /* Receive a string with length prefix. Blocks until the complete string is read */
 
 var size,buffer,result;
-buffer = fct_buffer_create;
+buffer = fct_buffer_create();
 if(receiveCompleteMessage(argument[0], argument[1], buffer) > 0) {
     fct_buffer_destroy(buffer);
     return "";

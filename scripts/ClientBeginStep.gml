@@ -76,7 +76,7 @@ do {
                     fct_socket_send(global.serverSocket);
                     receiveCompleteMessage(global.serverSocket,4,global.tempBuffer);
                     downloadMapBytes = fct_read_uint(global.tempBuffer);
-                    downloadMapBuffer = fct_buffer_create;
+                    downloadMapBuffer = fct_buffer_create();
                     downloadingMap = true;
                     roomchange=true;
                 }

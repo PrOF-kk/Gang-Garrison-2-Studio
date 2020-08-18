@@ -5,7 +5,7 @@ var noOfOccupiedSlots;
 noOfOccupiedSlots = getNumberOfOccupiedSlots();
 
 var lobbyBuffer;
-lobbyBuffer = fct_buffer_create;
+lobbyBuffer = fct_buffer_create();
 fct_set_little_endian(lobbyBuffer, false);
 
 parseUuid("b5dae2e8-424f-9ed0-0fcb-8c21c7ca1352", lobbyBuffer); // Message Type "register"
