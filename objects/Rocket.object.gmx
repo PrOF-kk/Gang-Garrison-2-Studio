@@ -64,7 +64,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(variable_local_exists(id, "rocketblurParticleType")) {
+            <string>if(variable_instance_exists(id, "rocketblurParticleType")) {
     part_type_destroy(rocketblurParticleType);
 }
 ds_list_destroy(playersPassed);

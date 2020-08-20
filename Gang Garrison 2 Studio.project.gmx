@@ -1869,11 +1869,6 @@
     </scripts>
     <scripts name="Compatibility">
       <script>scripts\sleep_ms.gml</script>
-      <scripts name="Variables">
-        <script>scripts\variable_local_exists.gml</script>
-        <script>scripts\variable_local_created.gml</script>
-        <script>scripts\variable_local_free.gml</script>
-      </scripts>
       <script>scripts\show_message_ext_bootleg.gml</script>
     </scripts>
     <scripts name="DummyScripts">

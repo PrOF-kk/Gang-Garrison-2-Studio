@@ -463,10 +463,10 @@
     }
     
     //part type destroy
-    if(variable_local_exists(id, "jumpFlameParticleType"))
+    if(variable_instance_exists(id, "jumpFlameParticleType"))
         part_type_destroy(jumpFlameParticleType);
     
-    if(variable_local_exists(id, "jumpDustParticleSystem"))
+    if(variable_instance_exists(id, "jumpDustParticleSystem"))
         part_type_destroy(jumpDustParticleSystem);
         
     // destroy overlay lists
@@ -1195,7 +1195,7 @@ if(rocketJumping)
 {
     if(global.run_virtual_ticks)
     {
-        if (!variable_local_exists(id, "jumpFlameParticleType"))
+        if (!variable_instance_exists(id, "jumpFlameParticleType"))
         {
             jumpFlameParticleType = part_type_create();
             part_type_sprite(jumpFlameParticleType,FlameS,true,false,true);
@@ -1230,7 +1230,7 @@ if(rocketJumping)
 if(spinjumping)
 {
     
-    if (!variable_local_exists(id, "jumpDustParticleType"))
+    if (!variable_instance_exists(id, "jumpDustParticleType"))
     {
         jumpDustParticleType = part_type_create();
         part_type_sprite(jumpDustParticleType,SpeedBoostS,false,false,true);
@@ -1396,7 +1396,7 @@ if ubered {
     }
     if instance_exists(currentWeapon) {
         with(currentWeapon) {
-            if(variable_local_exists(id, "maxAmmo")) {
+            if(variable_instance_exists(id, "maxAmmo")) {
                 ammoCount = maxAmmo;
             }
             if (alarm[5] &gt; 0)
@@ -1419,7 +1419,7 @@ if (instance_exists(ArenaHUD)) {
 if ((arenaRoundEnd or global.mapchanging) and !player.humiliated) {
     if instance_exists(currentWeapon) {
         with(currentWeapon){
-            if(variable_local_exists(id, "maxAmmo")) {
+            if(variable_instance_exists(id, "maxAmmo")) {
                 ammoCount = maxAmmo;
             }
             if (alarm[5] &gt; 0)
