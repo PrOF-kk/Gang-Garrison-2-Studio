@@ -25,7 +25,7 @@ if(instance_exists(killer) and killer != owner) {
     recordDestructionInLog(owner, killer, healer, damageSource);
     setChatBubble(owner, 60);
 }
-else if (argument[3] == DAMAGE_SOURCE_GENERATOR_EXPLOSION) {
+else if (argument[3] == global.DAMAGE_SOURCE_GENERATOR_EXPLOSION) {
     recordDestructionInLog(owner, noone, noone, damageSource);
     setChatBubble(owner, 60);
 }

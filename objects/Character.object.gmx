@@ -435,7 +435,7 @@
         
         // lastDamageSource is not always synchronized on Character destruction (e.g. if the player just leaves), so we HAVE to sync here.
         // Let's just hope it doesn't matter whether we return the intel now (Server) or after the player destruction is finished (Client).
-        if (global.isHost and (lastDamageSource == DAMAGE_SOURCE_KILL_BOX || lastDamageSource == DAMAGE_SOURCE_FRAG_BOX || lastDamageSource == DAMAGE_SOURCE_PITFALL))
+        if (global.isHost and (lastDamageSource == global.DAMAGE_SOURCE_KILL_BOX || lastDamageSource == global.DAMAGE_SOURCE_FRAG_BOX || lastDamageSource == global.DAMAGE_SOURCE_PITFALL))
         {
             var intelTeam;
             if (team == TEAM_RED)
@@ -1660,9 +1660,9 @@ if(hspeed &lt; 0)
             <string>playsound(x,y,ExplosionSnd);
 hp=0;
 if (instance_exists(lastDamageDealer) &amp;&amp; lastDamageDealer != player)
-    lastDamageSource = DAMAGE_SOURCE_FINISHED_OFF_GIB;
+    lastDamageSource = global.DAMAGE_SOURCE_FINISHED_OFF_GIB;
 else
-    lastDamageSource = DAMAGE_SOURCE_FRAG_BOX;
+    lastDamageSource = global.DAMAGE_SOURCE_FRAG_BOX;
 </string>
           </argument>
         </arguments>
@@ -1687,9 +1687,9 @@ else
             <kind>1</kind>
             <string>hp=0;
 if (instance_exists(lastDamageDealer) &amp;&amp; lastDamageDealer != player)
-    lastDamageSource = DAMAGE_SOURCE_FINISHED_OFF;
+    lastDamageSource = global.DAMAGE_SOURCE_FINISHED_OFF;
 else
-    lastDamageSource = DAMAGE_SOURCE_PITFALL;
+    lastDamageSource = global.DAMAGE_SOURCE_PITFALL;
 </string>
           </argument>
         </arguments>
@@ -1714,9 +1714,9 @@ else
             <kind>1</kind>
             <string>hp=0;
 if (instance_exists(lastDamageDealer) &amp;&amp; lastDamageDealer != player)
-    lastDamageSource = DAMAGE_SOURCE_FINISHED_OFF;
+    lastDamageSource = global.DAMAGE_SOURCE_FINISHED_OFF;
 else
-    lastDamageSource = DAMAGE_SOURCE_KILL_BOX;
+    lastDamageSource = global.DAMAGE_SOURCE_KILL_BOX;
 </string>
           </argument>
         </arguments>

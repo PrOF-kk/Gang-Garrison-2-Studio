@@ -2,7 +2,7 @@
     // argument[0]: The killed player
     // argument[1]: The killer, or a false value for suicides
     // argument[2]: The assistant, or a false value for no assist
-    // argument[3]: The source of the damage (e.g. DAMAGE_SOURCE_SCATTERGUN)
+    // argument[3]: The source of the damage (e.g. global.DAMAGE_SOURCE_SCATTERGUN)
       
         with (KillLog) {
             map = ds_map_create();
@@ -19,7 +19,7 @@
                 ds_map_add(map, "team1", argument[1].team);
             }
             
-            if(argument[3] == DAMAGE_SOURCE_PITFALL or argument[3] == DAMAGE_SOURCE_BID_FAREWELL)
+            if(argument[3] == global.DAMAGE_SOURCE_PITFALL or argument[3] == global.DAMAGE_SOURCE_BID_FAREWELL)
             {
                 ds_map_add(map, "name2", "");
                 ds_map_add(map, "team2", 0);
@@ -37,14 +37,14 @@
             ds_map_add(map, "weapon", findDamageSourceIcon(argument[3]));
             
             switch(argument[3]) {
-                case DAMAGE_SOURCE_PITFALL:
+                case global.DAMAGE_SOURCE_PITFALL:
                     ds_map_add(map, "string", string_copy(argument[0].name, 1, 20) + " fell to a clumsy, painful death.");
                     break;
-                case DAMAGE_SOURCE_FINISHED_OFF:
-                case DAMAGE_SOURCE_FINISHED_OFF_GIB:
+                case global.DAMAGE_SOURCE_FINISHED_OFF:
+                case global.DAMAGE_SOURCE_FINISHED_OFF_GIB:
                     ds_map_add(map, "string", "finished off ");
                     break;
-                case DAMAGE_SOURCE_BID_FAREWELL:
+                case global.DAMAGE_SOURCE_BID_FAREWELL:
                     ds_map_add(map, "string", string_copy(argument[0].name, 1, 20) + " bid farewell, cruel world!");
                     break;
                 default:

@@ -133,7 +133,7 @@ playsound(x,y,RocketSnd);
 var oid, newx, newy;
 newx = x+lengthdir_x(20,owner.aimDirection);
 newy = y+lengthdir_y(20,owner.aimDirection);
-oid = createShot(newx, newy, Rocket, DAMAGE_SOURCE_ROCKETLAUNCHER, owner.aimDirection, 13);
+oid = createShot(newx, newy, Rocket, global.DAMAGE_SOURCE_ROCKETLAUNCHER, owner.aimDirection, 13);
 oid.gun=id;
 with (oid)
 {

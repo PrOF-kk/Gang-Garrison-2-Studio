@@ -414,7 +414,7 @@ else if (ammoCount &lt;= maxAmmo and isRefilling)
             newy = y+lengthdir_y(25,owner.aimDirection);
             if !collision_line_bulletblocking(x, y, newx, newy)
             {
-                shot = createShot(newx,newy,Flare, DAMAGE_SOURCE_FLARE, owner.aimDirection, 15);                
+                shot = createShot(newx,newy,Flare, global.DAMAGE_SOURCE_FLARE, owner.aimDirection, 15);                
                 justShot=true;
                 readyToFlare=false;
                 ammoCount -= 35;
@@ -434,7 +434,7 @@ else if (ammoCount &lt;= maxAmmo and isRefilling)
                 {
                     ownerPlayer = other.ownerPlayer;
                     team = other.owner.team;
-                    weapon = DAMAGE_SOURCE_REFLECTED_ROCKET;
+                    weapon = global.DAMAGE_SOURCE_REFLECTED_ROCKET;
                     hitDamage = 25;
                     explosionDamage = 30;
                     knockback = 8;
@@ -455,7 +455,7 @@ else if (ammoCount &lt;= maxAmmo and isRefilling)
                 {
                     ownerPlayer = other.ownerPlayer;
                     team = other.owner.team;
-                    weapon = DAMAGE_SOURCE_REFLECTED_FLARE;
+                    weapon = global.DAMAGE_SOURCE_REFLECTED_FLARE;
                     alarm[0]=40 / global.delta_factor;
                     
                     motion_set(other.owner.aimDirection, speed);
@@ -536,7 +536,7 @@ else if (ammoCount &lt;= maxAmmo and isRefilling)
                         f.owner = other.owner;
                         f.ownerPlayer = other.ownerPlayer;
                         f.team = other.owner.team;
-                        f.weapon = DAMAGE_SOURCE_FLAMETHROWER;
+                        f.weapon = global.DAMAGE_SOURCE_FLAMETHROWER;
                         with(f)
                             motion_add(direction, speed);
                     }
@@ -623,7 +623,7 @@ else if (ammoCount &lt;= maxAmmo and isRefilling)
         randomize();
         calculatedspread = sign(random(2)-1)*power(random(3), 1.8);
         calculatedspread *= 1 - hspeed/owner.basemaxspeed;
-        shot = createShot(newx, newy, Flame, DAMAGE_SOURCE_FLAMETHROWER, owner.aimDirection+calculatedspread,6.5+random(3.5));
+        shot = createShot(newx, newy, Flame, global.DAMAGE_SOURCE_FLAMETHROWER, owner.aimDirection+calculatedspread,6.5+random(3.5));
         with(shot)
             motion_add(owner.direction, owner.speed);
         

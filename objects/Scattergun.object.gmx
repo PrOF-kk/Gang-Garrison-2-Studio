@@ -137,7 +137,7 @@ if ammoCount &lt; maxAmmo {
 playsound(x,y,ShotgunSnd);
 var shot;
 repeat(6) {
-    shot = createShot(x, y, Shot, DAMAGE_SOURCE_SCATTERGUN, owner.aimDirection, 13);
+    shot = createShot(x, y, Shot, global.DAMAGE_SOURCE_SCATTERGUN, owner.aimDirection, 13);
     if(golden)
         shot.sprite_index = ShotGoldS;
     shot.hspeed += owner.hspeed;

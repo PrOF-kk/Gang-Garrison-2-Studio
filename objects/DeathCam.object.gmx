@@ -114,7 +114,7 @@ if sprite_exists(DeathCamS) sprite_delete(DeathCamS);
     exit;
 }
 
-if(lastDamageSource == DAMAGE_SOURCE_SENTRYTURRET and killedby.sentry)
+if(lastDamageSource == global.DAMAGE_SOURCE_SENTRYTURRET and killedby.sentry)
 {
     view_xview=killedby.sentry.x-400;
     view_yview=killedby.sentry.y-300;

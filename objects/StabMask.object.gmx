@@ -224,9 +224,9 @@ y=owner.y;
         other.alarm[3] = ASSIST_TIME / global.delta_factor;
         other.lastDamageDealer = ownerPlayer;
         if sign(other.image_xscale) == sign(image_xscale)
-            other.lastDamageSource = DAMAGE_SOURCE_BACKSTAB;
+            other.lastDamageSource = global.DAMAGE_SOURCE_BACKSTAB;
         else
-            other.lastDamageSource = DAMAGE_SOURCE_KNIFE;
+            other.lastDamageSource = global.DAMAGE_SOURCE_KNIFE;
         var blood;
         if(global.gibLevel &gt; 0)
         {
