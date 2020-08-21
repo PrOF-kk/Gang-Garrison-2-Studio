@@ -4,7 +4,7 @@
  * [argument[1]]: true if the script is executed in the builderroom.
 */
 
-var background, voidColor, i, controller, scale;
+var background, voidColor, i, controller, scale, isBuilderRoom;
 controller = noone;
 with(ParallaxController)
     controller = id;    // Use an existing parallax controller if possible.
@@ -81,4 +81,10 @@ else if (controller != noone) {
     controller.foreground = -1;
 }
 
-execute_string(global.metadataFunction, argument[0], argument[1]);
+if (argument_count > 1)
+    isBuilderRoom = argument[1];
+else
+    isBuilderRoom = false;
+
+execute_string(global.metadataFunction, argument[0], isBuilderRoom);
+
