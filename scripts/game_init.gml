@@ -352,9 +352,11 @@ global.launchMap = "";
      * We'll store the kernel version (Win8 is 6.2, Win7 is 6.1) and check it there.
      ***/
     if (os_type == os_windows && (os_version == 393218 || os_version == 393219))
-        global.CurrentMajorVersionNumber = (os_version - 393218)/10 + 6.2;
-    else 
-        global.CurrentMajorVersionNumber = -1;
+        global.NTKernelVersion = 6.2;
+    else
+        global.NTKernelVersion = 6.1;
+    
+    global.CurrentMajorVersionNumber = -1;
     
     globalvar previous_window_x, previous_window_y, previous_window_w;
     previous_window_x = window_get_x();
