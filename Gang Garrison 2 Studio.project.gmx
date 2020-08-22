@@ -1841,9 +1841,9 @@
       <script>scripts\setChatBubble.gml</script>
       <script>scripts\takeScreenshot.gml</script>
       <script>scripts\initCharacterSpritePrefixes.gml</script>
+      <script>scripts\getRelativePathIfDescendand.gml</script>
       <script>scripts\getCharacterSpriteId.gml</script>
       <script>scripts\format_timer_value.gml</script>
-      <script>scripts\getRelativePathIfDescendand.gml</script>
       <script>scripts\extractzip.gml</script>
     </scripts>
     <scripts name="ggon">
