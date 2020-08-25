@@ -1,7 +1,5 @@
 // Returns true if the game is successfully initialized, false if there was an error and we should quit.
 {
-    global.localVariables = ds_list_create();
-    
     initCharacterSpritePrefixes();
     initAllHeadPoses();
     initGear();
