@@ -2,8 +2,8 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>-1</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>-16000</depth>
   <persistent>0</persistent>
   <parentName>CollisionMapO</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -41,7 +41,36 @@
             <kind>1</kind>
             <string>{
   sprite_index = global.CustomMapCollisionSprite;
-}</string>
+  newSprite = sprite_duplicate(global.CustomMapCollisionSprite);
+  sprite_set_offset(newSprite, sprite_get_width(newSprite)/2, sprite_get_height(newSprite)/2);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var xcenter, ycenter;
+xcenter = view_xview[0] + view_wview[0]/2;
+ycenter = view_yview[0] + view_hview[0]/2;
+draw_sprite_ext(newSprite, -1, xcenter, ycenter, 0.6, 0.6, 0, c_white, 1);
+</string>
           </argument>
         </arguments>
       </action>
