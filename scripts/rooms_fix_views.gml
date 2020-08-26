@@ -36,4 +36,6 @@ for(i = 0; i < nummaps; i += 1)
                   0, 0, global.ingamewidth, global.ingameheight,
                   0, 0, 0, 0, noone);
 }
+window_set_size(global.ingamewidth, global.ingameheight);
+surface_resize(application_surface, global.ingamewidth, global.ingameheight);
 

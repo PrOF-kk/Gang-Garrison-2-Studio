@@ -1,5 +1,6 @@
 // Returns true if the game is successfully initialized, false if there was an error and we should quit.
 {
+    application_surface_enable(true);
     initCharacterSpritePrefixes();
     initAllHeadPoses();
     initGear();

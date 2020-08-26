@@ -45,3 +45,4 @@ else
     RoomChangeObserver.transitioning = true;
     room_goto(argument[0]);
 }
+
