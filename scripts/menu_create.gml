@@ -3,7 +3,7 @@
 // argument[2] - width
 // argument[3] - valueoffset
 // argument[4] - spacing
-// [argument[5]] - tab offset (upwards) [thanks GM for making unset args default to 0!!!11]
+// [argument[5]] - tab offset (upwards)
 // [argument[6]] - tab spacing
 // [argument[7]] - tab margin
 
