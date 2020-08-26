@@ -6,11 +6,11 @@ if instance_exists(ArenaHUD) {
 
 if (!global.mapchanging)
 {
-    ClassSelectController.done = true;
+    with(ClassSelectController) done = true;
     if !instance_exists(TeamSelectController)
         instance_create(0,0,TeamSelectController);
     else
         TeamSelectController.done = true;
 }
 else
-    TeamSelectController.done = true;
+    with(TeamSelectController) done = true;
